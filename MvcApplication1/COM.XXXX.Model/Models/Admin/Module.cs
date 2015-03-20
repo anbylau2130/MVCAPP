@@ -23,26 +23,22 @@ namespace COM.XXXX.Models.Admin
         /// <summary>
         /// 模块编号
         /// </summary>
-        [DataMember]
         public string Code { get; set; }
 
         /// <summary>
         /// 模块名称
         /// </summary>
-        [DataMember]
         public string Name { get; set; }
 
 
         /// <summary>
         /// 模块描述
         /// </summary>
-        [DataMember]
         public string Desc { get; set; }
 
         /// <summary>
         /// 图标
         /// </summary>
-        [DataMember]
         public string PicUrl { get; set; }
 
     }

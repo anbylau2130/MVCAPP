@@ -6,19 +6,12 @@ using System.Text;
 
 namespace COM.XXXX.Models.Admin
 {
-    [DataContract]
-    public class Organization
+    public class Organization:IModel
     {
-        [DataMember]
-        public int ID
-        {
-            get;
-            set;
-        }
+      
         /// <summary>
         /// 部门名称
         /// </summary>	
-        [DataMember]
         public string Agency
         {
             get;
@@ -27,8 +20,7 @@ namespace COM.XXXX.Models.Admin
         /// <summary>
         /// 上级部门
         /// </summary>		
-        [DataMember]
-        public int ParentID
+        public Guid ParentID
         {
             get;
             set;
@@ -43,7 +35,6 @@ namespace COM.XXXX.Models.Admin
         /// <summary>
         /// 排序
         /// </summary>		
-        [DataMember]
         public int Sort
         {
             get;
@@ -52,8 +43,7 @@ namespace COM.XXXX.Models.Admin
         /// <summary>
         /// 负责人Id
         /// </summary>		
-        [DataMember]
-        public int UserID
+        public Guid? UserID
         {
             get;
             set;
@@ -64,7 +54,6 @@ namespace COM.XXXX.Models.Admin
         /// <summary>
         /// 备注
         /// </summary>		
-        [DataMember]
         public string Remark
         {
             get;

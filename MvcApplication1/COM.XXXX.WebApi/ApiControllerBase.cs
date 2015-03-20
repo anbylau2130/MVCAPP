@@ -46,7 +46,7 @@ namespace COM.XXXX.WebApi
             }
 
             // GET api/<controller>/5
-            public M Get(int id)
+            public M Get(Guid id)
             {
                 return Repository.Query(M => M.ID == id).First();
             }
@@ -63,7 +63,7 @@ namespace COM.XXXX.WebApi
             }
 
             // PUT api/<controller>/5
-            public bool Put(int id, [FromBody]M model)
+            public bool Put(Guid id, [FromBody]M model)
             {
                 Repository.Update(model);
                 if (UnitOfWork.Save() != 1)
@@ -74,7 +74,7 @@ namespace COM.XXXX.WebApi
             }
 
             // DELETE api/<controller>/5
-            public bool Delete(int id)
+            public bool Delete(Guid id)
             {
                 Repository.Delete(new M { ID = id });
                 if (UnitOfWork.Save() != 1)

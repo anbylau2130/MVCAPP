@@ -38,7 +38,7 @@ namespace COM.XXXX.WebApi.Admin.Controllers
             return Repository.GetMenusByPage(modulecode, controller, action);
         }
 
-        public IEnumerable<UIMenu> GetSubMenusByPMenu(int id, string modulecode)
+        public IEnumerable<UIMenu> GetSubMenusByPMenu(Guid id, string modulecode)
         {
             IEnumerable<Menu> submenus = Repository.GetSubMenusByPMenu(id,modulecode);
             List<UIMenu> menulst = new List<UIMenu>();
@@ -65,7 +65,7 @@ namespace COM.XXXX.WebApi.Admin.Controllers
             return menulst;
         }
 
-        public IEnumerable<Menu> GetMenusByPMenu(int id,string modulecode)
+        public IEnumerable<Menu> GetMenusByPMenu(Guid id,string modulecode)
         {
             return Repository.GetMenusByPMenu(id, modulecode);
         }

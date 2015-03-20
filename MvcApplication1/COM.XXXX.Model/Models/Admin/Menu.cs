@@ -19,88 +19,61 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 namespace COM.XXXX.Models.Admin
 {
-    [DataContract]
     public class Menu : IModel
     {
         /// <summary>
         /// 显示名称
         /// </summary>
-        [DataMember]
         public string DisplayName { get; set; }
-
         /// <summary>
         /// 宽度
         /// </summary>
-        [DataMember(IsRequired = false)]
-        public int Width { get; set; }
+        public int? Width { get; set; } 
         /// <summary>
-        /// 高度
+        /// 高度 
         /// </summary>
-    
-        [DataMember(IsRequired = false)]
-        public int Height { get; set; }
-
+        public int? Height { get; set; }
         /// <summary>
         /// 用于排序的字段,如果是列表菜单，则为0，否则为排序列
         /// </summary>
-        [DataMember(IsRequired = false)]
-        public int SortKey { get; set; }
-        
+        public int? SortKey { get; set; }
         /// <summary>
         /// 导航Controller
         /// </summary>
-       [DataMember(IsRequired = false)]
         public string Controller { get; set; }
-
         /// <summary>
         /// 导航Action
         /// </summary>
-       [DataMember(IsRequired = false)]
         public string Action { get; set; }
-
         /// <summary>
         /// 所属页面controller
         /// </summary>
-        [DataMember(IsRequired = false)]
         public string OwnController { get; set; }
         /// <summary>
         /// 所属页面Action
         /// </summary>
-        [DataMember(IsRequired = false)]
         public string OwnAction { get; set; }
-
         /// <summary>
         /// 图标
         /// </summary>
-         [DataMember(IsRequired = false)]
         public string IconCls { get; set; }
-
         /// <summary>
         /// 叶子节点对应一个URL
         /// </summary>
-         [DataMember(IsRequired = false)]
         public bool IsLeaf { get; set; }
-
-        /// <summary>
-        /// 父菜单ID
-        /// </summary>
-       [DataMember(IsRequired = false)]
-        public int PMenuID { get; set; }
         
-        /// <summary>
-        /// Module主键 
-        /// </summary>
-        [DataMember(IsRequired = false)]
-        public int ModuleID { get; set; }
-
         /// <summary>
         /// 窗口打开类型
         /// </summary>
-     [DataMember(IsRequired = false)]
-        public int OpenModel { get; set; }
+        public int? OpenModel { get; set; }
+
+
+        public  Guid? PMenuID { get; set; } 
 
         public virtual Menu PMenu { get; set; }
-        [DataMember] 
+
+        public Guid? ModuleID { get; set; } 
+
         public virtual Module Module { get; set; }
 
 

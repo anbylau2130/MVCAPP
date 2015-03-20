@@ -20,20 +20,9 @@ namespace COM.XXXX.Models.Admin
     public class Role : IModel
     {
     
-        //public int CreateUserID { get; set; }
-
-        //public int  ID { get; set; }
-         
         public string Name { get; set; }
 
         public string Desc { get; set; }
 
-        //public DateTime CreateDate { get; set; }
-
-        //public DateTime ModifyDate { get; set; }
-
-        //public virtual User ModifyUser { get; set; }
-
-        //public virtual User CreateUser { get; set; }
     }
 }

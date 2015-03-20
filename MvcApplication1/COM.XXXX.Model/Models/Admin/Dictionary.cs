@@ -18,48 +18,40 @@ using System.Text;
 
 namespace COM.XXXX.Models.Admin
 {
-    [DataContract]
     public class Dictionary : IModel
     {
         /// <summary>
         /// 变量名
         /// </summary>
-        [DataMember]
         public string VarName { get; set; }
 
         /// <summary>
         /// 变量编码
         /// </summary>
-        [DataMember]
         public string VarCode { get; set; }
 
         /// <summary>
         /// 变量值
         /// </summary>
-        [DataMember]
         public string VarValue { get; set; }
 
         /// <summary>
         /// 唯一值
         /// </summary>
-        [DataMember]
         public string UniqueValue { get; set; }
 
         /// <summary>
         /// 备注
         /// </summary>
-        [DataMember]
         public string Remark { get; set; }
 
         /// <summary>
         /// 父ID
         /// </summary>
-        public int PID { get; set; }
+        public Guid? PID { get; set; }
 
-        /// <summary>
-        /// 所属模块ID,如果是全局系统变量则，该值为0
-        /// </summary>
-        public int ModuleID { get; set; }
+       
+        public Guid? ModuleID { get; set; }
 
         public virtual Module Module { get; set; }
     }

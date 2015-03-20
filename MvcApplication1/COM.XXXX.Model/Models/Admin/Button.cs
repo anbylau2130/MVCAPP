@@ -19,7 +19,6 @@ namespace COM.XXXX.Models.Admin
 {
     public class Button:IModel
     {
-
         public string BtnName { get; set; }
 
         public string BtnNo { get; set; }
@@ -30,7 +29,7 @@ namespace COM.XXXX.Models.Admin
 
         public string BtnStatus { get; set; }
 
-        public int MenuID { get; set; }
+        public Guid? MenuID { get; set; } 
 
         public virtual Menu Menu { get; set; }
     }

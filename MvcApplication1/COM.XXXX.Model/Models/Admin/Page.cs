@@ -18,30 +18,25 @@ using System.Text;
 
 namespace COM.XXXX.Models.Admin
 {
-    [DataContract]
     public class Page : IModel
     {
         /// <summary>
         /// 标题
         /// </summary>
-        [DataMember]
         public string Title { get; set; }
 
         /// <summary>
         /// Controller
         /// </summary>
-        [DataMember]
         public string Controller { get; set; }
 
         /// <summary>
         /// Action
         /// </summary>
-        [DataMember]
         public string Action { get; set; }
         /// <summary>
         /// 备注
         /// </summary>
-        [DataMember]
         public string Remark { get; set; }
 
         /// <summary>

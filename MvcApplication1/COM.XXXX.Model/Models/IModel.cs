@@ -12,21 +12,23 @@
 //----------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
 namespace COM.XXXX.Models
 {
-     [Serializable]
-    [DataContract]
+    [Serializable]
     public class IModel
-    { 
+    {
         /// <summary>
         /// 主键
         /// </summary>
-        [DataMember]
-        public int ID { get; set; }
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public Guid ID { get; set; }
 
     }
 }

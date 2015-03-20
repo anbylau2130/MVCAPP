@@ -21,6 +21,5 @@ F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Common\bin\Debug
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Common\bin\Debug\COM.XXXX.Common.pdb
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Common\bin\Debug\log4net.dll
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Common\bin\Debug\log4net.xml
-F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Common\obj\Debug\6.COM.XXXX.Common.csprojResolveAssemblyReference.cache
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Common\obj\Debug\COM.XXXX.Common.dll
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Common\obj\Debug\COM.XXXX.Common.pdb
