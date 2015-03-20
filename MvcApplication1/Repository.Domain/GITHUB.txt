@@ -1,0 +1,41 @@
+﻿…or create a new repository on the command line
+echo # MVCAPP >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin git@github.com:anbylau2130/MVCAPP.git
+git push -u origin master
+
+
+…or push an existing repository from the command line
+git remote add origin git@github.com:anbylau2130/MVCAPP.git
+git push -u origin master
+
+
+git clone https://github.com/anbylau2130/*.git
+
+
+cd ~/../..
+
+git config --global user.email "onionhacker@gmail.com”
+
+git config --global user.name "onionhacker@gmail.com"
+
+git add *
+
+git commit -m "注释" *
+
+
+git push origin
+
+// github 上传 命令
+--------------
+
+//删除命令
+
+git rm --cached filename   
+
+git rm \*doc(可以删除带中文的任何doc扩展的文件)
+
+git commit -m "hehe" 
+git push origin 
