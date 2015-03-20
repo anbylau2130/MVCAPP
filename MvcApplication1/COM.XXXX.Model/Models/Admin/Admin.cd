@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="COM.XXXX.Models.Admin.User">
+    <Position X="0.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAQAAAAAAAAAAAAIAAEAAQEgAAAAAQA=</HashCode>
+      <FileName>Models\Admin\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="COM.XXXX.Models.Admin.Module">
+    <Position X="7" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAgAAQAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Admin\Module.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="COM.XXXX.Models.Admin.Menu">
+    <Position X="1" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABUAAAAQAAAAAAAAAAEAAAAAAAAAAAAEAACQEUAAQ=</HashCode>
+      <FileName>Models\Admin\Menu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="COM.XXXX.Models.Admin.Role">
+    <Position X="5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Models\Admin\Role.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="COM.XXXX.Models.Admin.RoleRight">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAIAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Admin\RoleRight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="COM.XXXX.Models.Admin.Button">
+    <Position X="4.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAIBAAECAAAgAAAAQA=</HashCode>
+      <FileName>Models\Admin\Button.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="COM.XXXX.Models.Admin.Privilege">
+    <Position X="3.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAECAAAAAAAAAAAAAAAAAAAGAAAAAAAA=</HashCode>
+      <FileName>Models\Admin\Privilege.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

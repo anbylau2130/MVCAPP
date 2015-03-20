@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "UserManager";
+}
+
+  <table id="dg"></table>
+
+
+
+<script type="text/javascript">
+
+    $('#dg').datagrid({
+        url: '@Url.Content("~/api/User/GetAllUsers")',
+        rownumbers:true,
+        singleSelect: true,
+        striped: true,
+        pagination: true,
+        pagePosition: 'bottom',
+        pageNumber: 1,
+        pageSize: 10,
+        height: 'auto',
+        fit: true,//自动大小 
+        pageList:[10,20,30,40,50],
+        fitColumns: true,
+        columns: [[
+            { field: 'UserName', title: '用户名', width: fixWidth(0.1), halign: "center", align: "center" },
+            { field: 'PassWord', title: '密码', width: fixWidth(0.1), halign: "center", align: "center" },
+            { field: 'OfferTime', title: '入职时间', width: fixWidth(0.1), halign: "center", formatter: ShowDate, align: "center" },
+            { field: 'Education', title: '学历', width: fixWidth(0.1), halign: "center", align: "center" },
+            { field: 'Professional', title: '专业', width: fixWidth(0.1), halign: "center", align: "center" },
+            { field: 'IsMarry', title: '婚否', width: fixWidth(0.1), halign: "center", formatter: ShowState, align: "center" },
+            { field: 'BirthDay', title: '生日', width: fixWidth(0.1), halign: "center", formatter: ShowDate, align: "center" },
+            { field: 'InUse', title: '是否启用', width: fixWidth(0.15), halign: "center", formatter: ShowState, align: "center" },
+            { field: 'Remark', title: '备注', width: fixWidth(0.15), halign: "center", align: "center" }
+        ]],
+         
+    });
+    
+   
+
+</script>

@@ -1,0 +1,18 @@
+<HR COLOR=red>
+异常时间：2014-12-16 10:51:07,346 [6] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/api/User/2 <BR>
+ <HR Size=1>System.InvalidOperationException: 序列不包含任何元素
+   在 System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   在 System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__0[TResult](IEnumerable`1 sequence)
+   在 System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   在 System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   在 System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   在 System.Linq.Queryable.First[TSource](IQueryable`1 source)
+   在 COM.XXXX.WebApi.ApiControllerBase`2.Get(Int32 id) 位置 c:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.WebApi\ApiControllerBase.cs:行号 51
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass13.<GetExecutor>b__c(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.<>c__DisplayClass5.<ExecuteAsync>b__4()
+   在 System.Threading.Tasks.TaskHelpers.RunSynchronously[TResult](Func`1 func, CancellationToken cancellationToken)

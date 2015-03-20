@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "主页";
+}
+
+@section Head
+{
+
+    <script type="text/javascript">
+
+        //增加导航项
+        function addMenu(menu, i) {
+            $('#Mainguid').accordion('add', {
+                title: menu.DisplayName,
+                content: '<ul id="tt' + i + '"></ul>',
+                animate: true,
+                iconCls: menu.IconCls
+            });
+            
+            $.get("/Api/Menu/GetSubMenusByPMenu", { id: menu.ID, modulecode: "Admin" },
+               function (data) {
+                   $('#tt'+i+'').tree({
+                       data: data,
+                       onClick: function (node) {
+                           console.log(node)
+                           openMenu(node.text, node.attributes.Width, node.attributes.Height, node.attributes.URL, node.attributes.OpenType)
+                       }
+
+                   });
+               });
+            //$('#tt'+i+'').tree({
+            //    url: '/Api/Menu/GetSubMenusByPMenu?id=' + menu.ID + '&modulecode=Admin',
+            //    method: 'GET'
+            //});
+
+        }
+
+        //增加tab内容页
+        function openMenu(title, width, height, url, opentype, params) {
+            switch (parseInt(opentype)) {
+            case 1: //弹窗(模态)
+                $('#win').window({
+                    title: title,
+                    width: width,
+                    height: height,
+                    border: false,
+                    closed: false,
+                    cache: false,
+                    href: url,
+                    modal: true
+                });
+                break;
+            case 2: //弹窗（非模态）    
+                $('#win').window({
+                    title: title,
+                    width: width,
+                    height: height,
+                    closed: false,
+                    border: false,
+                    cache: false,
+                    href: url,
+                    modal: false
+                });
+                break;
+            default:
+                if (!$('#content').tabs("exists", title)) {
+                    $('#content').tabs('add', {
+                        title: title,
+                        href: url,
+                        border: false,
+                        closable: true,
+                    });
+                } else {
+                    $('#content').tabs("select", title);
+                }
+            }
+        }
+
+        $(function() {
+            $.ajax({
+                url: "/api/Menu/GetMenusByPage",
+                type: "Get",
+                data: {
+                    modulecode: "Admin",
+                    Controller: '@ViewContext.RouteData.Values["controller"].ToString()',
+                    Action: '@ViewContext.RouteData.Values["action"].ToString()'
+                },
+                dataType: 'json',
+                success: function (menus) {
+                    for (var i = 0; i < menus.length; i++) {
+                        addMenu(menus[i],i);
+                    }
+                }
+            })
+        })
+    </script>
+}
+<div class="easyui-layout" data-options="fit:true">
+    @*标题*@
+    <div data-options="region:'north'" style="height: 100px;">
+    </div>
+
+    @*导航*@
+    <div data-options="region:'west',title:'导航菜单',split:true" style="width: 200px;">
+        <div id="Mainguid" class="easyui-accordion" data-options="fit:true,border:false" style="width: 300px;">
+        </div>
+    </div>
+
+    @*内容*@
+    <div data-options="region:'center',border:false" style="padding: 0px">
+        <div id="content" class="easyui-tabs" data-options="fit:true">
+        </div>
+    </div>
+    
+    @*用于弹窗*@
+    <div id="win"></div>  
+    
+
+</div>

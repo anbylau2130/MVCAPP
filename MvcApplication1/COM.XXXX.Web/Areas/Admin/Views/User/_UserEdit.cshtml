@@ -1,0 +1,82 @@
+﻿<style scoped="scoped">
+        .textbox{
+            height:20px;
+            margin:0;
+            padding:0 2px;
+            box-sizing:content-box;
+        }
+        .FormTable {
+            border-collapse:collapse;
+        }
+
+        .FormTable tr td:nth-child(odd) {
+            border: 1px #C0C0C0 solid; 
+            background-color:#F1F6FF;
+        }
+
+        .FormTable tr td:nth-child(even) {
+            border: 1px #C0C0C0 solid; 
+            background-color:#FAFCFF;
+  
+        }
+
+        .FormTable td {
+            padding:5px;
+        }
+</style> 
+<table class="FormTable">
+    <tr>
+        <td>
+            <label for="UserName">用户名:</label>
+        </td>
+        <td>
+            <input class="easyui-validatebox textbox" data-options="required:true,validType:'length[3,10]'" />
+           
+        </td>
+
+        <td>
+            <label for="PassWord">密 码:</label>
+        </td>
+        <td>
+            <input class="easyui-validatebox textbox" type="password" name="PassWord" data-options="required:true" />
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <label for="Professional">专 业:</label>
+        </td>
+        <td>
+            <input class="easyui-validatebox textbox" type="text"  name="Professional" data-options="required:true" />
+        </td>
+
+        <td>
+            <label for="Education">学 历:</label>
+        </td>
+        <td>
+            <select id="Education" class="easyui-combobox textbox" name="Education" editable="false"  style="width: 130px;">
+                <option value="1">研究生</option>
+                <option value="2">本 科</option>
+                <option value="3">大 专</option>
+            </select>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <label for="BirthDay">生 日:</label>
+        </td>
+        <td>
+            <input class="easyui-datebox textbox" type="text" name="BirthDay" editable="false"  data-options="required:true" />
+        </td>
+        <td>
+            <label for="IsMarry">婚 否:</label>
+        </td>
+        <td>
+            <select id="cc" class="easyui-combobox textbox" name="IsMarray" editable="false" style="width: 130px;">
+                <option value="true">已婚</option>
+                <option value="false">未婚</option>
+            </select>
+        </td>
+    </tr>
+</table>

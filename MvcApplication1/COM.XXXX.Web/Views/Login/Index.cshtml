@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "登陆";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Scripts/bootstrap/dist/css/nav-justified.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Scripts/bootstrap/dist/css/bootstrap.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/jquery/2.0.0/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap/dist/js/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/HubSpot/build/js/messenger.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/HubSpot/build/js/messenger-theme-future.js")"></script>
+    <link href="@Url.Content("~/Scripts/HubSpot/build/css/messenger.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Scripts/HubSpot/build/css/messenger-theme-future.css")" rel="stylesheet" />
+    <style>
+        div > label {
+            color: white;
+        }
+       .form-signin {
+            max-width: 300px;
+            padding: 30px;
+            margin: 0 auto;
+           color: white;
+           
+        }
+    
+        body {
+            background-color: #303641
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            //刷新验证码
+            $("#validatecode").click(function() {
+                $("#validatecode").attr("src", "@Url.Content("/Login/ValidationImage")");
+            });
+        })
+        //登陆
+        function Login() {
+            var chkvalue = $("input[type=checkbox]").each(function () {
+                if(this.checked)
+                    return $(this).val();
+            });
+
+            if (chkvalue.length > 0)
+                chkvalue = chkvalue[0].value;
+            else
+                chkvalue = "noremember";
+
+            $.post("@Url.Content("/Login/OnLogin")",
+               {
+                   username: $("#username").val(),
+                   password: $("#password").val(),
+                   randCode: $("#randCode").val(),
+                   remember: chkvalue
+               }, function (data) {
+                   if (data == '{success:true}')
+                       window.location.href = '@Url.Content("~/Home")';
+                   else {
+                       Messenger.options = {
+                           extraClasses: 'messenger-fixed messenger-on-top',
+                           theme: 'future'
+                       }
+                       Messenger().post(data);
+                   }
+            });
+        }
+    </script>
+</head>
+<body style="margin: 0px auto">
+    <div class="container">
+        <form id="form1"  role="form" class="form-signin">
+            <h2 class="form-signin-heading">Please sign in</h2>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </span>
+                    <input type="text" id="username" class="form-control" placeholder="UserName" aria-describedby="basic-addon1">
+                </div>
+            </div>
+                   
+            <div class="form-group">
+                        
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon2">
+                        <span class=" glyphicon glyphicon-lock"></span>
+                    </span>
+                    <input type="password" id="password" class="form-control"  placeholder="Password"  aria-describedby="basic-addon2">
+                </div>
+                      
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon" >
+                        <img id="validatecode" src="@Url.Content("/Login/ValidationImage")"   style="width: 70px;height: 20px"/>
+                    </span>
+                    <input type="text" id="randCode"  class="form-control"  placeholder="验证码">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <label class="checkbox" style="margin-left: 20px">
+                        <input  name="remember"  type="checkbox"  value="remember" > Remember me
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                        
+                <button type="submit" id="btnLogin" class="btn btn-large btn-primary btn-block" onclick="Login();return false;" >Login</button>
+            </div>
+            
+
+          
+        </form>
+           
+           
+        </div>
+   
+</body>
+</html>
+
+
+

@@ -1,0 +1,46 @@
+<HR COLOR=red>
+异常时间：2014-12-17 11:29:51,938 [6] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/api/Menu/GetMenusByPage <BR>
+ <HR Size=1>System.Data.ConstraintException: “Menu”的“Width”属性不能设置为“null”值。必须将该属性设置为类型为“System.Int32”的非 null 值。
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetPropertyValueWithErrorHandling[TProperty](Int32 ordinal, String propertyName, String typeName)
+   在 lambda_method(Closure , Shaper )
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.HandleEntityAppendOnly[TEntity](Func`2 constructEntityDelegate, EntityKey entityKey, EntitySet entitySet)
+   在 lambda_method(Closure , Shaper )
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 Repository.DAL.Repository.MenuRepository.GetMenusByPage(String modulecode, String controller, String action) 位置 c:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.DAL\Repository\Admin\MenuRepository.cs:行号 36
+   在 COM.XXXX.WebApi.Admin.Controllers.MenuApiController.GetMenusByPage(String modulecode, String controller, String action) 位置 c:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.WebApi\Admin\Controllers\MenuApiController.cs:行号 22
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass13.<GetExecutor>b__c(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.<>c__DisplayClass5.<ExecuteAsync>b__4()
+   在 System.Threading.Tasks.TaskHelpers.RunSynchronously[TResult](Func`1 func, CancellationToken cancellationToken)
+<HR COLOR=red>
+异常时间：2014-12-17 11:30:05,912 [7] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/api/Menu/GetMenusByPage <BR>
+ <HR Size=1>System.Data.ConstraintException: “Menu”的“Width”属性不能设置为“null”值。必须将该属性设置为类型为“System.Int32”的非 null 值。
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.ErrorHandlingValueReader`1.GetValue(DbDataReader reader, Int32 ordinal)
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.GetPropertyValueWithErrorHandling[TProperty](Int32 ordinal, String propertyName, String typeName)
+   在 lambda_method(Closure , Shaper )
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper.HandleEntityAppendOnly[TEntity](Func`2 constructEntityDelegate, EntityKey entityKey, EntitySet entitySet)
+   在 lambda_method(Closure , Shaper )
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Coordinator`1.ReadNextElement(Shaper shaper)
+   在 System.Data.Entity.Core.Common.Internal.Materialization.Shaper`1.SimpleEnumerator.MoveNext()
+   在 System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   在 System.Collections.Generic.List`1..ctor(IEnumerable`1 collection)
+   在 System.Linq.Enumerable.ToList[TSource](IEnumerable`1 source)
+   在 Repository.DAL.Repository.MenuRepository.GetMenusByPage(String modulecode, String controller, String action) 位置 c:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.DAL\Repository\Admin\MenuRepository.cs:行号 36
+   在 COM.XXXX.WebApi.Admin.Controllers.MenuApiController.GetMenusByPage(String modulecode, String controller, String action) 位置 c:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.WebApi\Admin\Controllers\MenuApiController.cs:行号 22
+   在 lambda_method(Closure , Object , Object[] )
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.<>c__DisplayClass13.<GetExecutor>b__c(Object instance, Object[] methodParameters)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.ActionExecutor.Execute(Object instance, Object[] arguments)
+   在 System.Web.Http.Controllers.ReflectedHttpActionDescriptor.<>c__DisplayClass5.<ExecuteAsync>b__4()
+   在 System.Threading.Tasks.TaskHelpers.RunSynchronously[TResult](Func`1 func, CancellationToken cancellationToken)

@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "SysManage.Index";
+}
+@section Head
+{
+    <script>
+        $('#tt').tree({
+            data: [{
+                text: 'Item1',
+                state: 'closed',
+                children: [{
+                    text: 'Item11'
+                }, {
+                    text: 'Item12'
+                }]
+            }, {
+                text: 'Item2'
+            }]
+        });
+    </script>
+}
+<ul id="tt"></ul> 
+

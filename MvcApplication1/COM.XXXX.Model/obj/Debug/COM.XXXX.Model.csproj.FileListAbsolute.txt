@@ -1,0 +1,4 @@
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Model.dll
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Model.pdb
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Model.dll
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Model.pdb

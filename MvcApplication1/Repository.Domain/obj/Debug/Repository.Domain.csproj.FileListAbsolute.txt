@@ -1,0 +1,12 @@
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.csprojResolveAssemblyReference.cache
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.Domain\bin\Debug\Repository.Domain.dll.config
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.Domain\bin\Debug\Repository.Domain.dll
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.Domain\bin\Debug\Repository.Domain.pdb
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.Domain\bin\Debug\COM.XXXX.Model.dll
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.Domain\bin\Debug\EntityFramework.dll
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.Domain\bin\Debug\COM.XXXX.Model.pdb
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.Domain\bin\Debug\EntityFramework.xml
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.dll
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.pdb

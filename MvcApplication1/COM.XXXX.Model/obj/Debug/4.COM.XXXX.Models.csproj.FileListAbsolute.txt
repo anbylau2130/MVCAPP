@@ -1,0 +1,25 @@
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Models.dll
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Models.pdb
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Models.dll
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Models.pdb
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Model\obj\Debug\4.COM.XXXX.Models.csprojResolveAssemblyReference.cache
+F:\PrimaryFile\project\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Models.dll
+F:\PrimaryFile\project\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Models.pdb
+F:\PrimaryFile\project\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Models.dll
+F:\PrimaryFile\project\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Models.pdb
+D:\Projects\MvcApplication2\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Models.dll
+D:\Projects\MvcApplication2\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Models.pdb
+D:\Projects\MvcApplication2\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Models.dll
+D:\Projects\MvcApplication2\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Models.pdb
+F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Models.dll.config
+F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Models.dll
+F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Models.pdb
+F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\bin\Debug\EntityFramework.dll
+F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\bin\Debug\EntityFramework.SqlServer.dll
+F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\bin\Debug\EntityFramework.xml
+F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\bin\Debug\EntityFramework.SqlServer.xml
+F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\obj\Debug\4.COM.XXXX.Models.csprojResolveAssemblyReference.cache
+F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Models.dll
+F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Models.pdb

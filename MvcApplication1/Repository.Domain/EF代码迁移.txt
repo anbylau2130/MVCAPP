@@ -1,0 +1,14 @@
+﻿//更新
+Enable-Migrations -EnableAutomaticMigrations -Force
+Add-Migration InitialCreate
+Update-Database -Verbose -Force
+
+//回溯
+Update-Database -Verbose
+Update-Database –TargetMigration:"201309201643300_AddCity.cs"
+
+
+
+
+//安装routedebugger
+Install-Package routedebugger

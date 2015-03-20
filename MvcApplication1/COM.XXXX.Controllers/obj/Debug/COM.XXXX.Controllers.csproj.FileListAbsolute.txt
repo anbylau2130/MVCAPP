@@ -1,0 +1,7 @@
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Controllers\obj\Debug\COM.XXXX.Controllers.csprojResolveAssemblyReference.cache
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Controllers\bin\Debug\COM.XXXX.Controllers.dll
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Controllers\bin\Debug\COM.XXXX.Controllers.pdb
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Controllers\bin\Debug\COM.XXXX.Model.dll
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Controllers\bin\Debug\COM.XXXX.Model.pdb
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Controllers\obj\Debug\COM.XXXX.Controllers.dll
+C:\Users\Administrator.WX-PC\Documents\Visual Studio 2012\Projects\MvcApplication1\COM.XXXX.Controllers\obj\Debug\COM.XXXX.Controllers.pdb
