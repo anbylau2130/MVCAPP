@@ -54,6 +54,13 @@ namespace COM.XXXX.Models.Admin
         /// </summary>
         public string OwnAction { get; set; }
         /// <summary>
+        /// 所属Module
+        /// </summary>
+        public Guid? OwnModuleID { get; set; }
+
+        public virtual Module OwnModule { get; set; }
+
+        /// <summary>
         /// 图标
         /// </summary>
         public string IconCls { get; set; }
@@ -72,6 +79,9 @@ namespace COM.XXXX.Models.Admin
 
         public virtual Menu PMenu { get; set; }
 
+        /// <summary>
+        /// 导航模块
+        /// </summary>
         public Guid? ModuleID { get; set; } 
 
         public virtual Module Module { get; set; }

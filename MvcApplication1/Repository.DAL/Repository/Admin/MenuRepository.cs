@@ -40,8 +40,7 @@ namespace Repository.DAL.Repository
         /// <returns></returns>
         public List<Menu> GetMenusByPage(string modulecode,string controller,string action)
         {
-             //&& !menu.IsLeaf
-            var temp = base.Query(menu => menu.PMenu.ID == new Guid("9162DD83-DECE-E411-8822-E051B65A5673") && menu.OwnController == controller && menu.OwnAction == action && modulecode == menu.Module.Code).ToList();
+            var temp = base.Query(menu => menu.OwnController == controller && menu.OwnAction == action && modulecode == menu.OwnModule.Code).ToList();
             return temp;
         }
 
@@ -53,7 +52,7 @@ namespace Repository.DAL.Repository
         /// <returns></returns>
         public List<Menu> GetMenusByPMenu(Guid id, string modulecode)
         {
-            return base.Query(menu => menu.PMenu.ID == id && menu.IsLeaf && modulecode == menu.Module.Code).ToList();
+            return base.Query(menu => menu.PMenuID == id && menu.IsLeaf && modulecode == menu.OwnModule.Code).ToList();
         }
 
         /// <summary>
@@ -64,7 +63,8 @@ namespace Repository.DAL.Repository
         /// <returns></returns>
         public List<Menu> GetSubMenusByPMenu(Guid id, string modulecode)
         {
-            return  base.Query(menu => menu.PMenu.ID == id  && modulecode == menu.Module.Code).ToList();
+            var result=  base.Query(menu => menu.PMenuID == id  && modulecode == menu.OwnModule.Code).ToList();
+            return result;
         }  
         
     }

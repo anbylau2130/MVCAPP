@@ -6,32 +6,19 @@
 {
 
     <script type="text/javascript">
-
+        //treenode节点单机事件
+        function nodeClick(node) {
+            openMenu(node.text, node.attributes.Width, node.attributes.Height, node.attributes.URL, node.attributes.OpenType);
+        }
         //增加导航项
         function addMenu(menu, i) {
+            //var url = "url:'/Api/Menu/GetSubMenusByPMenu?id=" + menu.ID + '&modulecode=' + menu.Module.Code+'"';
             $('#Mainguid').accordion('add', {
                 title: menu.DisplayName,
-                content: '<ul id="tt' + i + '"></ul>',
+                content: '<ul class="easyui-tree" id="tt' + i + '" data-options="url:' + "'" + '/Api/Menu/GetSubMenusByPMenu?id=' + menu.ID + '&modulecode=' + menu.Module.Code + "'" + ",method:'get',onClick:nodeClick" + '"></ul>',
                 animate: true,
                 iconCls: menu.IconCls
             });
-            
-            $.get("/Api/Menu/GetSubMenusByPMenu", { id: menu.ID, modulecode: "Admin" },
-               function (data) {
-                   $('#tt'+i+'').tree({
-                       data: data,
-                       onClick: function (node) {
-                           console.log(node)
-                           openMenu(node.text, node.attributes.Width, node.attributes.Height, node.attributes.URL, node.attributes.OpenType)
-                       }
-
-                   });
-               });
-            //$('#tt'+i+'').tree({
-            //    url: '/Api/Menu/GetSubMenusByPMenu?id=' + menu.ID + '&modulecode=Admin',
-            //    method: 'GET'
-            //});
-
         }
 
         //增加tab内容页

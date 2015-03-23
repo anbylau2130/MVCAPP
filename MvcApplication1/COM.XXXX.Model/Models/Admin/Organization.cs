@@ -1,40 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
 namespace COM.XXXX.Models.Admin
 {
+    [Serializable]
+    [DataContract]
     public class Organization:IModel
     {
       
         /// <summary>
         /// 部门名称
         /// </summary>	
-        public string Agency
-        {
+        [DataMember]
+        public string Name
+        { 
             get;
             set;
         }
         /// <summary>
         /// 上级部门
         /// </summary>		
-        public Guid ParentID
+        [DataMember]
+        public Guid? POrganizationID 
         {
             get;
             set;
         }
 
-        public Organization POrganization
+        public virtual Organization POrganization 
         {
             get;
-            set;
+            set; 
         }
 
         /// <summary>
         /// 排序
         /// </summary>		
+        [DataMember]
         public int Sort
         {
             get;
@@ -43,21 +49,30 @@ namespace COM.XXXX.Models.Admin
         /// <summary>
         /// 负责人Id
         /// </summary>		
+        [DataMember]
         public Guid? UserID
         {
             get;
             set;
         }
 
+        [DataMember]
         public User User { get; set; }
 
         /// <summary>
         /// 备注
         /// </summary>		
+        [DataMember]
         public string Remark
         {
             get;
             set;
         }
+        /// <summary>
+        /// easyui加载界面使用
+        /// </summary>
+        [NotMapped]
+        [DataMember]
+        public List<Organization> children { get; set; }
     }
 }

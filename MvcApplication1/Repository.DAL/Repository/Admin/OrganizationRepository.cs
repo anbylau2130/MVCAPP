@@ -20,5 +20,10 @@ namespace Repository.DAL.Repository.Admin
         {
 
         }
+
+        public IEnumerable<Organization> GetOrganiztionByPID(Guid pid)
+        {
+            return base.Query(org => org.POrganizationID == pid);
+        }
     }
 }

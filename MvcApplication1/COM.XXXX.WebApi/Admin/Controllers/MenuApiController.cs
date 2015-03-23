@@ -49,7 +49,7 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                     {
                         URL= string.Format("/{0}/{1}/{2}",item.Module.Code,item.Controller,item.Action),
                         Width=item.Width,
-                        Height=item.Height,
+                        Height=item.Height, 
                         OpenType=item.OpenModel
                     }};
                 if (!item.IsLeaf)
