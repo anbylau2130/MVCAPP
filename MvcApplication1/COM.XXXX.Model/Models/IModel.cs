@@ -22,11 +22,13 @@ using System.Text;
 namespace COM.XXXX.Models
 {
     [Serializable]
+    [DataContract]
     public class IModel
     {
         /// <summary>
         /// 主键
         /// </summary>
+        [DataMember]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid ID { get; set; }
 

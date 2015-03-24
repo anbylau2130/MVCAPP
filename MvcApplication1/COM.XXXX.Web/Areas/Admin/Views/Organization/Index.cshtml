@@ -1,20 +1,78 @@
 ﻿@{
     ViewBag.Title = "Index";
 }
-<table id="tt" ></table> 
- 
+
+
+<table id="tt"></table>
+<div id="dd" style="overflow:hidden;"></div>
+
 <script type="text/javascript">
-    $('#tt').treegrid({
-        url: '/api/Organization/GetOrganizationsTree?id=null',
-        idField: 'ID',
-        treeField: 'Name',
-        animate:true,
-        columns: [[
-            { title: '部门名称', field: 'Name', width: fixWidth(0.3) },
-            { field: 'Sort', title: '排序', width: fixWidth(0.3), align: 'right' },
-            { field: 'Remark', title: '备注', width: fixWidth(0.4) }
-        ]]
+    $(function () {
+        $.post("",{uid:"Eric"},function(data) {
+            
+        },"json")
+        $('#tt').treegrid({
+            toolbar: [
+                {
+                    iconCls: 'icon-add',
+                    plain: true,
+                    text: '增添',
+                    onClick: function() {
+                        add();
+                    }
+                }, '-', {
+                    iconCls: 'icon-edit',
+                    plain: true,
+                    text: '编辑',
+                    onClick: function() {
+                        edit();
+                    }
+                }, '-', {
+                    iconCls: 'icon-remove',
+                    plain: true,
+                    text: '删除',
+                    onClick: function() {
+                        remove();
+                    }
+                }
+            ],
+            url: '/api/Organization/GetOrganizationsTree?id=null',
+            rownumbers: true,
+            singleSelect: true,
+            striped: true,
+            pagination: true,
+            pagePosition: 'bottom',
+            pageNumber: 1,
+            pageSize: 10,
+            fit: true, //自动大小 
+            pageList: [10, 20, 30, 40, 50],
+            fitColumns: true,
+            idField: 'ID',
+            treeField: 'Name',
+            animate: true,
+            columns: [
+                [
+                    { title: '部门名称', field: 'Name', width: fixWidth(0.2), align: 'left' },
+                    { field: 'User.RealName', title: '负责人', width: fixWidth(0.2) },
+                    { field: 'Sort', title: '排序', width: fixWidth(0.2) },
+                    { field: 'Remark', title: '备注', width: fixWidth(0.2) }
+                ]
+            ]
+        });
+
     });
+
+    function add() {
+        $('#dd').dialog({
+            title: '部门管理',
+            width: 500,
+            height:300,
+            resizable:true,
+            closed: false,
+            cache: false,
+            href: '@Url.Content("~/Admin/Organization/OrganManage")',
+        });
+    }
 </script>
 
 

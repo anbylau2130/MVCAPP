@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+
+<div id="dd2" icon="icon-save" style="padding: 5px; width: 460px; height: 280px;">
+    <form id="org">
+        <div id="divU" style="height: 200px">
+            <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;" bgcolor="b5d6e6">
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px">部门名称</td>
+                    <td style="padding: 5px">
+                        <input id="txtName" type="text" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px">上级部门</td>
+                    <td style="padding: 5px">
+                        <input id="cc" class="easyui-combotree" required="true" style="width: 200px;" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px">排序</td>
+                    <td style="padding: 5px">
+                        <input id="ss" class="easyui-numberspinner" min="1" max="10" required="true" style="width: 80px;" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px">负责人</td>
+                    <td style="padding: 5px">
+                        <input id="txtPerson" type="text" maxlength="5" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 50px;">
+                    <td style="padding: 5px">备注</td>
+                    <td style="padding: 5px">
+                        <textarea id="txtRemark" rows="3" style="width: 280px; border: 1px solid #8DB2E3;"></textarea></td>
+                </tr>
+            </table>
+        </div>
+
+        <div border="false" style="text-align: right; height: 30px; line-height: 30px;">
+            <a id="A3" class="easyui-linkbutton" onclick="" icon="icon-ok" href="javascript:void(0)">确定</a>
+            <a id="A4" class="easyui-linkbutton" onclick="" icon="icon-cancel" href="javascript:void(0)">取消</a>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $('#cc').combotree({
+        url: '/api/Organization/GetOrganizationsTree?id=null',
+    });
+</script>

@@ -12,5 +12,10 @@ namespace COM.XXXX.Controllers.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult OrganManage() 
+        {
+            return View(); 
+        }
     }
 }

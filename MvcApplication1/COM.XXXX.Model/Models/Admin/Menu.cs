@@ -19,71 +19,89 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 namespace COM.XXXX.Models.Admin
 {
+    [Serializable]
+    [DataContract]
     public class Menu : IModel
     {
         /// <summary>
         /// 显示名称
         /// </summary>
+        [DataMember]
         public string DisplayName { get; set; }
         /// <summary>
         /// 宽度
         /// </summary>
+        [DataMember]
         public int? Width { get; set; } 
         /// <summary>
         /// 高度 
         /// </summary>
+        [DataMember]
         public int? Height { get; set; }
         /// <summary>
         /// 用于排序的字段,如果是列表菜单，则为0，否则为排序列
         /// </summary>
+        [DataMember]
         public int? SortKey { get; set; }
         /// <summary>
         /// 导航Controller
         /// </summary>
+        [DataMember]
         public string Controller { get; set; }
         /// <summary>
         /// 导航Action
         /// </summary>
+        [DataMember]
         public string Action { get; set; }
         /// <summary>
         /// 所属页面controller
         /// </summary>
+        [DataMember]
         public string OwnController { get; set; }
         /// <summary>
         /// 所属页面Action
         /// </summary>
+        [DataMember]
         public string OwnAction { get; set; }
         /// <summary>
         /// 所属Module
         /// </summary>
+        [DataMember]
         public Guid? OwnModuleID { get; set; }
 
+        [DataMember]
         public virtual Module OwnModule { get; set; }
 
         /// <summary>
         /// 图标
         /// </summary>
+        [DataMember]
         public string IconCls { get; set; }
         /// <summary>
         /// 叶子节点对应一个URL
         /// </summary>
+        [DataMember]
         public bool IsLeaf { get; set; }
         
         /// <summary>
         /// 窗口打开类型
         /// </summary>
+        [DataMember]
         public int? OpenModel { get; set; }
 
 
-        public  Guid? PMenuID { get; set; } 
+        [DataMember]
+        public Guid? PMenuID { get; set; } 
 
         public virtual Menu PMenu { get; set; }
 
         /// <summary>
         /// 导航模块
         /// </summary>
-        public Guid? ModuleID { get; set; } 
+        [DataMember]
+        public Guid? ModuleID { get; set; }
 
+        [DataMember]
         public virtual Module Module { get; set; }
 
 
