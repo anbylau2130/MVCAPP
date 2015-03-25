@@ -33,6 +33,11 @@ namespace COM.XXXX.WebApi.Admin.Controllers
             base.SetRepository(); 
         }
 
+        /// <summary>
+        /// 获取组织机构TreeGrid
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         public IEnumerable<Organization> GetOrganizationsTree(Guid? id)
         {
@@ -59,6 +64,11 @@ namespace COM.XXXX.WebApi.Admin.Controllers
             return lst;
         }
 
+        /// <summary>
+        /// 获取组织机构Tree
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         public IEnumerable<UITree> GetOrganizationsComboTree(Guid? id)
         { 
@@ -94,6 +104,22 @@ namespace COM.XXXX.WebApi.Admin.Controllers
             }
 
             return treelst;
+        }
+
+        /// <summary>
+        /// 增加Organization
+        /// </summary>
+        /// <param name="organization"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public string Add(Organization organization)
+        {
+            if (organization!=null)
+            {
+                Repository.Insert(organization);
+                return "添加成功";
+            }
+            return "添加失败";           
         }
     }
 }

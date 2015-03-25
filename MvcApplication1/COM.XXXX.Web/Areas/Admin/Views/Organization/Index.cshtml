@@ -6,7 +6,7 @@
 <table id="tt"></table>
 
 
-<div id="dd2" icon="icon-save" style="padding: 5px; width: 400px; height: 250px;overflow: hidden">
+<div id="dd2" icon="icon-save" style="padding: 5px; width: 400px; height: 250px; overflow: hidden">
     <form id="org">
         <div id="divU" style="height: 200px">
             <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;" bgcolor="b5d6e6">
@@ -18,12 +18,12 @@
                 <tr style="background-color: White; height: 32px;">
                     <td style="padding: 5px">上级部门</td>
                     <td style="padding: 5px">
-                        <input id="cc" class="easyui-combotree" data-options="url:'/api/Organization/GetOrganizationsComboTree?id=null'" required="true" style="width: 200px;" /></td>
+                        <input id="cc" class="easyui-combotree" data-options="url:'/api/Organization/GetOrganizationsComboTree?id=null'" style="width: 200px;" /></td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
                     <td style="padding: 5px">排序</td>
                     <td style="padding: 5px">
-                        <input id="ss" class="easyui-numberspinner" min="1" max="10" required="true" style="width: 80px;" /></td>
+                        <input id="ss" class="easyui-numberspinner" min="1" max="10" value="1" required="true" style="width: 80px;" /></td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
                     <td style="padding: 5px">负责人</td>
@@ -41,6 +41,7 @@
 </div>
 
 <script type="text/javascript">
+    var lock=false;
     $(function () {
         $('#tt').treegrid({
             toolbar: [
@@ -48,21 +49,21 @@
                     iconCls: 'icon-add',
                     plain: true,
                     text: '增添',
-                    onClick: function() {
+                    onClick: function () {
                         add();
                     }
                 }, '-', {
                     iconCls: 'icon-edit',
                     plain: true,
                     text: '编辑',
-                    onClick: function() {
+                    onClick: function () {
                         edit();
                     }
                 }, '-', {
                     iconCls: 'icon-remove',
                     plain: true,
                     text: '删除',
-                    onClick: function() {
+                    onClick: function () {
                         remove();
                     }
                 }
@@ -93,29 +94,40 @@
 
     });
 
+
     function add() {
-   
+        
+        $('#ss').numberspinner('setValue', 1);
+        $('#cc').combotree("clear");
         $('#dd2').dialog({
             title: '部门管理',
             width: 500,
-            height:300,
-            resizable:true,
+            height: 300,
+            resizable: true,
             closed: false,
-            //cache: false,
-            // href: '@Url.Content("~/Admin/Organization/OrganManage")',
-            
-            buttons:[{
-                text:'保存',
-                handler:function() {
-                    alert("OK")
+            buttons: [{
+                text: '保存',
+                handler: function () {
+                    if (!lock) {
+                        lock = true;
+                        $.post("/Api/Organization/Add", {
+                            Name: $("#txtName").val(),
+                            POrganizationID: $('#cc').combotree('getValue'),
+                            Sort: $("#ss").val(),
+                            Remark: $('#txtRemark').val(),
+                        }, function(data) {
+                            $.messager.alert('提示', data);
+                            lock = false;
+                        });
+                    }
+                   
                 }
-            },{
-                text:'关闭',
-                handler:function() {
+            }, {
+                text: '关闭',
+                handler: function () {
                     $("#dd2").dialog("close");
                 }
             }]
-
         });
     }
 </script>
