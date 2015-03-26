@@ -94,9 +94,8 @@
 
     });
 
-   
-
     function edit() {
+        $("#cc").combotree("reload", '/api/Organization/GetOrganizationsComboTree?id=null');
         //获取node节点
         var node = $('#tt').treegrid('getSelected');
 
@@ -129,13 +128,11 @@
                     $("#ff").attr("method","PUT");
                     $('#ff').form('submit', {    
                         url: '/Api/Organization/' + node.ID,
-                        dataType: 'text',
                         onSubmit:function(){
                             return $(this).form('enableValidation').form('validate');
                         },
                         success: function (data) {
                             data = $.parseJSON(data);
-                            console.log(data)
                             if (data.success) {
                                 $('#tt').treegrid('reload');
                             }
@@ -163,7 +160,6 @@
             url: '/Api/Organization/' + node.ID,
             type: 'DELETE',
             success: function (data) {
-                data = $.parseJSON(data);
                 if (data.success) {
                     $('#tt').treegrid('reload');
                 }
@@ -174,6 +170,7 @@
     }
 
     function add() {
+        $("#cc").combotree("reload", '/api/Organization/GetOrganizationsComboTree?id=null');
         $('#ff').form("reset");
         $('#dd2').dialog({
             title: '新增部门管理',
@@ -188,12 +185,10 @@
                     $("#ff").attr("method", "POST");
                     $('#ff').form('submit', {
                         url: '/Api/Organization/',
-                        dataType: 'text',
                         onSubmit: function () {
                             return $(this).form('enableValidation').form('validate');
                         },
                         success: function (data) {
-                            console.log(data)
                             data = $.parseJSON(data);
                             if (data.success) {
                                 $('#tt').treegrid('reload');

@@ -20,15 +20,13 @@ namespace COM.XXXX.Web
             //日志
             Log4NetHelper.CreateInstance().SetConfig();
             AreaRegistration.RegisterAllAreas();
-            //允许使用delete，put协议
-            //GlobalConfiguration.Configuration.MessageHandlers.Add(new XHttpMethodDelegatingHandler());
+            
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             AuthConfig.RegisterAuth();
             // 默认情况下对 Entity Framework 使用 LocalDB
             //Database.DefaultConnectionFactory = new SqlConnectionFactory(@"Data Source=(localdb)\v11.0; Integrated Security=True; MultipleActiveResultSets=True");
-            
         }
     }
 }
