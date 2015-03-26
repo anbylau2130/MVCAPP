@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Web.Http;
+using COM.XXXX.EasyUIModels;
 using COM.XXXX.Models;
 using Repository.Domain;
 using Repository.Domain.Infrastructure;
@@ -46,42 +47,45 @@ namespace COM.XXXX.WebApi
             }
 
             // GET api/<controller>/5
+          
             public M Get(Guid id)
             {
                 return Repository.Query(M => M.ID == id).First();
             }
 
             // POST api/<controller>
-            public bool Post([FromBody]M model)
+            public UISuccess Post([FromBody]M model)
             {
                 Repository.Insert(model);
-                if (UnitOfWork.Save() != 1)
+               
+                if (UnitOfWork.Save() == 1)
                 {
-                    return true;
+                    return new UISuccess(){success = true,message ="恭喜你,~O(∩_∩)O~编辑成功了耶！" };
                 }
-                return false;
+                return new UISuccess() { success = false, message = "Σ( ° △ °|||)︴~,由于某种原因导致数据失败，请稍后重新操作！" };
             }
 
             // PUT api/<controller>/5
-            public bool Put(Guid id, [FromBody]M model)
+            public UISuccess Put(Guid id, [FromBody]M model)
             {
+                model.ID = id;
                 Repository.Update(model);
-                if (UnitOfWork.Save() != 1)
+                if (UnitOfWork.Save() == 1)
                 {
-                    return true;
+                     return new UISuccess(){success = true,message ="恭喜你,~O(∩_∩)O~更新成功了耶！" };
                 }
-                return false;
+                return new UISuccess() { success = false, message = "Σ( ° △ °|||)︴~,由于某种原因导致数据失败，请稍后重新操作！" };
             }
 
             // DELETE api/<controller>/5
-            public bool Delete(Guid id)
+            public UISuccess Delete(Guid id)
             {
                 Repository.Delete(new M { ID = id });
-                if (UnitOfWork.Save() != 1)
+                if (UnitOfWork.Save() == 1)
                 {
-                    return true;
+                      return new UISuccess(){success = true,message ="恭喜你,~O(∩_∩)O~删除成功了耶！" };
                 }
-                return false;
+                 return new UISuccess() { success = false, message = "Σ( ° △ °|||)︴~,由于某种原因导致数据失败，请稍后重新操作！" };;
             }
             #endregion
     }

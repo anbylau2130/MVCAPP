@@ -8,10 +8,12 @@
     <script type="text/javascript">
         //treenode节点单机事件
         function nodeClick(node) {
+            console.log(node)
             openMenu(node.text, node.attributes.Width, node.attributes.Height, node.attributes.URL, node.attributes.OpenType);
         }
         //增加导航项
         function addMenu(menu, i) {
+            console.log(menu)
             //var url = "url:'/Api/Menu/GetSubMenusByPMenu?id=" + menu.ID + '&modulecode=' + menu.Module.Code+'"';
             $('#Mainguid').accordion('add', {
                 title: menu.DisplayName,

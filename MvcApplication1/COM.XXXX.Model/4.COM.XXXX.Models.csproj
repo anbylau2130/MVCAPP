@@ -53,6 +53,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EasyUIModels\UISuccess.cs" />
+    <Compile Include="EasyUIModels\UITree.cs" />
     <Compile Include="Models\Admin\Button.cs" />
     <Compile Include="Models\Admin\Menu.cs" />
     <Compile Include="Models\Admin\Module.cs" />

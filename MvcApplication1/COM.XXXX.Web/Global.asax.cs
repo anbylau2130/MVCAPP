@@ -20,6 +20,8 @@ namespace COM.XXXX.Web
             //日志
             Log4NetHelper.CreateInstance().SetConfig();
             AreaRegistration.RegisterAllAreas();
+            //允许使用delete，put协议
+            //GlobalConfiguration.Configuration.MessageHandlers.Add(new XHttpMethodDelegatingHandler());
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using COM.XXXX.EasyUIModels;
 using COM.XXXX.Models;
 using COM.XXXX.Models.Admin;
 using Repository.DAL.Repository;
@@ -12,21 +13,6 @@ namespace COM.XXXX.WebApi.Admin.Controllers
 {
     public class MenuApiController : ApiControllerBase<MenuRepository,Menu>
     {
-        public class UIMenu
-        {
-            public string id { get; set; }
-            public string text { get; set; }
-            public string iconCls { get; set; }
-            public string Checked { get; set; }
-            public string state { get; set; }
-            public object attributes { get; set; }
-            List<UIMenu>  _children=new List<UIMenu>();
-            public List<UIMenu> children {
-                get { return _children; }
-                set { _children = value; }
-            }
-        }
-
 
         public MenuApiController()
         {
@@ -38,13 +24,17 @@ namespace COM.XXXX.WebApi.Admin.Controllers
             return Repository.GetMenusByPage(modulecode, controller, action);
         }
 
-        public IEnumerable<UIMenu> GetSubMenusByPMenu(Guid id, string modulecode)
+        public IEnumerable<UITree> GetSubMenusByPMenu(Guid id, string modulecode)
         {
             IEnumerable<Menu> submenus = Repository.GetSubMenusByPMenu(id,modulecode);
-            List<UIMenu> menulst = new List<UIMenu>();
+            List<UITree> menulst = new List<UITree>();
             foreach (Menu item in submenus)
             {
-                UIMenu menu = new UIMenu() {id = item.ID.ToString(), text = item.DisplayName, iconCls = item.IconCls,
+                UITree menu = new UITree()
+                {
+                    id = item.ID.ToString(),
+                    text = item.DisplayName,
+                    iconCls = item.IconCls,
                     attributes=new 
                     {
                         URL= string.Format("/{0}/{1}/{2}",item.Module.Code,item.Controller,item.Action),

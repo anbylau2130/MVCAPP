@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
@@ -16,6 +17,9 @@ namespace COM.XXXX.Web
             config.Services.Replace(typeof(IHttpControllerSelector), new NamespaceHttpControllerSelector(config));
             //自己定义的WebApi错误记录
             config.Filters.Add(new WebApiExceptionFilter());
+
+            config.Formatters.Clear();
+            config.Formatters.Add(new JsonMediaTypeFormatter());
 
             //解决MVC的Controller和Web API的Controller类名不能相同的问题 
             //注意，这里WebApi命名时，必须以ApiController结尾

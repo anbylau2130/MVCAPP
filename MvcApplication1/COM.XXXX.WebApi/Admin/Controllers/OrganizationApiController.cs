@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Http;
+using COM.XXXX.EasyUIModels;
 using COM.XXXX.Models.Admin;
 using Repository.DAL.Repository.Admin;
 
@@ -11,22 +12,6 @@ namespace COM.XXXX.WebApi.Admin.Controllers
 
     public class OrganizationApiController : ApiControllerBase<OrganizationRepository, Organization>
     {
-
-        public class UITree
-        {
-            public string id { get; set; }
-            public string text { get; set; }
-            public string iconCls { get; set; }
-            public string Checked { get; set; }
-            public string state { get; set; }
-            public object attributes { get; set; }
-            List<UITree> _children = new List<UITree>();
-            public List<UITree> children
-            {
-                get { return _children; }
-                set { _children = value; }
-            }
-        }
 
         public OrganizationApiController()
         {
@@ -97,7 +82,8 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                     {
                         id = child.ID.ToString(),
                         text = child.Name,
-                        iconCls = ""
+                        iconCls = "",
+                        children= GetOrganizationsComboTree(child.ID).ToList(),
                     });
                 }
                 treelst.Add(tree);
@@ -105,21 +91,7 @@ namespace COM.XXXX.WebApi.Admin.Controllers
 
             return treelst;
         }
+       
 
-        /// <summary>
-        /// 增加Organization
-        /// </summary>
-        /// <param name="organization"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public string Add(Organization organization)
-        {
-            if (organization!=null)
-            {
-                Repository.Insert(organization);
-                return "添加成功";
-            }
-            return "添加失败";           
-        }
     }
 }

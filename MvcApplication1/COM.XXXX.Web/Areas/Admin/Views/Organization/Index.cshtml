@@ -7,33 +7,33 @@
 
 
 <div id="dd2" icon="icon-save" style="padding: 5px; width: 400px; height: 250px; overflow: hidden">
-    <form id="org">
+    <form id="ff" >
         <div id="divU" style="height: 200px">
             <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;" bgcolor="b5d6e6">
                 <tr style="background-color: White; height: 32px;">
                     <td style="width: 80px; padding-left: 5px">部门名称</td>
                     <td style="padding: 5px">
-                        <input id="txtName" type="text" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                        <input id="txtName" type="text" name="Name" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
                     <td style="padding: 5px">上级部门</td>
                     <td style="padding: 5px">
-                        <input id="cc" class="easyui-combotree" data-options="url:'/api/Organization/GetOrganizationsComboTree?id=null'" style="width: 200px;" /></td>
+                        <input id="cc" class="easyui-combotree" name="POrganizationID" data-options="url:'/api/Organization/GetOrganizationsComboTree?id=null'" style="width: 200px;" /></td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
                     <td style="padding: 5px">排序</td>
                     <td style="padding: 5px">
-                        <input id="ss" class="easyui-numberspinner" min="1" max="10" value="1" required="true" style="width: 80px;" /></td>
+                        <input id="ss" class="easyui-numberspinner" name="Sort" min="1" max="10" value="1" required="true" style="width: 80px;" /></td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
                     <td style="padding: 5px">负责人</td>
                     <td style="padding: 5px">
-                        <input id="txtPerson" type="text" maxlength="5" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                        <input id="txtPerson" type="text" maxlength="5" @*name="User.RealName"*@ style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
                 </tr>
                 <tr style="background-color: White; height: 50px;">
                     <td style="padding: 5px">备注</td>
                     <td style="padding: 5px">
-                        <textarea id="txtRemark" rows="3" style="width: 280px; border: 1px solid #8DB2E3;"></textarea></td>
+                        <textarea id="txtRemark" rows="3" name="Remark" style="width: 280px; border: 1px solid #8DB2E3;"></textarea></td>
                 </tr>
             </table>
         </div>
@@ -41,7 +41,7 @@
 </div>
 
 <script type="text/javascript">
-    var lock=false;
+
     $(function () {
         $('#tt').treegrid({
             toolbar: [
@@ -94,33 +94,114 @@
 
     });
 
+   
 
-    function add() {
-        
-        $('#ss').numberspinner('setValue', 1);
-        $('#cc').combotree("clear");
+    function edit() {
+        //获取node节点
+        var node = $('#tt').treegrid('getSelected');
+
+        if (!node) {
+            $.messager.alert('提示', '-_-|||！请先选中要操作的数据！');
+            return;
+        }
+     
+        $('#ff').form("reset");
+
+        //加载form数据
+        $.ajax({
+            url: '/Api/Organization/' + node.ID,
+            type: 'Get',
+            success: function(data) {
+                $('#ff').form('load', data);
+            }
+        });
+      
         $('#dd2').dialog({
-            title: '部门管理',
+            title: '编辑部门管理',
             width: 500,
             height: 300,
             resizable: true,
             closed: false,
             buttons: [{
-                text: '保存',
+                text: '修改',
                 handler: function () {
-                    if (!lock) {
-                        lock = true;
-                        $.post("/Api/Organization/Add", {
-                            Name: $("#txtName").val(),
-                            POrganizationID: $('#cc').combotree('getValue'),
-                            Sort: $("#ss").val(),
-                            Remark: $('#txtRemark').val(),
-                        }, function(data) {
-                            $.messager.alert('提示', data);
-                            lock = false;
-                        });
-                    }
-                   
+                    $("#dd2").dialog("close");
+                    $("#ff").attr("method","PUT");
+                    $('#ff').form('submit', {    
+                        url: '/Api/Organization/' + node.ID,
+                        dataType: 'text',
+                        onSubmit:function(){
+                            return $(this).form('enableValidation').form('validate');
+                        },
+                        success: function (data) {
+                            data = $.parseJSON(data);
+                            console.log(data)
+                            if (data.success) {
+                                $('#tt').treegrid('reload');
+                            }
+                            $.messager.alert('提示', data.message);
+                        }
+                    }); 
+                }
+            }, {
+                text: '关闭',
+                handler: function () {
+                    $("#dd2").dialog("close");
+                }
+            }]
+        });
+    }
+
+    function remove() {
+        var node = $('#tt').treegrid('getSelected');
+
+        if (!node) {
+            $.messager.alert('提示', '-_-|||！请先选中要操作的数据！');
+        }
+
+        $.ajax({
+            url: '/Api/Organization/' + node.ID,
+            type: 'DELETE',
+            success: function (data) {
+                data = $.parseJSON(data);
+                if (data.success) {
+                    $('#tt').treegrid('reload');
+                }
+                $.messager.alert('提示', data.message);
+            }
+        });
+       
+    }
+
+    function add() {
+        $('#ff').form("reset");
+        $('#dd2').dialog({
+            title: '新增部门管理',
+            width: 500,
+            height: 300,
+            resizable: true,
+            closed: false,
+            buttons: [{
+                text: '添加',
+                handler: function () {
+                    $("#dd2").dialog("close");
+                    $("#ff").attr("method", "POST");
+                    $('#ff').form('submit', {
+                        url: '/Api/Organization/',
+                        dataType: 'text',
+                        onSubmit: function () {
+                            return $(this).form('enableValidation').form('validate');
+                        },
+                        success: function (data) {
+                            console.log(data)
+                            data = $.parseJSON(data);
+                            if (data.success) {
+                                $('#tt').treegrid('reload');
+                            }
+                            $.messager.alert('提示', data.message);
+                            
+                        }
+                    });
                 }
             }, {
                 text: '关闭',
