@@ -29,17 +29,17 @@ namespace COM.XXXX.WebApi.Admin.Controllers
             List<Organization> lst=new List<Organization>();
             if (string.IsNullOrEmpty(id.ToString()))
             {
-                lst.AddRange(Repository.Query(org => org.POrganizationID == null).ToList());
+                lst.AddRange(Repository.Query(org => org.POrganizationID == null).OrderBy(org=>org.Sort).ToList());
             }
             else
             {
-                lst.AddRange(Repository.Query(org=>org.POrganizationID==id).ToList());
+                lst.AddRange(Repository.Query(org => org.POrganizationID == id).OrderBy(org => org.Sort).ToList());
             }
 
             for (int i = 0; i < lst.Count; i++)
             {
                 var children = GetOrganizationsTree(lst[i].ID);
-                if (children.Count() > 0 && children!=null)
+                if (children.Any() && children!=null)
                 {
                     lst[i].children = new List<Organization>();
                     lst[i].children .AddRange(children);
@@ -61,11 +61,11 @@ namespace COM.XXXX.WebApi.Admin.Controllers
             List<Organization> lst = new List<Organization>();
             if (string.IsNullOrEmpty(id.ToString()))
             {
-                lst.AddRange(Repository.Query(org => org.POrganizationID == null).ToList());
+                lst.AddRange(Repository.Query(org => org.POrganizationID == null).OrderBy(org => org.Sort).ToList());
             }
             else
             {
-                lst.AddRange(Repository.Query(org => org.POrganizationID == id).ToList());
+                lst.AddRange(Repository.Query(org => org.POrganizationID == id).OrderBy(org => org.Sort).ToList());
             }
             foreach (var organization in lst)
             {
@@ -73,9 +73,10 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                     {
                         id = organization.ID.ToString(),
                         text = organization.Name,
-                        iconCls = ""
+                        iconCls = "",
+                        state = "closed"
                     };
-                var orgchildren = GetOrganizationsTree(organization.ID);
+               var orgchildren = Repository.Query(org => org.POrganizationID == organization.ID).OrderBy(org => org.Sort).ToList();
                 foreach (var child in orgchildren)
                 {
                     tree.children.Add(new UITree()

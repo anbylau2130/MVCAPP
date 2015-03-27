@@ -7,7 +7,7 @@
 
 
 <div id="dd2" icon="icon-save" style="padding: 5px; width: 400px; height: 250px; overflow: hidden">
-    <form id="ff" >
+    <form id="ff">
         <div id="divU" style="height: 200px">
             <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;" bgcolor="b5d6e6">
                 <tr style="background-color: White; height: 32px;">
@@ -41,58 +41,63 @@
 </div>
 
 <script type="text/javascript">
+    $('#tt').treegrid({
+        toolbar: [
+            {
+                iconCls: 'icon-add',
+                plain: true,
+                text: '增添',
+                onClick: function () {
+                    add();
+                }
+            }, '-', {
+                iconCls: 'icon-edit',
+                plain: true,
+                text: '编辑',
+                onClick: function () {
+                    edit();
+                }
+            }, '-', {
+                iconCls: 'icon-remove',
+                plain: true,
+                text: '删除',
+                onClick: function () {
+                    remove();
+                }
+            }
+        ],
+        collapsible: true,
+        url: '/api/Organization/GetOrganizationsTree?id=null',
+        rownumbers: true,
+        singleSelect: true,
+        pagination: true,
+        pagePosition: 'bottom',
+        pageNumber: 1,
+        pageSize: 10,
+        fit: true, //自动大小 
+        pageList: [10, 20, 30, 40, 50],
+        fitColumns: true,
+        idField: 'ID',
+        treeField: 'Name',
+        loadMsg: '数据装载中......',
+        columns: [
+            [
+                { title: '部门名称', field: 'Name', width: fixWidth(0.2), align: 'left' },
+                { field: 'User.RealName', title: '负责人', width: fixWidth(0.2) },
+                { field: 'Sort', title: '排序', width: fixWidth(0.2) },
+                { field: 'Remark', title: '备注', width: fixWidth(0.2) }
+            ]
+        ],
+        onLoadSuccess: function (row, data) {
+            $.each(data, function (i, val) { $('#tt').treegrid('collapseAll', data[i].id) });
+            //delete $(this).treegrid('options').queryParams['id'];
+
+        }
+    });
 
     $(function () {
-        $('#tt').treegrid({
-            toolbar: [
-                {
-                    iconCls: 'icon-add',
-                    plain: true,
-                    text: '增添',
-                    onClick: function () {
-                        add();
-                    }
-                }, '-', {
-                    iconCls: 'icon-edit',
-                    plain: true,
-                    text: '编辑',
-                    onClick: function () {
-                        edit();
-                    }
-                }, '-', {
-                    iconCls: 'icon-remove',
-                    plain: true,
-                    text: '删除',
-                    onClick: function () {
-                        remove();
-                    }
-                }
-            ],
-            url: '/api/Organization/GetOrganizationsTree?id=null',
-            rownumbers: true,
-            singleSelect: true,
-            striped: true,
-            pagination: true,
-            pagePosition: 'bottom',
-            pageNumber: 1,
-            pageSize: 10,
-            fit: true, //自动大小 
-            pageList: [10, 20, 30, 40, 50],
-            fitColumns: true,
-            idField: 'ID',
-            treeField: 'Name',
-            animate: true,
-            columns: [
-                [
-                    { title: '部门名称', field: 'Name', width: fixWidth(0.2), align: 'left' },
-                    { field: 'User.RealName', title: '负责人', width: fixWidth(0.2) },
-                    { field: 'Sort', title: '排序', width: fixWidth(0.2) },
-                    { field: 'Remark', title: '备注', width: fixWidth(0.2) }
-                ]
-            ]
-        });
-
-    });
+        $('#tt').treegrid().treegrid('clientPaging');
+    }); 
 
     function edit() {
         $("#cc").combotree("reload", '/api/Organization/GetOrganizationsComboTree?id=null');
@@ -103,18 +108,18 @@
             $.messager.alert('提示', '-_-|||！请先选中要操作的数据！');
             return;
         }
-     
+
         $('#ff').form("reset");
 
         //加载form数据
         $.ajax({
             url: '/Api/Organization/' + node.ID,
             type: 'Get',
-            success: function(data) {
+            success: function (data) {
                 $('#ff').form('load', data);
             }
         });
-      
+
         $('#dd2').dialog({
             title: '编辑部门管理',
             width: 500,
@@ -125,20 +130,20 @@
                 text: '修改',
                 handler: function () {
                     $("#dd2").dialog("close");
-                    $("#ff").attr("method","PUT");
-                    $('#ff').form('submit', {    
-                        url: '/Api/Organization/' + node.ID,
-                        onSubmit:function(){
-                            return $(this).form('enableValidation').form('validate');
-                        },
-                        success: function (data) {
-                            data = $.parseJSON(data);
-                            if (data.success) {
-                                $('#tt').treegrid('reload');
+                    if ($("#ff").form('enableValidation').form('validate')) {
+                        //加载form数据
+                        $.ajax({
+                            url: '/Api/Organization/' + node.ID,
+                            type: 'PUT',
+                            data: $('#ff').serialize(),
+                            success: function (data) {
+                                if (data.success) {
+                                    $('#tt').treegrid('reload');
+                                }
+                                $.messager.alert('提示', data.message);
                             }
-                            $.messager.alert('提示', data.message);
-                        }
-                    }); 
+                        });
+                    }
                 }
             }, {
                 text: '关闭',
@@ -166,7 +171,7 @@
                 $.messager.alert('提示', data.message);
             }
         });
-       
+
     }
 
     function add() {
@@ -182,21 +187,20 @@
                 text: '添加',
                 handler: function () {
                     $("#dd2").dialog("close");
-                    $("#ff").attr("method", "POST");
-                    $('#ff').form('submit', {
-                        url: '/Api/Organization/',
-                        onSubmit: function () {
-                            return $(this).form('enableValidation').form('validate');
-                        },
-                        success: function (data) {
-                            data = $.parseJSON(data);
-                            if (data.success) {
-                                $('#tt').treegrid('reload');
+                    if ($("#ff").form('enableValidation').form('validate')) {
+                        //加载form数据
+                        $.ajax({
+                            url: '/Api/Organization/',
+                            type: 'POST',
+                            data: $('#ff').serialize(),
+                            success: function (data) {
+                                if (data.success) {
+                                    $('#tt').treegrid('reload');
+                                }
+                                $.messager.alert('提示', data.message);
                             }
-                            $.messager.alert('提示', data.message);
-                            
-                        }
-                    });
+                        });
+                    }
                 }
             }, {
                 text: '关闭',

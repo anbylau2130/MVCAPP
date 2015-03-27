@@ -86,13 +86,37 @@ namespace Repository.Domain.Migrations
                 Module = adminModule,
                 OwnModule = adminModule
             };
-            context.Menus.AddOrUpdate(
-                pMenu,
-                XitongMenu,
-                CRmMenu,
-                organizationMenu,
-                kehuMenu
+           
+            Menu userMenu = new Menu()
+            {
+                DisplayName = "用户管理",
+                Controller = "User",
+                Action = "Index",
+                OwnAction = "Index",
+                OwnController = "Home",
+                IsLeaf = false,
+                OpenModel = 3,
+                PMenu = XitongMenu,
+                Module = adminModule,
+                OwnModule = adminModule
+            };
 
+
+            Menu caidanMenu = new Menu()
+            {
+                DisplayName = "菜单管理",
+                Controller = "Menu",
+                Action = "Index",
+                OwnAction = "Index",
+                OwnController = "Home",
+                IsLeaf = false,
+                OpenModel = 3,
+                PMenu = XitongMenu,
+                Module = adminModule,
+                OwnModule = adminModule
+            };
+            context.Menus.AddOrUpdate(
+                pMenu, XitongMenu,CRmMenu,organizationMenu,kehuMenu,userMenu, caidanMenu
                 );
 
             Organization org1 = new Organization() { Name = "A集团", Remark = "A集团的信息", Sort = 1, User = Eric };

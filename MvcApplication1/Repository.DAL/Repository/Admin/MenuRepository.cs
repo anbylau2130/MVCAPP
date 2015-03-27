@@ -40,7 +40,7 @@ namespace Repository.DAL.Repository
         /// <returns></returns>
         public List<Menu> GetMenusByPage(string modulecode,string controller,string action)
         {
-            var temp = base.Query(menu => menu.OwnController == controller && menu.OwnAction == action && modulecode == menu.OwnModule.Code).ToList();
+            var temp = base.Query(menu => menu.OwnController == controller && menu.OwnAction == action && modulecode == menu.OwnModule.Code).OrderBy(menu=>menu.SortKey).ToList();
             return temp;
         }
 
@@ -52,7 +52,7 @@ namespace Repository.DAL.Repository
         /// <returns></returns>
         public List<Menu> GetMenusByPMenu(Guid id, string modulecode)
         {
-            return base.Query(menu => menu.PMenuID == id && menu.IsLeaf && modulecode == menu.OwnModule.Code).ToList();
+            return base.Query(menu => menu.PMenuID == id && menu.IsLeaf && modulecode == menu.OwnModule.Code).OrderBy(menu=>menu.SortKey).ToList();
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Repository.DAL.Repository
         /// <returns></returns>
         public List<Menu> GetSubMenusByPMenu(Guid id, string modulecode)
         {
-            var result=  base.Query(menu => menu.PMenuID == id  && modulecode == menu.OwnModule.Code).ToList();
+            var result=  base.Query(menu => menu.PMenuID == id  && modulecode == menu.OwnModule.Code).OrderBy(menu=>menu.SortKey).ToList();
             return result;
         }  
         

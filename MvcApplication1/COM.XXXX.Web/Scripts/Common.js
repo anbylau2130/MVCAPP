@@ -1,4 +1,5 @@
-﻿// 对Date的扩展，将 Date 转化为指定格式的String   
+﻿/// <reference path="jquery-easyui-1.4.2/jquery.min.js" />
+// 对Date的扩展，将 Date 转化为指定格式的String   
 // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，   
 // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)   
 // 例子：   
@@ -53,3 +54,106 @@ function ShowState(value) {
         return "否";
     }
 };
+
+(function ($) {
+    function pagerFilter(data) {
+        if ($.isArray(data)) {    // is array  
+            data = {
+                total: data.length,
+                rows: data
+            }
+        }
+        var dg = $(this);
+        var state = dg.data('treegrid');
+        var opts = dg.treegrid('options');
+        var pager = dg.treegrid('getPager');
+        pager.pagination({
+            onSelectPage: function (pageNum, pageSize) {
+                opts.pageNumber = pageNum;
+                opts.pageSize = pageSize;
+                pager.pagination('refresh', {
+                    pageNumber: pageNum,
+                    pageSize: pageSize
+                });
+                dg.treegrid('loadData', state.allRows);
+            }
+        });
+        opts.pageNumber = pager.pagination('options').pageNumber || 1;
+        if (!state.allRows) {
+            state.allRows = data.rows;
+        }
+        var topRows = [];
+        var childRows = [];
+        $.map(state.allRows, function (row) {
+            row._parentId ? childRows.push(row) : topRows.push(row);
+        });
+        data.total = topRows.length;
+        var start = (opts.pageNumber - 1) * parseInt(opts.pageSize);
+        var end = start + parseInt(opts.pageSize);
+        data.rows = $.extend(true, [], topRows.slice(start, end).concat(childRows));
+        return data;
+    }
+
+    var appendMethod = $.fn.treegrid.methods.append;
+    var removeMethod = $.fn.treegrid.methods.remove;
+    var loadDataMethod = $.fn.treegrid.methods.loadData;
+    $.extend($.fn.treegrid.methods, {
+        clientPaging: function (jq) {
+            return jq.each(function () {
+                var state = $(this).data('treegrid');
+                var opts = state.options;
+                opts.loadFilter = pagerFilter;
+                var onBeforeLoad = opts.onBeforeLoad;
+                opts.onBeforeLoad = function (row, param) {
+                    state.allRows = null;
+                    return onBeforeLoad.call(this, row, param);
+                }
+                $(this).treegrid('loadData', state.data);
+                if (opts.url) {
+                    $(this).treegrid('reload');
+                }
+            });
+        },
+        loadData: function (jq, data) {
+            jq.each(function () {
+                $(this).data('treegrid').allRows = null;
+            });
+            return loadDataMethod.call($.fn.treegrid.methods, jq, data);
+        },
+        append: function (jq, param) {
+            return jq.each(function () {
+                var state = $(this).data('treegrid');
+                if (state.options.loadFilter == pagerFilter) {
+                    $.map(param.data, function (row) {
+                        row._parentId = row._parentId || param.parent;
+                        state.allRows.push(row);
+                    });
+                    $(this).treegrid('loadData', state.allRows);
+                } else {
+                    appendMethod.call($.fn.treegrid.methods, $(this), param);
+                }
+            })
+        },
+        remove: function (jq, id) {
+            return jq.each(function () {
+                if ($(this).treegrid('find', id)) {
+                    removeMethod.call($.fn.treegrid.methods, $(this), id);
+                }
+                var state = $(this).data('treegrid');
+                if (state.options.loadFilter == pagerFilter) {
+                    for (var i = 0; i < state.allRows.length; i++) {
+                        if (state.allRows[i][state.options.idField] == id) {
+                            state.allRows.splice(i, 1);
+                            break;
+                        }
+                    }
+                    $(this).treegrid('loadData', state.allRows);
+                }
+            })
+        },
+        getAllRows: function (jq) {
+            return jq.data('treegrid').allRows;
+        }
+    });
+
+})(jQuery);

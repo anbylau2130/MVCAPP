@@ -25,7 +25,6 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                 {
                     total = list.Count(),
                     rows = list
-
                 };
         }
 

@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "UserManager";
+}
+
+<table id="dg"></table>
+ 
+<div id="dd2" icon="icon-save" style="padding: 5px; width: 400px; height: 250px; overflow: hidden">
+    <form id="ff">
+        <div id="divU" style="height: 200px">
+            <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;" bgcolor="b5d6e6">
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px">真实姓名：</td>
+                    <td style="padding: 5px">
+                        <input class="easyui-validatebox textbox"  name="RealName" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px">用户名：</td>
+                    <td style="padding: 5px">
+                        <input class="easyui-validatebox textbox"  name="UserName" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px"> 密 码：</td>
+                    <td style="padding: 5px">
+                        <input class="easyui-validatebox password"  name="PassWord" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px"> 入职时间：</td>
+                    <td style="padding: 5px">
+                        <input class="easyui-datebox textbox"  name="PassWord" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px"> 学历：</td>
+                    <td style="padding: 5px">
+                        <input class="easyui-validatebox textbox"  name="Education" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px"> 婚否：</td>
+                    <td style="padding: 5px">
+                        <input class="easyui-validatebox textbox"  name="Professional" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px"> 启用：</td>
+                    <td style="padding: 5px">
+                        <input class="easyui-validatebox textbox"  name="Professional" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 50px;">
+                    <td style="padding: 5px">生日</td>
+                    <td style="padding: 5px">
+                        <textarea  class="easyui-datebox textbox" rows="3" name="Remark" style="width: 280px; border: 1px solid #8DB2E3;"></textarea></td>
+                </tr>
+                <tr style="background-color: White; height: 50px;">
+                    <td style="padding: 5px">备注</td>
+                    <td style="padding: 5px">
+                        <textarea id="txtRemark" rows="3" name="BirthDay" style="width: 280px; border: 1px solid #8DB2E3;"></textarea></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    
+    $('#dg').datagrid({
+        url: '@Url.Content("~/api/User/GetAllUsers")',
+        rownumbers:true,
+        singleSelect: true,
+        striped: true,
+        pagination: true,
+        pagePosition: 'bottom',
+        pageNumber: 1,
+        pageSize: 10,
+        height: 'auto',
+        fit: true,//自动大小 
+        pageList:[10,20,30,40,50],
+        fitColumns: true,
+        columns: [[
+            { field: 'UserName', title: '用户名', width: fixWidth(0.1), halign: "center", align: "center" },
+            { field: 'PassWord', title: '密码', width: fixWidth(0.1), halign: "center", align: "center" },
+            { field: 'OfferTime', title: '入职时间', width: fixWidth(0.1), halign: "center", formatter: ShowDate, align: "center" },
+            { field: 'Education', title: '学历', width: fixWidth(0.1), halign: "center", align: "center" },
+            { field: 'Professional', title: '专业', width: fixWidth(0.1), halign: "center", align: "center" },
+            { field: 'IsMarry', title: '婚否', width: fixWidth(0.1), halign: "center", formatter: ShowState, align: "center" },
+            { field: 'BirthDay', title: '生日', width: fixWidth(0.1), halign: "center", formatter: ShowDate, align: "center" },
+            { field: 'InUse', title: '是否启用', width: fixWidth(0.15), halign: "center", formatter: ShowState, align: "center" },
+            { field: 'Remark', title: '备注', width: fixWidth(0.15), halign: "center", align: "center" }
+        ]],
+    });
+    
+   
+
+</script>
