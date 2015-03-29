@@ -59,6 +59,35 @@ namespace COM.XXXX.WebApi.Admin.Controllers
         {
             return Repository.GetMenusByPMenu(id, modulecode);
         }
+          /// <summary>
+        /// 获取组织机构TreeGrid
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IEnumerable<Menu> GetMenuTree(Guid? id)
+        {
+            List<Menu> lst = new List<Menu>();
+            if (string.IsNullOrEmpty(id.ToString()))
+            {
+                lst.AddRange(Repository.Query(menu => menu.PMenuID == null).OrderBy(org => org.SortKey).ToList());
+            }
+            else
+            {
+                lst.AddRange(Repository.Query(menu => menu.PMenuID == id).OrderBy(org => org.SortKey).ToList());
+            }
 
+            for (int i = 0; i < lst.Count; i++)
+            {
+                var children = GetMenuTree(lst[i].ID);
+                if (children.Any() && children!=null)
+                {
+                    lst[i].children = new List<Menu>();
+                    lst[i].children .AddRange(children);
+                }
+            }
+
+            return lst;
+        }
     }
 }

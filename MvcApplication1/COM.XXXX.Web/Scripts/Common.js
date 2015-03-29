@@ -40,6 +40,7 @@ function ShowDateTime(value) {
     var unixTimestamp = new Date(value);
     return unixTimestamp.Format("yyyy-MM-dd hh:mm:ss");
 }
+
 function ShowSex(value) {
     if (value == 'man') {
         return "<span style='background-color:green'>男</span>";
@@ -54,7 +55,7 @@ function ShowState(value) {
         return "否";
     }
 };
-
+//分页方法
 (function ($) {
     function pagerFilter(data) {
         if ($.isArray(data)) {    // is array  
@@ -157,3 +158,36 @@ function ShowState(value) {
     });
 
 })(jQuery);
+
+function createMenus(divid, menuobjs) {
+    if (menuobjs && menuobjs.length > 0) {
+        for (var i = 0; i < menuobjs.length; i++) {
+            $(divid).append("<a href='#' id='menu_" + divid + '_' + i + "' class='easyui-linkbutton' data-options='plain:true'></a>");
+            $('#menu_' + divid + '_' + i).linkbutton(menuobjs[i]);
+        }
+    }
+}
+
+
+//}{
+//    iconCls: 'icon-add',
+//    plain: true,
+//    text: '增添',
+//    onClick: function () {
+//        add();
+//    }
+//}, '-', {
+//iconCls: 'icon-edit',
+//plain: true,
+//text: '编辑',
+//onClick: function () {
+//    edit();
+//}
+//}, '-', {
+//    iconCls: 'icon-remove',
+//    plain: true,
+//    text: '删除',
+//    onClick: function () {
+//        remove();
+//    }
+//}

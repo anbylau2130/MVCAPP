@@ -54,8 +54,6 @@ D:\Projects\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\EntityFramework.S
 D:\Projects\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\zh-Hans\EntityFramework.resources.dll
 D:\Projects\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\Projects\MVCAPP\MvcApplication1\Repository.Domain\obj\Debug\7.Repository.Domain.csprojResolveAssemblyReference.cache
-D:\Projects\MVCAPP\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.Migrations.InitialCreate.resources
-D:\Projects\MVCAPP\MvcApplication1\Repository.Domain\obj\Debug\7.Repository.Domain.csproj.GenerateResource.Cache
 D:\Projects\MVCAPP\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.dll
 D:\Projects\MVCAPP\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.pdb
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\bin\Debug\Repository.Domain.dll.config
@@ -74,3 +72,5 @@ F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\obj\Deb
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\obj\Debug\7.Repository.Domain.csproj.GenerateResource.Cache
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.dll
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.pdb
+D:\Projects\MVCAPP\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.Migrations.InitialCreate.resources
+D:\Projects\MVCAPP\MvcApplication1\Repository.Domain\obj\Debug\7.Repository.Domain.csproj.GenerateResource.Cache

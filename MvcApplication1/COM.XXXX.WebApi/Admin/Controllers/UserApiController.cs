@@ -17,6 +17,7 @@ namespace COM.XXXX.WebApi.Admin.Controllers
         {
             base.SetRepository();
         }
+
         [HttpPost]
         public dynamic GetAllUsers()
         {

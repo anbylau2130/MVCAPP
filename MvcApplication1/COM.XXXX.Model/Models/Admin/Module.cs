@@ -46,5 +46,11 @@ namespace COM.XXXX.Models.Admin
         [DataMember]
         public string PicUrl { get; set; }
 
+        /// <summary>
+        /// 排序
+        /// </summary>
+        [DataMember]
+        public int Sort { get; set; }
+
     }
 }

@@ -21,7 +21,7 @@ namespace COM.XXXX.Controllers.Areas.Admin.Controllers
 {
     public class UserController:ControllerBase
     {
-        public ActionResult UserManager()
+        public ActionResult Index() 
         {
             return View();
         }

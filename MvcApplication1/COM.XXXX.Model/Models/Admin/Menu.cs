@@ -13,6 +13,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -104,6 +105,18 @@ namespace COM.XXXX.Models.Admin
         [DataMember]
         public virtual Module Module { get; set; }
 
+        /// <summary>
+        /// 描述
+        /// </summary>
+        [DataMember]
+        public  string Desc { get; set; }
 
+
+        /// <summary>
+        /// easyui加载界面使用
+        /// </summary>
+        [NotMapped]
+        [DataMember]
+        public List<Menu> children { get; set; }
     }
 }

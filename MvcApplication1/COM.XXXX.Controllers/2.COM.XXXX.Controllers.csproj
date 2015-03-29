@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrganizationController.cs" />
     <Compile Include="Areas\Admin\Controllers\SysManageController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />

@@ -74,7 +74,6 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                         id = organization.ID.ToString(),
                         text = organization.Name,
                         iconCls = "",
-                        state = "closed"
                     };
                var orgchildren = Repository.Query(org => org.POrganizationID == organization.ID).OrderBy(org => org.Sort).ToList();
                 foreach (var child in orgchildren)

@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Web.Mvc;
 
 namespace COM.XXXX.Controllers.Areas.Admin.Controllers
 {
-    public class MenuController
+    public class MenuController : ControllerBase
     {
-        public static void java()
+        public ActionResult Index()
         {
-            string  
+            return View();
         }
 
     }

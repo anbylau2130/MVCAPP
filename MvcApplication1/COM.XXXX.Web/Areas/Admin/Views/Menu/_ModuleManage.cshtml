@@ -1,0 +1,177 @@
+﻿ <div id="p" style="padding: 10px; height: 100%; width: 100%">
+     <ul  id="moduletree" class="easyui-tree" data-options="url: '/Api/Module/GetModulesTree'" style="width: 100%"></ul>
+     <div id="ft" ></div>
+ </div>
+
+
+<div id="dd2" icon="icon-save" style="padding: 5px; width: 400px; height: 250px; overflow: hidden">
+    <form id="ff">
+        <div id="divU" style="height: 200px">
+            <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;" bgcolor="b5d6e6">
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px">模块编号</td>
+                    <td style="padding: 5px">
+                        <input id="Code" type="text" name="Code" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px">模块名称</td>
+                    <td style="padding: 5px">
+                        <input id="Name" type="text" name="Name" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px">排序</td>
+                    <td style="padding: 5px">
+                        <input id="ss" class="easyui-numberspinner" name="Sort" min="1" max="10" value="1" required="true" style="width: 80px;" /></td>
+                </tr>
+                <tr style="background-color: White; height: 50px;">
+                    <td style="padding: 5px">图片</td>
+                    <td style="padding: 5px">
+                        <textarea id="PicUrl" rows="3" name="PicUrl" style="width: 280px; border: 1px solid #8DB2E3;"></textarea></td>
+                </tr>
+                <tr style="background-color: White; height: 50px;">
+                    <td style="padding: 5px">模块描述</td>
+                    <td style="padding: 5px">
+                        <textarea id="Desc" rows="3" name="Desc" style="width: 280px; border: 1px solid #8DB2E3;"></textarea></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+
+<script type="text/javascript">
+    $('#p').panel({
+        footer: '#ft',
+        border: false,
+        title: '模块菜单',
+        tools: [{
+                iconCls: 'icon-add',
+                handler: function () {
+                    moduleadd();
+                }
+            }, {
+                iconCls: 'icon-edit',
+                handler: function () {
+                    moduleedit();
+                }
+            }, {
+                iconCls: 'icon-remove',
+                handler: function () {
+                    moduleremove();
+                }
+            }]
+    });
+
+    function moduleadd() {
+        $('#ff').form("reset");
+        $('#dd2').dialog({
+            title: '新增模块',
+            width: 500,
+            height: 350,
+            resizable: true,
+            closed: false,
+            buttons: [{
+                text: '添加',
+                handler: function () {
+                    $("#dd2").dialog("close");
+                    if ($("#ff").form('enableValidation').form('validate')) {
+                        //加载form数据
+                        $.ajax({
+                            url: '/Api/Module/',
+                            type: 'POST',
+                            data: $('#ff').serialize(),
+                            success: function (data) {
+                                if (data.success) {
+                                    $('#moduletree').tree('reload');
+                                }
+                                $.messager.alert('提示', data.message);
+                            }
+                        });
+                    }
+                }
+            }, {
+                text: '关闭',
+                handler: function () {
+                    $("#dd2").dialog("close");
+                }
+            }]
+        });
+        $('#dd2').dialog("center");
+    }
+    
+
+    function moduleedit() {
+      
+        //获取node节点
+        var node = $('#moduletree').tree('getSelected');
+        console.log(node)
+        if (!node) {
+            $.messager.alert('提示', '-_-|||！请先选中要操作的数据！');
+            return;
+        }
+
+        $('#ff').form("reset");
+
+        //加载form数据
+        $.ajax({
+            url: '/Api/Module/' + node.id,
+            type: 'Get',
+            success: function (data) {
+                $('#ff').form('load', data);
+            }
+        });
+
+        $('#dd2').dialog({
+            title: '编辑模块',
+            width: 500,
+            height: 350,
+            resizable: true,
+            closed: false,
+            buttons: [{
+                text: '修改',
+                handler: function () {
+                    $("#dd2").dialog("close");
+                    if ($("#ff").form('enableValidation').form('validate')) {
+                        //加载form数据
+                        $.ajax({
+                            url: '/Api/Module/' + node.id,
+                            type: 'PUT',
+                            data: $('#ff').serialize(),
+                            success: function (data) {
+                                if (data.success) {
+                                    $('#moduletree').tree('reload');
+                                }
+                                $.messager.alert('提示', data.message);
+                            }
+                        });
+                    }
+                }
+            }, {
+                text: '关闭',
+                handler: function () {
+                    $("#dd2").dialog("close");
+                }
+            }]
+        });
+    }
+    
+    function moduleremove() {
+        var node = $('#moduletree').tree('getSelected');
+
+        if (!node) {
+            $.messager.alert('提示', '-_-|||！请先选中要操作的数据！');
+        }
+
+        $.ajax({
+            url: '/Api/Module/' + node.id,
+            type: 'DELETE',
+            success: function (data) {
+                if (data.success) {
+                    $('#moduletree').tree('reload');
+                }
+                $.messager.alert('提示', data.message);
+            }
+        });
+
+    }
+</script>
