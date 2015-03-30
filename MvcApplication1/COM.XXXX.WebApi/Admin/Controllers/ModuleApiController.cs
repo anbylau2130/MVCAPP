@@ -16,7 +16,6 @@ namespace COM.XXXX.WebApi.Admin.Controllers
             base.SetRepository();
         }
 
-
        /// <summary>
        /// 获取Module的Tree列表
        /// </summary>

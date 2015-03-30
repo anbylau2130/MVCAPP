@@ -36,9 +36,11 @@ namespace Repository.Domain
         public DbSet<Privilege> Privileges { get; set; }
         public DbSet<Role> Roles { get; set; } 
         public DbSet<RoleRight> RoleRights { get; set; }
-        public DbSet<Organization> Organizations { get; set; } 
+        public DbSet<Organization> Organizations { get; set; }
+        public DbSet<DictionaryGroup> DictionaryGroups { get; set; }
+        public DbSet<Dictionary> Dictionarys { get; set; }  
         //public DbSet<Page> Pages { get; set; } 
-
+            
 
     } 
 }

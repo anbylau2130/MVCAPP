@@ -7,7 +7,6 @@
                     <td style="width: 80px; padding-left: 5px">菜单名称</td>
                     <td style="padding: 5px">
                         <input id="DisplayName" type="text" name="DisplayName" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
-                                
                     <td style="width: 80px; padding-left: 5px">打开方式</td>
                     <td style="padding: 5px">
                         <input id="OpenModel" type="text" name="OpenModel" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
@@ -38,28 +37,20 @@
                         <input id="IconCls" type="text" name="IconCls" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
-                    <td style="width: 80px; padding-left: 5px">归属模块</td>
+                  <td style="width: 80px; padding-left: 5px">父菜单</td>
                     <td style="padding: 5px">
-                        <input id="OwnModuleID" type="text" name="OwnModuleID" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                        <input id="PMenuID" type="text" name="PMenuID" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
                     <td style="width: 80px; padding-left: 5px">是否叶子</td>
                     <td style="padding: 5px">
                         <input id="IsLeaf" type="text" name="IsLeaf" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+               
                 </tr>
+               
                 <tr style="background-color: White; height: 32px;">
-                    <td style="width: 80px; padding-left: 5px">归属控制器</td>
-                    <td style="padding: 5px">
-                        <input id="OwnController" type="text" name="OwnController" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
-                    <td style="width: 80px; padding-left: 5px">父菜单</td>
-                    <td style="padding: 5px">
-                        <input id="PMenuID" type="text" name="PMenuID" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
-                </tr>
-                <tr style="background-color: White; height: 32px;">
-                    <td style="width: 80px; padding-left: 5px">归属Action</td>
-                    <td style="padding: 5px">
-                        <input id="OwnAction" type="text" name="OwnAction" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                   
                     <td style="width: 80px; padding-left: 5px">菜单描述</td>
                     <td style="padding: 5px">
-                        <input id="Desc" type="text" name="Desc" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                        <input id="Desc" type="text"  name="Desc" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
                 </tr>
             </table>
         </div>
@@ -110,16 +101,15 @@
         columns: [
             [
                 { title: '显示名称', field: 'DisplayName', width: fixWidth(0.2), align: 'left' },
-                { field: 'Module.Name', title: '导航模块', width: fixWidth(0.08) },
-                { field: 'Controller', title: '导航控制器', width: fixWidth(0.07) },
-                { field: 'Action', title: '导航Action', width: fixWidth(0.07) },
-                { field: 'OwnModule.Name', title: '归属模块', width: fixWidth(0.1) },
-                { field: 'OwnController', title: '归属控制器', width: fixWidth(0.1) },
-                { field: 'OwnAction', title: '归属Action', width: fixWidth(0.1) },
-                { field: 'IconCls', title: '图标', width: fixWidth(0.05) },
-                { field: 'IsLeaf', title: '叶子', width: fixWidth(0.03) },
+                { field: 'Module.Name', title: '导航模块', width: fixWidth(0.1) },
+                { field: 'Controller', title: '导航控制器', width: fixWidth(0.1) },
+                { field: 'Action', title: '导航Action', width: fixWidth(0.1) },
+                { field: 'IconCls', title: '图标', width: fixWidth(0.1) },
+                { field: 'IsLeaf', title: '叶子', width: fixWidth(0.05) },
                 { field: 'OpenModel', title: '打开方式', width: fixWidth(0.1) },
-                { field: 'SortKey', title: '排序', width: fixWidth(0.03) },
+                { field: 'Width', title: '宽度', width: fixWidth(0.05) },
+                { field: 'Height', title: '高度', width: fixWidth(0.05) },
+                { field: 'SortKey', title: '排序', width: fixWidth(0.05) },
                 { field: 'Desc', title: '描述', width: fixWidth(0.1) }
             ]
         ],

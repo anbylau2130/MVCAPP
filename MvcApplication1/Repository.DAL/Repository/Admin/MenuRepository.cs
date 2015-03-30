@@ -31,41 +31,41 @@ namespace Repository.DAL.Repository
         {
         }
 
-        /// <summary>
-        /// 获取指定模块的指定页面的菜单
-        /// </summary>
-        /// <param name="modulecode"></param>
-        /// <param name="controller"></param>
-        /// <param name="action"></param>
-        /// <returns></returns>
-        public List<Menu> GetMenusByPage(string modulecode,string controller,string action)
-        {
-            var temp = base.Query(menu => menu.OwnController == controller && menu.OwnAction == action && modulecode == menu.OwnModule.Code).OrderBy(menu=>menu.SortKey).ToList();
-            return temp;
-        }
+        ///// <summary>
+        ///// 获取指定模块的指定页面的菜单
+        ///// </summary>
+        ///// <param name="modulecode"></param>
+        ///// <param name="controller"></param>
+        ///// <param name="action"></param>
+        ///// <returns></returns>
+        //public List<Menu> GetMenusByPage(string modulecode,string controller,string action)
+        //{
+        //    var temp = base.Query(menu => menu.OwnController == controller && menu.OwnAction == action && modulecode == menu.OwnModule.Code).OrderBy(menu=>menu.SortKey).ToList();
+        //    return temp;
+        //}
 
-        /// <summary>
-        /// 根据模块编号和父菜单获取子菜单
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="modulecode"></param>
-        /// <returns></returns>
-        public List<Menu> GetMenusByPMenu(Guid id, string modulecode)
-        {
-            return base.Query(menu => menu.PMenuID == id && menu.IsLeaf && modulecode == menu.OwnModule.Code).OrderBy(menu=>menu.SortKey).ToList();
-        }
+        ///// <summary>
+        ///// 根据模块编号和父菜单获取子菜单
+        ///// </summary>
+        ///// <param name="id"></param>
+        ///// <param name="modulecode"></param>
+        ///// <returns></returns>
+        //public List<Menu> GetMenusByPMenu(Guid id, string modulecode)
+        //{
+        //    return base.Query(menu => menu.PMenuID == id && menu.IsLeaf && modulecode == menu.OwnModule.Code).OrderBy(menu=>menu.SortKey).ToList();
+        //}
 
-        /// <summary>
-        /// 根据模块编号和和父菜单获取所有子菜单的tree数据
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="modulecode"></param>
-        /// <returns></returns>
-        public List<Menu> GetSubMenusByPMenu(Guid id, string modulecode)
-        {
-            var result=  base.Query(menu => menu.PMenuID == id  && modulecode == menu.OwnModule.Code).OrderBy(menu=>menu.SortKey).ToList();
-            return result;
-        }  
+        ///// <summary>
+        ///// 根据模块编号和和父菜单获取所有子菜单的tree数据
+        ///// </summary>
+        ///// <param name="id"></param>
+        ///// <param name="modulecode"></param>
+        ///// <returns></returns>
+        //public List<Menu> GetSubMenusByPMenu(Guid id, string modulecode)
+        //{
+        //    var result=  base.Query(menu => menu.PMenuID == id  && modulecode == menu.OwnModule.Code).OrderBy(menu=>menu.SortKey).ToList();
+        //    return result;
+        //}  
         
     }
 }

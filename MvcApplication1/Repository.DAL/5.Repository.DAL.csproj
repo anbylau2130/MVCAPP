@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Admin\ButtonRepository.cs" />
+    <Compile Include="Repository\Admin\DictionaryRepository.cs" />
     <Compile Include="Repository\Admin\MenuRepository.cs" />
     <Compile Include="Repository\Admin\ModuleRepository.cs" />
     <Compile Include="Repository\Admin\OrganizationRepository.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Repository\Admin\RoleRepository.cs" />
     <Compile Include="Repository\Admin\RoleRightRepository.cs" />
     <Compile Include="Repository\Admin\UserRepository.cs" />
+    <Compile Include="Repository\Admin\DictionaryGroupRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -18,41 +18,31 @@ using System.Text;
 
 namespace COM.XXXX.Models.Admin
 {
+    [DataContract]
     public class Dictionary : IModel
     {
         /// <summary>
-        /// 变量名
+        /// 字典编号
         /// </summary>
-        public string VarName { get; set; }
+        [DataMember]
+        public string GroupCode { get; set; } 
 
-        /// <summary>
-        /// 变量编码
+        /// <summary> 
+        /// 变量键
         /// </summary>
-        public string VarCode { get; set; }
+        [DataMember]
+        public string Key { get; set; }
 
         /// <summary>
         /// 变量值
         /// </summary>
-        public string VarValue { get; set; }
-
-        /// <summary>
-        /// 唯一值
-        /// </summary>
-        public string UniqueValue { get; set; }
+        [DataMember]
+        public string Value { get; set; }
 
         /// <summary>
         /// 备注
         /// </summary>
+        [DataMember]
         public string Remark { get; set; }
-
-        /// <summary>
-        /// 父ID
-        /// </summary>
-        public Guid? PID { get; set; }
-
-       
-        public Guid? ModuleID { get; set; }
-
-        public virtual Module Module { get; set; }
     }
 }

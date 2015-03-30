@@ -55,25 +55,6 @@ namespace COM.XXXX.Models.Admin
         [DataMember]
         public string Action { get; set; }
         /// <summary>
-        /// 所属页面controller
-        /// </summary>
-        [DataMember]
-        public string OwnController { get; set; }
-        /// <summary>
-        /// 所属页面Action
-        /// </summary>
-        [DataMember]
-        public string OwnAction { get; set; }
-        /// <summary>
-        /// 所属Module
-        /// </summary>
-        [DataMember]
-        public Guid? OwnModuleID { get; set; }
-
-        [DataMember]
-        public virtual Module OwnModule { get; set; }
-
-        /// <summary>
         /// 图标
         /// </summary>
         [DataMember]

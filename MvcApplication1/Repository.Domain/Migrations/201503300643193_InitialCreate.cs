@@ -34,9 +34,6 @@ namespace Repository.Domain.Migrations
                         SortKey = c.Int(),
                         Controller = c.String(),
                         Action = c.String(),
-                        OwnController = c.String(),
-                        OwnAction = c.String(),
-                        OwnModuleID = c.Guid(),
                         IconCls = c.String(),
                         IsLeaf = c.Boolean(nullable: false),
                         OpenModel = c.Int(),
@@ -46,9 +43,7 @@ namespace Repository.Domain.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.Modules", t => t.ModuleID)
-                .ForeignKey("dbo.Modules", t => t.OwnModuleID)
                 .ForeignKey("dbo.Menus", t => t.PMenuID)
-                .Index(t => t.OwnModuleID)
                 .Index(t => t.PMenuID)
                 .Index(t => t.ModuleID);
             
@@ -62,6 +57,29 @@ namespace Repository.Domain.Migrations
                         Desc = c.String(),
                         PicUrl = c.String(),
                         Sort = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.DictionaryGroups",
+                c => new
+                    {
+                        ID = c.Guid(nullable: false, identity: true),
+                        GroupName = c.String(),
+                        GroupCode = c.String(),
+                        Remark = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+            
+            CreateTable(
+                "dbo.Dictionaries",
+                c => new
+                    {
+                        ID = c.Guid(nullable: false, identity: true),
+                        GroupCode = c.String(),
+                        Key = c.String(),
+                        Value = c.String(),
+                        Remark = c.String(),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -147,7 +165,6 @@ namespace Repository.Domain.Migrations
             DropForeignKey("dbo.Organizations", "POrganizationID", "dbo.Organizations");
             DropForeignKey("dbo.Buttons", "MenuID", "dbo.Menus");
             DropForeignKey("dbo.Menus", "PMenuID", "dbo.Menus");
-            DropForeignKey("dbo.Menus", "OwnModuleID", "dbo.Modules");
             DropForeignKey("dbo.Menus", "ModuleID", "dbo.Modules");
             DropIndex("dbo.RoleRights", new[] { "UserID" });
             DropIndex("dbo.RoleRights", new[] { "RoleID" });
@@ -155,13 +172,14 @@ namespace Repository.Domain.Migrations
             DropIndex("dbo.Organizations", new[] { "POrganizationID" });
             DropIndex("dbo.Menus", new[] { "ModuleID" });
             DropIndex("dbo.Menus", new[] { "PMenuID" });
-            DropIndex("dbo.Menus", new[] { "OwnModuleID" });
             DropIndex("dbo.Buttons", new[] { "MenuID" });
             DropTable("dbo.Roles");
             DropTable("dbo.RoleRights");
             DropTable("dbo.Privileges");
             DropTable("dbo.Users");
             DropTable("dbo.Organizations");
+            DropTable("dbo.Dictionaries");
+            DropTable("dbo.DictionaryGroups");
             DropTable("dbo.Modules");
             DropTable("dbo.Menus");
             DropTable("dbo.Buttons");

@@ -259,6 +259,7 @@
                             type: 'POST',
                             data: $('#ff').serialize(),
                             success: function (data) {
+
                                 if (data.success) {
                                     $('#dg').datagrid('reload');
                                 }

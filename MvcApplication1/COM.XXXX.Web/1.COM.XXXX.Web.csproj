@@ -6571,6 +6571,7 @@
     <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\_ModuleManage.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\_MenuManage.cshtml" />
+    <Content Include="Areas\Admin\Views\Dictionary\Index.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\EasyUI\demo\accordion\datagrid_data1.json" />
     <Content Include="Scripts\EasyUI\demo\combobox\combobox_data1.json" />
