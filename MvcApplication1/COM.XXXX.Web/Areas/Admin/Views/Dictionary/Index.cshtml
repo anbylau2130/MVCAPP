@@ -70,13 +70,15 @@
    
     $('#grouptree').tree({
         onClick: function (node) {
-            $('#dg').datagrid({
-                url:'',
-                queryParams: {
-                    code:node.attrabute.Groupcode
+            console.log(node.attributes.GroupCode)
+            $.ajax({
+                url: '/Api/Dictionary/GetDictionaryByCode?code=' + node.attributes.GroupCode,
+                type: 'Post',
+                success: function (data) {
+                    $('#dg').datagrid("loadData", data);
                 }
-                
             });
+          
         }
     });
 

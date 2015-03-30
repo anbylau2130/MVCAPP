@@ -8,7 +8,7 @@ using COM.XXXX.Models.Admin;
 using Repository.DAL.Repository.Admin;
 
 namespace COM.XXXX.WebApi.Admin.Controllers
-{
+{               
    public class DictionaryApiController: ApiControllerBase<DictionaryRepository, Dictionary>
     {
 
@@ -25,6 +25,24 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                total = list.Count(),
                rows = list
            };
+       }
+       [HttpPost]
+       public dynamic GetDictionaryByCode(string code)
+       {
+           if (string.IsNullOrEmpty(code))
+           {
+               return new
+               {
+                   total = 0,
+                   rows = ""
+               };
+           }
+           var list = Repository.Query(dic => dic.GroupCode == code).ToList();
+           return new
+               {
+                   total = list.Count(),
+                   rows = list
+               };
        }
     }
 }
