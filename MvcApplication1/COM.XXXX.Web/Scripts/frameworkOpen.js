@@ -12,7 +12,7 @@ function openWindow(id, title, width, height, href, icon,ismodal) {
         border: false,
         cache: false,
         iconCls:icon,
-        content:'<iframe id="iframe_content" scrolling="no" frameborder="0"  src="' + href + '" style="width:100%;height:100%;"></iframe>',
+        content:'<iframe id="iframe_content" scrolling="no" frameborder="0"  src="' + href + '" style="width:100%;height:100%;overflow:hidden"></iframe>',
         modal: ismodal,
         onResize: function(width, height) {
             //win.window("doLayout");
@@ -39,7 +39,7 @@ function OpenTab(id, title, href, icon) {
     } else {
         var content;
         if (href) {
-            content = '<iframe scrolling="no" frameborder="0"  src="' + href + '" style="width:100%;height:100%;"></iframe>';
+            content = '<iframe scrolling="no" frameborder="0"  src="' + href + '" style="width:100%;height:100%;overflow:hidden"></iframe>';
         } else {
             content = '未实现';
         }

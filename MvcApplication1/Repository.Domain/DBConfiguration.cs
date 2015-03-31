@@ -108,22 +108,25 @@ namespace Repository.Domain.Migrations
                  XitongMenu,CRmMenu,organizationMenu,kehuMenu,userMenu, caidanMenu,DictionaryMenu
                 );
            
-            Organization org1 = new Organization() { Name = "A集团", Remark = "A集团的信息", Sort = 1};
-            Organization org11 = new Organization() { Name = "A集团采购部", POrganization=org1, Remark = "A集团的信息" ,Sort=1};
-            Organization org111 = new Organization() { Name = "采购部1组", POrganization = org11, Remark = "A集团的信息", Sort = 1 };
-            Organization org112 = new Organization() { Name = "采购部2组", POrganization = org11, Remark = "A集团的信息", Sort = 1 };
-            Organization org12 = new Organization() { Name = "A集团IT部", POrganization = org1, Remark = "A集团的信息", Sort = 2 };
-            Organization org13 = new Organization() { Name = "A集团运维部", POrganization = org1, Remark = "A集团的信息", Sort = 3 };
-            Organization org14 = new Organization() { Name = "A集团人力资源", POrganization = org1, Remark = "A集团的信息", Sort = 4 };
+            Organization org1 = new Organization() { Name = "A集团", Remark = "A集团的信息", Sort = 1,OrgType = "organization"};
 
-            Organization org2 = new Organization() { Name = "B集团", Remark = "B集团的信息", Sort = 2  };
-            Organization org21 = new Organization() { Name = "B集团采购部", POrganization = org2, Remark = "B集团的信息", Sort = 1 };
-            Organization org22 = new Organization() { Name = "B集团IT部", POrganization = org2, Remark = "B集团的信息", Sort = 2 };
-            Organization org23 = new Organization() { Name = "B集团运维部", POrganization = org2, Remark = "B集团的信息", Sort = 3 };
-            Organization org24 = new Organization() { Name = "B集团人力资源", POrganization = org2, Remark = "B集团的信息", Sort = 4 };
+            Organization org11 = new Organization() { Name = "A集团采购部", POrganization = org1, Remark = "A集团的信息", Sort = 1, OrgType = "department" };
+            Organization org111 = new Organization() { Name = "采购部1组", POrganization = org11, Remark = "A集团的信息", Sort = 1, OrgType = "department" };
+            Organization org112 = new Organization() { Name = "采购部2组", POrganization = org11, Remark = "A集团的信息", Sort = 2, OrgType = "department" };
+
+            Organization org12 = new Organization() { Name = "A集团IT部", POrganization = org1, Remark = "A集团的信息", Sort = 2, OrgType = "department" };
+            Organization org13 = new Organization() { Name = "A集团运维部", POrganization = org1, Remark = "A集团的信息", Sort = 3, OrgType = "department" };
+            Organization org14 = new Organization() { Name = "A集团人力资源", POrganization = org1, Remark = "A集团的信息", Sort = 4, OrgType = "department" };
+            Organization org15 = new Organization() { Name = "A集团CEO", POrganization = org1, Remark = "A集团总经理", Sort = 1, OrgType = "usergroup" };
+
+            Organization org2 = new Organization() { Name = "B集团", Remark = "B集团的信息", Sort = 2, OrgType = "organization" };
+            Organization org21 = new Organization() { Name = "B集团采购部", POrganization = org2, Remark = "B集团的信息", Sort = 1, OrgType = "department" };
+            Organization org22 = new Organization() { Name = "B集团IT部", POrganization = org2, Remark = "B集团的信息", Sort = 2, OrgType = "department" };
+            Organization org23 = new Organization() { Name = "B集团运维部", POrganization = org2, Remark = "B集团的信息", Sort = 3, OrgType = "department" };
+            Organization org24 = new Organization() { Name = "B集团人力资源", POrganization = org2, Remark = "B集团的信息", Sort = 4, OrgType = "department" };
 
             context.Organizations.AddOrUpdate(
-                org1, org11, org111, org112, org12, org13, org14, org2, org21, org22, org23, org24
+                org1, org11, org111, org112, org12, org13, org14, org2, org21, org22, org23, org24, org15
                 );
 
 

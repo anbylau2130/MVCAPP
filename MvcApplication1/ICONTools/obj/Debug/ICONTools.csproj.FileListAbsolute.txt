@@ -11,3 +11,16 @@ F:\PrimaryFile\project\MvcApplication2\MvcApplication1\ICONTools\bin\Debug\COM.X
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\ICONTools\bin\Debug\log4net.dll
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\ICONTools\bin\Debug\COM.XXXX.Common.pdb
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\ICONTools\bin\Debug\log4net.xml
+D:\Projects\MVCAPP\MvcApplication1\ICONTools\bin\Debug\ICONTools.exe.config
+D:\Projects\MVCAPP\MvcApplication1\ICONTools\bin\Debug\ICONTools.exe
+D:\Projects\MVCAPP\MvcApplication1\ICONTools\bin\Debug\ICONTools.pdb
+D:\Projects\MVCAPP\MvcApplication1\ICONTools\bin\Debug\COM.XXXX.Common.dll
+D:\Projects\MVCAPP\MvcApplication1\ICONTools\bin\Debug\log4net.dll
+D:\Projects\MVCAPP\MvcApplication1\ICONTools\bin\Debug\COM.XXXX.Common.pdb
+D:\Projects\MVCAPP\MvcApplication1\ICONTools\bin\Debug\log4net.xml
+D:\Projects\MVCAPP\MvcApplication1\ICONTools\obj\Debug\ICONTools.csprojResolveAssemblyReference.cache
+D:\Projects\MVCAPP\MvcApplication1\ICONTools\obj\Debug\ICONTools.Form1.resources
+D:\Projects\MVCAPP\MvcApplication1\ICONTools\obj\Debug\ICONTools.Properties.Resources.resources
+D:\Projects\MVCAPP\MvcApplication1\ICONTools\obj\Debug\ICONTools.csproj.GenerateResource.Cache
+D:\Projects\MVCAPP\MvcApplication1\ICONTools\obj\Debug\ICONTools.exe
+D:\Projects\MVCAPP\MvcApplication1\ICONTools\obj\Debug\ICONTools.pdb

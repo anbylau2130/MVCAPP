@@ -5,8 +5,9 @@
     <div data-options="region:'west',title:'组织机构',split:true" style="width: 150px; overflow: hidden">
          <ul id="orgtree"></ul>
     </div>
-    <div data-options="region:'center',title:'center title'">
-     
+    <div data-options="region:'center'"  style="overflow: hidden;">
+        <div id="p" style="overflow: hidden;">
+        </div>   
     </div>
 </div>
 
@@ -16,7 +17,19 @@
         animate: true,
         onLoadSuccess: function () {
             $("#orgtree").tree("collapseAll");
+        },
+        onClick: function (node) {
+            OpenPanel("/Admin/Organization/OrganizationForm?type=" + node.attributes.Type);
         }
     });
+    
+    function OpenPanel(href) {
+        $('#p').panel({
+            fit: true,
+            content: '<iframe id="iframe_content" scrolling="no" frameborder="0"  src="' + href + '" style="width:100%;height:100%;overflow:hidden"></iframe>',
+        }); 
+    }
+   
+
     
 </script>

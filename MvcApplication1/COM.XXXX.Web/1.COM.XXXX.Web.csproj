@@ -5048,6 +5048,7 @@
     <Content Include="Scripts\HubSpot\spec\lib\underscore-1.4.4.js" />
     <Content Include="Scripts\HubSpot\spec\MessengerSpec.js" />
     <Content Include="Scripts\HubSpot\src\js\preboot.js" />
+    <Content Include="Scripts\Icon\easyui_icons.css" />
     <Content Include="Scripts\Icon\IconExtension.css" />
     <Content Include="Scripts\Icon\IconExtension.html" />
     <Content Include="Scripts\Icon\IconsExtension\01.png" />
@@ -6825,6 +6826,8 @@
     <Content Include="Scripts\Icon\IconsExtension\zoom.png" />
     <Content Include="Scripts\Icon\IconsExtension\zoom_in.png" />
     <Content Include="Scripts\Icon\IconsExtension\zoom_out.png" />
+    <Content Include="Scripts\Icon\tabicons.png" />
+    <Content Include="Scripts\Icon\使用.txt" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\EasyUI\changelog.txt" />
@@ -8352,6 +8355,7 @@
     <Content Include="Areas\Admin\Views\Menu\_ModuleManage.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\_MenuManage.cshtml" />
     <Content Include="Areas\Admin\Views\Dictionary\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Organization\OrganizationForm.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\EasyUI\demo\accordion\datagrid_data1.json" />
     <Content Include="Scripts\EasyUI\demo\combobox\combobox_data1.json" />

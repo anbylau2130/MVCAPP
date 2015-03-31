@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "OrganizationForm";
+}
+<style>
+    .button1 {
+        background: #f2f6f8  repeat-x;
+        border: 1px solid #b3daf4;
+        line-height: 25px;
+        vertical-align: middle;
+        height: 25px;
+    }
+</style>
+
+<div id="dd2" style="padding: 5px; width: 400px; height: 250px;">
+    <form id="ff">
+        <div style="height: 200px">
+            <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;" bgcolor="b5d6e6">
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 130px; padding-left: 5px; text-align: right">名称：</td>
+                    <td style="padding: 5px;">
+                        <input type="text" name="Name" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px; text-align: right">类型：</td>
+                    <td style="padding: 5px">
+                        <input type="radio" value="1" id="orgtypes_1" name="Type">单位
+                        <input type="radio" value="2" id="orgtypes_2" name="Type">部门
+                        <input type="radio" value="3" id="orgtypes_3" checked="checked" name="Type">岗位
+                    </td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px; text-align: right">状态：</td>
+                    <td style="padding: 5px">
+                        <input type="radio" value="0" checked="checked" name="Status">正常
+                        <input type="radio" value="1" name="Status">冻结
+                    </td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px; text-align: right">分管领导：</td>
+                    <td style="padding: 5px;">
+                        <input type="text" name="Name" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /><input type="button" title="" class="button1" style="border-left: none; margin: 0;" onclick="addusers()" value="选择">
+                    </td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px; text-align: right">部门/岗位领导：</td>
+                    <td style="padding: 5px;">
+                        <input type="text" name="Name" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /><input type="button" title="" class="button1" style="border-left: none; margin: 0;" onclick="addusers()" value="选择">
+                    </td>
+                </tr>
+                <tr style="background-color: White; height: 50px;">
+                    <td style="padding: 5px; text-align: right">备注：</td>
+                    <td style="padding: 5px">
+                        <textarea rows="3" name="Remark" style="width: 280px; border: 1px solid #8DB2E3;"></textarea>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+
+
+<div id="dd3" style="padding: 5px; width: 400px; height: 250px;">
+    <div id="cc" class="easyui-layout" data-options="fit:true" style="display: none">
+        <div data-options="region:'west',title:'组织机构',split:true" style="width: 150px; overflow: hidden">
+            <ul id="tree1"></ul>
+        </div>
+        <div data-options="region:'center'" style="overflow: hidden;">
+            <div id="p" style="overflow: hidden;">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+   
+
+    function addusers() {
+        $('#dd3').dialog({
+            title: '选择组织机构成员',
+            width: 500,
+            height: 400,
+            resizable: true,
+            closed: false,
+        });
+        
+        $('#dd3').dialog("center");
+    }
+    
+    $(function() {
+        $("#tree1").tree({
+            url: '/Api/Organization/GetOrganizationsAndUser?id=null',
+           
+            onLoadSuccess: function () {
+                $("#tree1").tree("collapseAll");
+            },
+            onClick: function (node) {
+
+
+            }
+        });
+    })
+    var type = '@Request["type"]';
+
+    function func() {
+        switch (type) {
+            case "organization":
+
+                break;
+            case "department":
+                break;
+            case "usergroup":
+                break;
+            case "user":
+                break;
+            default:
+
+        }
+    }
+
+</script>

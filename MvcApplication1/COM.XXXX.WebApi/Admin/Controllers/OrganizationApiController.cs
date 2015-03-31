@@ -117,6 +117,7 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                     id = organization.ID.ToString(),
                     text = organization.Name,
                     iconCls = geticon(organization.OrgType),
+                    attributes = new { Type = organization.OrgType },
                  
                 };
                 var orgchildren = Repository.Query(org => org.POrganizationID == organization.ID).OrderBy(org => org.Sort).ToList();
@@ -127,8 +128,8 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                     {
                         id = child.ID.ToString(),
                         text = child.Name,
-                        iconCls = geticon(organization.OrgType),
-                        attributes = new {Type="organization"},
+                        iconCls = geticon(child.OrgType),
+                        attributes = new { Type = child.OrgType },
                        
                     };
 
@@ -164,7 +165,7 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                     id = user.ID.ToString(),
                     text = user.RealName,
                     iconCls = geticon(""),
-                    attributes = new {Type = "user"}
+                    attributes = new { Type = "user" },
                 });
             }
             return usertreelst;
@@ -174,10 +175,12 @@ namespace COM.XXXX.WebApi.Admin.Controllers
         {
             switch (orgtype)
             {
-                case "1":
+                case "organization":
                     return "icon-organise";
-                case "2":
+                case "department":
                     return "icon-usergroup";
+                case "usergroup":
+                    return "icon2 r6_c9";
                 default :
                     return "icon-man";
             }

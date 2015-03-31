@@ -13,9 +13,9 @@ namespace COM.XXXX.Controllers.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult OrganManage() 
+        public ActionResult OrganizationForm()
         {
-            return View(); 
+            return View();
         }
     }
 }
