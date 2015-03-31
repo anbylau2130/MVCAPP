@@ -68,6 +68,13 @@
 	background:url('icons/more.png') no-repeat center center;
 }
 
+.icon-usergroup{
+	background:url('icons/user_group.gif') no-repeat center center;
+}
+
+.icon-organise{
+	background:url('icons/organise.png') no-repeat center center;
+}
 
 .icon-mini-add{
 	background:url('icons/mini_add.png') no-repeat center center;
@@ -94,3 +101,4 @@
 .icon-large-chart{
 	background:url('icons/large_chart.png') no-repeat center center;
 }
+

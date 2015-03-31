@@ -59,7 +59,6 @@
     <Compile Include="Repository\Admin\RoleRepository.cs" />
     <Compile Include="Repository\Admin\RoleRightRepository.cs" />
     <Compile Include="Repository\Admin\UserRepository.cs" />
-    <Compile Include="Repository\Admin\DictionaryGroupRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -9,15 +9,15 @@ namespace COM.XXXX.Models.Admin
 {
     [Serializable]
     [DataContract]
-    public class Organization:IModel
+    public class Organization : IModel
     {
-      
+
         /// <summary>
         /// 部门名称
         /// </summary>	
         [DataMember]
         public string Name
-        { 
+        {
             get;
             set;
         }
@@ -25,17 +25,23 @@ namespace COM.XXXX.Models.Admin
         /// 上级部门
         /// </summary>		
         [DataMember]
-        public Guid? POrganizationID 
+        public Guid? POrganizationID
         {
             get;
             set;
         }
 
-        public virtual Organization POrganization 
+        public virtual Organization POrganization
         {
             get;
-            set; 
+            set;
         }
+
+        /// <summary>
+        /// 组织机构类型：单位，部门，岗位，
+        /// </summary>
+        [DataMember]
+        public string OrgType { get; set; }
 
         /// <summary>
         /// 排序
@@ -46,19 +52,25 @@ namespace COM.XXXX.Models.Admin
             get;
             set;
         }
+
         /// <summary>
-        /// 负责人Id
+        /// 领导ID
+        /// </summary>	
+        [DataMember]
+        public Guid LeaderID
+        {
+            get; set;
+        }
+
+        /// <summary>
+        /// 领导
         /// </summary>		
         [DataMember]
-        public Guid? UserID
+        public User Leader
         {
             get;
             set;
         }
-
-        [DataMember]
-        public User User { get; set; }
-
         /// <summary>
         /// 备注
         /// </summary>		
@@ -68,11 +80,20 @@ namespace COM.XXXX.Models.Admin
             get;
             set;
         }
+
+        public virtual List<User> Users
+        {
+            get; set;
+        }
+
         /// <summary>
         /// easyui加载界面使用
         /// </summary>
         [NotMapped]
         [DataMember]
-        public List<Organization> children { get; set; }
+        public List<Organization> children
+        {
+            get; set;
+        }
     }
 }

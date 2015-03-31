@@ -1,0 +1,211 @@
+﻿
+<table id="tt"></table>
+
+
+<div id="dd2" icon="icon-save" style="padding: 5px; width: 400px; height: 250px; overflow: hidden">
+    <form id="ff">
+        <div id="divU" style="height: 200px">
+            <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;" bgcolor="b5d6e6">
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px">部门名称</td>
+                    <td style="padding: 5px">
+                        <input id="txtName" type="text" name="Name" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px">上级部门</td>
+                    <td style="padding: 5px">
+                        <input id="cc" class="easyui-combotree" name="POrganizationID" data-options="url:'/api/Organization/GetOrganizationsComboTree?id=null'" style="width: 200px;" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px">排序</td>
+                    <td style="padding: 5px">
+                        <input id="ss" class="easyui-numberspinner" name="Sort" min="1" max="10" value="1" required="true" style="width: 80px;" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px">负责人</td>
+                    <td style="padding: 5px">
+                        <input id="txtPerson" type="text" maxlength="5" @*name="User.RealName"*@ style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 50px;">
+                    <td style="padding: 5px">备注</td>
+                    <td style="padding: 5px">
+                        <textarea id="txtRemark" rows="3" name="Remark" style="width: 280px; border: 1px solid #8DB2E3;"></textarea></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $('#tt').treegrid({
+        toolbar: [
+            {
+                iconCls: 'icon-add',
+                plain: true,
+                text: '增添',
+                onClick: function () {
+                    add();
+                }
+            }, '-', {
+                iconCls: 'icon-edit',
+                plain: true,
+                text: '编辑',
+                onClick: function () {
+                    edit();
+                }
+            }, '-', {
+                iconCls: 'icon-remove',
+                plain: true,
+                text: '删除',
+                onClick: function () {
+                    remove();
+                }
+            }
+        ],
+        collapsible: true,
+        url: '/api/Organization/GetOrganizationsTree?id=null',
+        rownumbers: true,
+        singleSelect: true,
+        pagination: true,
+        pagePosition: 'bottom',
+        pageNumber: 1,
+        pageSize: 10,
+        fit: true, //自动大小 
+        pageList: [10, 20, 30, 40, 50],
+        fitColumns: true,
+        idField: 'ID',
+        treeField: 'Name',
+        loadMsg: '数据装载中......',
+        columns: [
+            [
+                { title: '部门名称', field: 'Name', width: fixWidth(0.2), align: 'left' },
+                { field: 'User.RealName', title: '负责人', width: fixWidth(0.2) },
+                { field: 'Sort', title: '排序', width: fixWidth(0.2) },
+                { field: 'Remark', title: '备注', width: fixWidth(0.2) }
+            ]
+        ],
+        onLoadSuccess: function (row, data) {
+            $.each(data, function (i, val) { $('#tt').treegrid('collapseAll', data[i].id) });
+            //delete $(this).treegrid('options').queryParams['id'];
+
+        }
+    });
+
+$(function () {
+    $('#tt').treegrid().treegrid('clientPaging');
+}); 
+
+function edit() {
+    $("#cc").combotree("reload", '/api/Organization/GetOrganizationsComboTree?id=null');
+    //获取node节点
+    var node = $('#tt').treegrid('getSelected');
+
+    if (!node) {
+        $.messager.alert('提示', '-_-|||！请先选中要操作的数据！');
+        return;
+    }
+
+    $('#ff').form("reset");
+
+    //加载form数据
+    $.ajax({
+        url: '/Api/Organization/' + node.ID,
+        type: 'Get',
+        success: function (data) {
+            $('#ff').form('load', data);
+        }
+    });
+
+    $('#dd2').dialog({
+        title: '编辑部门管理',
+        width: 500,
+        height: 300,
+        resizable: true,
+        closed: false,
+        buttons: [{
+            text: '修改',
+            handler: function () {
+                $("#dd2").dialog("close");
+                if ($("#ff").form('enableValidation').form('validate')) {
+                    //加载form数据
+                    $.ajax({
+                        url: '/Api/Organization/' + node.ID,
+                        type: 'PUT',
+                        data: $('#ff').serialize(),
+                        success: function (data) {
+                            if (data.success) {
+                                $('#tt').treegrid('reload');
+                            }
+                            $.messager.alert('提示', data.message);
+                        }
+                    });
+                }
+            }
+        }, {
+            text: '关闭',
+            handler: function () {
+                $("#dd2").dialog("close");
+            }
+        }]
+    });
+}
+
+function remove() {
+    var node = $('#tt').treegrid('getSelected');
+
+    if (!node) {
+        $.messager.alert('提示', '-_-|||！请先选中要操作的数据！');
+    }
+
+    $.ajax({
+        url: '/Api/Organization/' + node.ID,
+        type: 'DELETE',
+        success: function (data) {
+            if (data.success) {
+                $('#tt').treegrid('reload');
+            }
+            $.messager.alert('提示', data.message);
+        }
+    });
+
+}
+
+function add() {
+    $("#cc").combotree("reload", '/api/Organization/GetOrganizationsComboTree?id=null');
+    $('#ff').form("reset");
+    $('#dd2').dialog({
+        title: '新增部门管理',
+        width: 500,
+        height: 400,
+        resizable: true,
+        closed: false,
+        buttons: [{
+            text: '添加',
+            handler: function () {
+                $("#dd2").dialog("close");
+                if ($("#ff").form('enableValidation').form('validate')) {
+                    //加载form数据
+                    $.ajax({
+                        url: '/Api/Organization/',
+                        type: 'POST',
+                        data: $('#ff').serialize(),
+                        success: function (data) {
+                            if (data.success) {
+                                $('#tt').treegrid('reload');
+                            }
+                            $.messager.alert('提示', data.message);
+                        }
+                    });
+                }
+            }
+        }, {
+            text: '关闭',
+            handler: function () {
+                $("#dd2").dialog("close");
+            }
+        }]
+    });
+}
+</script>
+
+

@@ -14,13 +14,13 @@ namespace COM.XXXX.Models.Admin
     [DataContract]
     public class User : IModel
     {
-       /// <summary>
-       /// 真实姓名
-       /// </summary>
+        /// <summary>
+        /// 真实姓名
+        /// </summary>
         [DataMember]
         public string RealName { get; set; }
 
-       /// <summary>
+        /// <summary>
         /// 用户名
         /// </summary>
         [DataMember]
@@ -33,13 +33,13 @@ namespace COM.XXXX.Models.Admin
         public string PassWord { get; set; }
 
         /// <summary>
-         /// 入职时间
+        /// 入职时间
         /// </summary>
         [DataMember]
         public DateTime? OfferTime { get; set; }
 
         /// <summary>
-         /// 学历
+        /// 学历
         /// </summary>
         [DataMember]
         public string Education { get; set; }
@@ -62,16 +62,25 @@ namespace COM.XXXX.Models.Admin
         [DataMember]
         public DateTime BirthDay { get; set; }
 
-       /// <summary>
-       /// 是否启用
-       /// </summary>
+        /// <summary>
+        /// 是否启用
+        /// </summary>
         [DataMember]
         public bool InUse { get; set; }
 
-       /// <summary>
+        /// <summary>
         /// 备注
         /// </summary>
         [DataMember]
         public string Remark { get; set; }
+
+        [DataMember]
+        public Guid? OrganizationID { get; set; }
+
+        /// <summary>
+        /// 用户所属组织机构
+        /// </summary>
+        public virtual Organization Organization { get; set; }
+
     }
 }

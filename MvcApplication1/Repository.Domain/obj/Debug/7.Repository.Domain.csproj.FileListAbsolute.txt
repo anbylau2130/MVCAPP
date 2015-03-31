@@ -70,7 +70,5 @@ F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\bin\Deb
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\obj\Debug\7.Repository.Domain.csprojResolveAssemblyReference.cache
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.dll
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.pdb
-F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.Migrations.InitialCreate.resources
-F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\obj\Debug\7.Repository.Domain.csproj.GenerateResource.Cache
 D:\Projects\MVCAPP\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.Migrations.InitialCreate.resources
 D:\Projects\MVCAPP\MvcApplication1\Repository.Domain\obj\Debug\7.Repository.Domain.csproj.GenerateResource.Cache

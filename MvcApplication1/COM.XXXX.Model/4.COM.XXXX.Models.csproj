@@ -56,7 +56,7 @@
     <Compile Include="EasyUIModels\UISuccess.cs" />
     <Compile Include="EasyUIModels\UITree.cs" />
     <Compile Include="Models\Admin\Button.cs" />
-    <Compile Include="Models\Admin\DictionaryGroup.cs" />
+    <Compile Include="Models\Admin\Dictionary.cs" />
     <Compile Include="Models\Admin\Menu.cs" />
     <Compile Include="Models\Admin\Module.cs" />
     <Compile Include="Models\Admin\Organization.cs" />
@@ -64,7 +64,6 @@
     <Compile Include="Models\Admin\Privilege.cs" />
     <Compile Include="Models\Admin\Role.cs" />
     <Compile Include="Models\Admin\RoleRight.cs" />
-    <Compile Include="Models\Admin\Dictionary.cs" />
     <Compile Include="Models\Admin\User.cs" />
     <Compile Include="Models\IModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

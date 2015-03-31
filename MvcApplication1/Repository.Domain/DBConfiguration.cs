@@ -107,8 +107,8 @@ namespace Repository.Domain.Migrations
             context.Menus.AddOrUpdate(
                  XitongMenu,CRmMenu,organizationMenu,kehuMenu,userMenu, caidanMenu,DictionaryMenu
                 );
-
-            Organization org1 = new Organization() { Name = "A集团", Remark = "A集团的信息", Sort = 1, User = Eric };
+           
+            Organization org1 = new Organization() { Name = "A集团", Remark = "A集团的信息", Sort = 1};
             Organization org11 = new Organization() { Name = "A集团采购部", POrganization=org1, Remark = "A集团的信息" ,Sort=1};
             Organization org111 = new Organization() { Name = "采购部1组", POrganization = org11, Remark = "A集团的信息", Sort = 1 };
             Organization org112 = new Organization() { Name = "采购部2组", POrganization = org11, Remark = "A集团的信息", Sort = 1 };
@@ -116,7 +116,7 @@ namespace Repository.Domain.Migrations
             Organization org13 = new Organization() { Name = "A集团运维部", POrganization = org1, Remark = "A集团的信息", Sort = 3 };
             Organization org14 = new Organization() { Name = "A集团人力资源", POrganization = org1, Remark = "A集团的信息", Sort = 4 };
 
-            Organization org2 = new Organization() { Name = "B集团", Remark = "B集团的信息", Sort = 2, User = Eric };
+            Organization org2 = new Organization() { Name = "B集团", Remark = "B集团的信息", Sort = 2  };
             Organization org21 = new Organization() { Name = "B集团采购部", POrganization = org2, Remark = "B集团的信息", Sort = 1 };
             Organization org22 = new Organization() { Name = "B集团IT部", POrganization = org2, Remark = "B集团的信息", Sort = 2 };
             Organization org23 = new Organization() { Name = "B集团运维部", POrganization = org2, Remark = "B集团的信息", Sort = 3 };
@@ -127,24 +127,7 @@ namespace Repository.Domain.Migrations
                 );
 
 
-            DictionaryGroup Inusegroup=new DictionaryGroup(){GroupCode = "InUse",GroupName = "是否启用"};
-
-            Dictionary dictionary1=new Dictionary()
-            {
-                GroupCode = Inusegroup.GroupCode,
-                Key = "A0001",
-                Value = "启用",
-                Remark = "是否启用"
-            };
-            Dictionary dictionary2 = new Dictionary()
-            {
-                GroupCode = Inusegroup.GroupCode,
-                Key = "A0002",
-                Value = "停用",
-                Remark = "是否启用"
-            };
-            context.Dictionarys.AddOrUpdate(dictionary1, dictionary2);
-            context.DictionaryGroups.AddOrUpdate(Inusegroup);
+          
         }
     }
 }

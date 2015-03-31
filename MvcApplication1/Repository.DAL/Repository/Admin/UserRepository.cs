@@ -44,5 +44,10 @@ namespace Repository.DAL.Repository
             return dbContext.Users.ToList()
                 .Where(x => x.UserName == username && x.PassWord == password).FirstOrDefault();
         }
+
+        public IList<User> GetUserByOrganizationID(Guid? id)
+        {
+            return base.Query(x => x.OrganizationID == id).ToList();
+        }
     }
 }
