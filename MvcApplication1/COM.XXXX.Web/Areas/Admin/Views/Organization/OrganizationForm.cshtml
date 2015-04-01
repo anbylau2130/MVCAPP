@@ -11,10 +11,11 @@
     }
 </style>
 
-<div id="dd2" style="padding: 5px; width: 400px; height: 250px;">
+<div id="dd2" style="padding: 5px; width:600px; height: 400px;">
+    
     <form id="ff">
         <div style="height: 200px">
-            <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;" bgcolor="b5d6e6">
+            <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;height:100%" bgcolor="b5d6e6">
                 <tr style="background-color: White; height: 32px;">
                     <td style="width: 130px; padding-left: 5px; text-align: right">名称：</td>
                     <td style="padding: 5px;">
@@ -25,100 +26,220 @@
                     <td style="padding: 5px">
                         <input type="radio" value="1" id="orgtypes_1" name="Type">单位
                         <input type="radio" value="2" id="orgtypes_2" name="Type">部门
-                        <input type="radio" value="3" id="orgtypes_3" checked="checked" name="Type">岗位
+                        <input type="radio" value="3" id="orgtypes_3" name="Type" checked="checked">岗位
                     </td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
                     <td style="padding: 5px; text-align: right">状态：</td>
                     <td style="padding: 5px">
-                        <input type="radio" value="0" checked="checked" name="Status">正常
-                        <input type="radio" value="1" name="Status">冻结
+                        <input type="radio" value="0" name="Status" checked="checked">启用
+                        <input type="radio" value="1" name="Status">停用
                     </td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
                     <td style="padding: 5px; text-align: right">分管领导：</td>
                     <td style="padding: 5px;">
-                        <input type="text" name="Name" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /><input type="button" title="" class="button1" style="border-left: none; margin: 0;" onclick="addusers()" value="选择">
+                        <input type="text" id="Leader1" name="Leader1" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /><input type="button"  class="button1" style="border-left: none; margin: 0;" onclick="chooseLeader1()" value="选择">
                     </td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
                     <td style="padding: 5px; text-align: right">部门/岗位领导：</td>
                     <td style="padding: 5px;">
-                        <input type="text" name="Name" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /><input type="button" title="" class="button1" style="border-left: none; margin: 0;" onclick="addusers()" value="选择">
+                        <input type="text"id="Leader2" name="Leader2" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /><input type="button"  class="button1" style="border-left: none; margin: 0;" onclick="chooseLeader2()" value="选择">
                     </td>
                 </tr>
                 <tr style="background-color: White; height: 50px;">
                     <td style="padding: 5px; text-align: right">备注：</td>
                     <td style="padding: 5px">
                         <textarea rows="3" name="Remark" style="width: 280px; border: 1px solid #8DB2E3;"></textarea>
-
                     </td>
                 </tr>
+                
             </table>
         </div>
     </form>
+     <input id="btnTypeid" type="hidden" />
 </div>
 
-
-
-<div id="dd3" style="padding: 5px; width: 400px; height: 250px;">
-    <div id="cc" class="easyui-layout" data-options="fit:true" style="display: none">
-        <div data-options="region:'west',title:'组织机构',split:true" style="width: 150px; overflow: hidden">
-            <ul id="tree1"></ul>
-        </div>
-        <div data-options="region:'center'" style="overflow: hidden;">
-            <div id="p" style="overflow: hidden;">
-            </div>
-        </div>
-    </div>
+<div style="padding: 5px; width: 400px; height: 250px;text-align:right">
+    <span><input type="button"  class="button1" style=" margin: 5px;"  value="增加单位/部门/岗位"></span>
+    <span><input type="button"  class="button1" style=" margin: 5px;"  value="增加人员"></span>
+    <span><input type="button"  class="button1" style=" margin: 5px;"  value="移动"></span>
+    <span><input type="button"  class="button1" style=" margin: 5px;"  value="保存"></span>
+    <span><input type="button"  class="button1" style=" margin: 5px;"  value="删除"></span>
 </div>
+                    
 
+<div id="win">
+    <table style="border: 0; height: 300px; width: 500px;margin-top:20px" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="45%" valign="top">
+                <div style="width: 100%; height: 400px; border: 1px solid #b3daf4;">
+                    <ul id="tree1" style="margin:10px"></ul>
+                </div>
+            </td>
+            <td align="center">
+                <input type="button" id="add"  class="button1" onclick="winadd()" style="margin: 1px;" value="增加"><br />
+                <br />
+                <input type="button" id="delete" class="button1" onclick="windelete()" style="margin: 1px;" value="删除"><br />
+                <br />
+                <input type="button" id="confirm" class="button1"  onclick="winconfirm()" style="margin: 1px;" value="确定"><br />
+                <br />
+                <input type="button" id="cancel" class="button1" onclick="winclose()" style="margin: 1px;" value="取消"><br />
+                <br />
+            </td>
+            <td width="45%" valign="top">
+                <div style="width: 100%; height: 400px; border: 1px solid #b3daf4;">
+                    <ul id="tree2" style="margin:10px"></ul>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
 
 
 
 <script type="text/javascript">
-   
+    $(function () {
+        tree1Init();
+        tree2Init();
+        winInit();
+    })
 
-    function addusers() {
-        $('#dd3').dialog({
-            title: '选择组织机构成员',
-            width: 500,
-            height: 400,
-            resizable: true,
-            closed: false,
-        });
-        
-        $('#dd3').dialog("center");
-    }
-    
-    $(function() {
+    function tree1Init() {
         $("#tree1").tree({
             url: '/Api/Organization/GetOrganizationsAndUser?id=null',
-           
             onLoadSuccess: function () {
                 $("#tree1").tree("collapseAll");
             },
-            onClick: function (node) {
+            onDblClick: function (node) {
+                
+                    if (node&&!IsExsits(node)&&IsUser(node.attributes.Type)) {
+                        $("#tree2").tree("append", {
+                            data: [{
+                                id: node.id,
+                                text: node.text,
+                                iconCls: node.iconCls,
+                                Checked: node.Checked,
+                                state: node.state,
+                                attributes: node.attributes,
+                                children: node.children
+                            }]
 
-
+                        });
+                    }
+               
             }
         });
-    })
+    }
+
+    function tree2Init() {
+        $("#tree2").tree({
+            data:[],
+            onDblClick: function (node) {
+                if (node)
+                {
+                    $("#tree2").tree("remove", node.target);
+                }
+            }
+        });
+    }
+
+    function winInit() {
+        $('#win').window({
+            title: '选择组织机构成员',
+            width: 600,
+            height: 500,
+            resizable: true,
+            closed: true,
+            closable: true,
+            modal: true
+        });
+    }
+
+    function winadd() {
+        var node = $("#tree1").tree("getSelected");
+        if (node && !IsExsits(node) && IsUser(node.attributes.Type))
+            $("#tree2").tree("append", {
+                data: [{
+                    id: node.id,
+                    text: node.text,
+                    iconCls: node.iconCls,
+                    Checked: node.Checked,
+                    state: node.state,
+                    attributes: node.attributes,
+                    //children:node.children
+                }]
+            });
+    }
+       
+    function windelete() {
+        var node = $("#tree2").tree("getSelected");
+        if (node)
+        {
+            $("#tree2").tree("remove", node.target);
+        }
+    }
+
+    function winconfirm() {
+        //读取按钮id
+        var btntype = $("#btnTypeid").val();
+
+        var data = $("#tree2").tree("getRoots");
+
+        if (data)
+        {
+            var names='', ids='';
+            for (var i = 0; i < data.length; i++) {
+                names += data[i].text + ",";
+                ids += data[i].id + ",";
+                $("#" + btntype).val(names);
+                $("#" + btntype).attr("ids", ids);
+            }
+        }
+
+
+        $('#win').window("close");
+    }
+
+    function winclose() {
+        $('#win').window("close");
+    }
+
+
+    function chooseLeader1() {
+        $("#btnTypeid").val("Leader1");
+        $('#win').window("open");
+    }
+
+
+    function chooseLeader2() {
+        $("#btnTypeid").val("Leader2");
+        $('#win').window("open");
+    }
+  
     var type = '@Request["type"]';
 
-    function func() {
+
+    function IsExsits(node) {
+        var datas = $("#tree2").tree("getRoots");
+        for (var i = 0; i < datas.length; i++) {
+            if (datas[i].id == node.id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    function IsUser(type) {
         switch (type) {
             case "organization":
-
-                break;
             case "department":
-                break;
             case "usergroup":
-                break;
+                return false;
             case "user":
-                break;
-            default:
-
+                return true;
         }
     }
 

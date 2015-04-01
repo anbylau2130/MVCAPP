@@ -34,3 +34,4 @@ F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\bin\Debug\
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Models.dll
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Models.pdb
 D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Model\obj\Debug\4.COM.XXXX.Models.csprojResolveAssemblyReference.cache
+F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Model\obj\Debug\4.COM.XXXX.Models.csprojResolveAssemblyReference.cache
