@@ -100,6 +100,8 @@
 
 
 <script type="text/javascript">
+    var type;
+    
     $(function () {
         tree1Init();
         tree2Init();
@@ -113,21 +115,28 @@
                 $("#tree1").tree("collapseAll");
             },
             onDblClick: function (node) {
-                
-                    if (node&&!IsExsits(node)&&IsUser(node.attributes.Type)) {
-                        $("#tree2").tree("append", {
-                            data: [{
-                                id: node.id,
-                                text: node.text,
-                                iconCls: node.iconCls,
-                                Checked: node.Checked,
-                                state: node.state,
-                                attributes: node.attributes,
-                                children: node.children
-                            }]
-
-                        });
+                var canbeSelect = type == node.attributes.Type ? true : false;
+                if (node && !IsExsits(node) && canbeSelect) {
+                    if (type != "user") {
+                        var datas = $("#tree2").tree("getRoots");
+                        if (datas.length > 0) {
+                            $.messager.alert('警告', '(✿◡‿◡)~,用户组或组织机构只能存在一个！');
+                            return;
+                        }
                     }
+                    $("#tree2").tree("append", {
+                        data: [{
+                            id: node.id,
+                            text: node.text,
+                            iconCls: node.iconCls,
+                            Checked: node.Checked,
+                            state: node.state,
+                            attributes: node.attributes,
+                            //children: node.children
+                        }]
+
+                    });
+                }
                
             }
         });
@@ -156,21 +165,31 @@
             modal: true
         });
     }
+    
+
 
     function winadd() {
         var node = $("#tree1").tree("getSelected");
-        if (node && !IsExsits(node) && IsUser(node.attributes.Type))
-            $("#tree2").tree("append", {
-                data: [{
-                    id: node.id,
-                    text: node.text,
-                    iconCls: node.iconCls,
-                    Checked: node.Checked,
-                    state: node.state,
-                    attributes: node.attributes,
-                    //children:node.children
-                }]
-            });
+        var canbeSelect = type == node.attributes.Type ? true : false;
+        if (type != "user") {
+            var datas = $("#tree2").tree("getRoots");
+            if (datas.length > 0) {
+                $.messager.alert('警告', '(✿◡‿◡)~,用户组或组织机构只能存在一个！');
+                return;
+            }
+        }
+        if (node && !IsExsits(node) && canbeSelect)
+                $("#tree2").tree("append", {
+                    data: [{
+                        id: node.id,
+                        text: node.text,
+                        iconCls: node.iconCls,
+                        Checked: node.Checked,
+                        state: node.state,
+                        attributes: node.attributes,
+                        //children:node.children
+                    }]
+                });
     }
        
     function windelete() {
@@ -208,19 +227,18 @@
 
 
     function chooseLeader1() {
+        type = "organization";
         $("#btnTypeid").val("Leader1");
         $('#win').window("open");
     }
 
 
     function chooseLeader2() {
+        type = "usergroup";
         $("#btnTypeid").val("Leader2");
         $('#win').window("open");
     }
   
-    var type = '@Request["type"]';
-
-
     function IsExsits(node) {
         var datas = $("#tree2").tree("getRoots");
         for (var i = 0; i < datas.length; i++) {
@@ -232,15 +250,5 @@
         return false;
     }
 
-    function IsUser(type) {
-        switch (type) {
-            case "organization":
-            case "department":
-            case "usergroup":
-                return false;
-            case "user":
-                return true;
-        }
-    }
 
 </script>

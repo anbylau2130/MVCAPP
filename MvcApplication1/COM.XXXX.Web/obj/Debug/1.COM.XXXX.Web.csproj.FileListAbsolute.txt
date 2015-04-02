@@ -263,3 +263,5 @@ F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Web\bin\zh-Hans\
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Web\obj\Debug\1.COM.XXXX.Web.csprojResolveAssemblyReference.cache
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Web\obj\Debug\COM.XXXX.Web.dll
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\COM.XXXX.Web\obj\Debug\COM.XXXX.Web.pdb
+D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Web\bin\EasyUI.Mvc.dll
+D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Web\bin\EasyUI.Mvc.pdb

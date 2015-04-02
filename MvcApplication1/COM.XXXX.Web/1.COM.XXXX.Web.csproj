@@ -7997,7 +7997,6 @@
     <Content Include="Scripts\My97DatePicker\开发包\skin\whyGreen\bg.jpg" />
     <Content Include="Scripts\My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
     <Content Include="Scripts\My97DatePicker\开发包\skin\whyGreen\img.gif" />
-    <Content Include="UserController\UCChooseUser.ascx" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Web.config" />
@@ -8421,6 +8420,10 @@
     <ProjectReference Include="..\COM.XXXX.WebApi\3.COM.XXXX.WebApi.csproj">
       <Project>{6637d3d5-04a5-4418-8319-1f17217d83b0}</Project>
       <Name>3.COM.XXXX.WebApi</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EasyUI.Mvc\EasyUI.Mvc.csproj">
+      <Project>{a0f989bf-b6a8-438f-8ac0-0ab5cb00907c}</Project>
+      <Name>EasyUI.Mvc</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
