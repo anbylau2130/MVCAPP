@@ -70,3 +70,17 @@ F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\bin\Deb
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\obj\Debug\7.Repository.Domain.csprojResolveAssemblyReference.cache
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.dll
 F:\PrimaryFile\project\MvcApplication2\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.pdb
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\Repository.Domain.dll.config
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\Repository.Domain.dll
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\Repository.Domain.pdb
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\COM.XXXX.Models.dll
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\EntityFramework.dll
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\EntityFramework.SqlServer.dll
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\COM.XXXX.Models.pdb
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\EntityFramework.xml
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\EntityFramework.SqlServer.xml
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\zh-Hans\EntityFramework.resources.dll
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\obj\Debug\7.Repository.Domain.csprojResolveAssemblyReference.cache
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.dll
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\Repository.Domain\obj\Debug\Repository.Domain.pdb

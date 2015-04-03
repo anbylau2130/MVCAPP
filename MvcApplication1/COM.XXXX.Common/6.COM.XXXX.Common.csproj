@@ -49,10 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AscxHelper.cs" />
     <Compile Include="CacheManage.cs" />
     <Compile Include="CookieManage.cs" />
     <Compile Include="DESEncrypt.cs" />
     <Compile Include="FileWriter.cs" />
+    <Compile Include="HtmlHelperEx.cs" />
     <Compile Include="Log4NetHelper.cs" />
     <Compile Include="MenuXmlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

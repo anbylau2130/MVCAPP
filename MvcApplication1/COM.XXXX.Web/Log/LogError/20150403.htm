@@ -1,0 +1,397 @@
+<HR COLOR=red>
+异常时间：2015-04-03 14:10:02,270 [7] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/Index <BR>
+ <HR Size=1>System.Web.HttpParseException (0x80004005): 未能加载类型“COM.XXXX.Web.AspNetControl.WebUserControl1”。 ---> System.Web.HttpParseException (0x80004005): 未能加载类型“COM.XXXX.Web.AspNetControl.WebUserControl1”。 ---> System.Web.HttpException (0x80004005): 未能加载类型“COM.XXXX.Web.AspNetControl.WebUserControl1”。
+   在 System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   在 System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   在 System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+   在 System.Web.UI.TemplateParser.ProcessException(Exception ex)
+   在 System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   在 System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+   在 System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+   在 System.Web.UI.TemplateParser.ParseFile(String physicalPath, VirtualPath virtualPath)
+   在 System.Web.UI.TemplateParser.Parse()
+   在 System.Web.Compilation.BaseTemplateBuildProvider.get_CodeCompilerType()
+   在 System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)
+   在 System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()
+   在 System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResult(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean ensureIsUpToDate)
+   在 System.Web.UI.TemplateControl.LoadControl(VirtualPath virtualPath)
+   在 COM.XXXX.Common.AscxHelper.RenderControl[T](String path) 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Common\AscxHelper.cs:行号 17
+   在 COM.XXXX.Common.HtmlHelperEx.RenderContrl[T](HtmlHelper helper, String path) 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Common\HtmlHelperEx.cs:行号 22
+   在 ASP._Page_Areas_Admin_Views_Organization_Index_cshtml.Execute() 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\Index.cshtml:行号 12
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 14:13:13,014 [18] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/Index <BR>
+ <HR Size=1>System.Web.HttpCompileException (0x80004005): f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\Index.cshtml(14): error CS1502: 与“System.Web.WebPages.WebPageExecutingBase.Write(System.Web.WebPages.HelperResult)”最匹配的重载方法具有一些无效参数
+   在 System.Web.Compilation.AssemblyBuilder.Compile()
+   在 System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)
+   在 System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath)
+   在 System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 14:33:03,506 [8] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/Index <BR>
+ <HR Size=1>System.InvalidOperationException: 未找到分部视图“DeparetmentManage”或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Admin/Views/Organization/DeparetmentManage.aspx
+~/Areas/Admin/Views/Organization/DeparetmentManage.ascx
+~/Areas/Admin/Views/Shared/DeparetmentManage.aspx
+~/Areas/Admin/Views/Shared/DeparetmentManage.ascx
+~/Views/Organization/DeparetmentManage.aspx
+~/Views/Organization/DeparetmentManage.ascx
+~/Views/Shared/DeparetmentManage.aspx
+~/Views/Shared/DeparetmentManage.ascx
+~/Areas/Admin/Views/Organization/DeparetmentManage.cshtml
+~/Areas/Admin/Views/Organization/DeparetmentManage.vbhtml
+~/Areas/Admin/Views/Shared/DeparetmentManage.cshtml
+~/Areas/Admin/Views/Shared/DeparetmentManage.vbhtml
+~/Views/Organization/DeparetmentManage.cshtml
+~/Views/Organization/DeparetmentManage.vbhtml
+~/Views/Shared/DeparetmentManage.cshtml
+~/Views/Shared/DeparetmentManage.vbhtml
+   在 System.Web.Mvc.HtmlHelper.FindPartialView(ViewContext viewContext, String partialViewName, ViewEngineCollection viewEngineCollection)
+   在 System.Web.Mvc.HtmlHelper.RenderPartialInternal(String partialViewName, ViewDataDictionary viewData, Object model, TextWriter writer, ViewEngineCollection viewEngineCollection)
+   在 System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model, ViewDataDictionary viewData)
+   在 ASP._Page_Areas_Admin_Views_Organization_Index_cshtml.Execute() 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\Index.cshtml:行号 12
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 14:33:22,149 [18] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/Index <BR>
+ <HR Size=1>Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: 无法对 null 引用执行运行时绑定
+   在 CallSite.Target(Closure , CallSite , Object )
+   在 System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   在 ASP._Page_Areas_Admin_Views_Organization_DepartmentManage_cshtml.Execute() 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\DepartmentManage.cshtml:行号 11
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model, ViewDataDictionary viewData)
+   在 ASP._Page_Areas_Admin_Views_Organization_Index_cshtml.Execute() 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\Index.cshtml:行号 12
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 14:42:34,937 [8] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/Index <BR>
+ <HR Size=1>Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: “<>f__AnonymousType0<string,string,string>”未包含“IDwin”的定义
+   在 CallSite.Target(Closure , CallSite , Object )
+   在 System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   在 ASP._Page_Areas_Admin_Views_Organization_DepartmentManage_cshtml.Execute() 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\DepartmentManage.cshtml:行号 13
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model, ViewDataDictionary viewData)
+   在 ASP._Page_Areas_Admin_Views_Organization_Index_cshtml.Execute() 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\Index.cshtml:行号 12
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 14:54:25,183 [16] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/Index <BR>
+ <HR Size=1>Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: “<>f__AnonymousType0<string,string,string>”未包含“Func”的定义
+   在 CallSite.Target(Closure , CallSite , Object )
+   在 System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   在 ASP._Page_Areas_Admin_Views_Organization_DepartmentManage_cshtml.Execute() 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\DepartmentManage.cshtml:行号 12
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model, ViewDataDictionary viewData)
+   在 ASP._Page_Areas_Admin_Views_Organization_Index_cshtml.Execute() 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\Index.cshtml:行号 12
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 14:54:42,774 [18] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/Index <BR>
+ <HR Size=1>Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: “<>f__AnonymousType0<string,string,string>”未包含“Func”的定义
+   在 CallSite.Target(Closure , CallSite , Object )
+   在 System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   在 ASP._Page_Areas_Admin_Views_Organization_DepartmentManage_cshtml.Execute() 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\DepartmentManage.cshtml:行号 12
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model, ViewDataDictionary viewData)
+   在 ASP._Page_Areas_Admin_Views_Organization_Index_cshtml.Execute() 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\Index.cshtml:行号 12
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 14:55:00,662 [13] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/Index <BR>
+ <HR Size=1>Microsoft.CSharp.RuntimeBinder.RuntimeBinderException: “<>f__AnonymousType0<string,string,string>”未包含“Type”的定义
+   在 CallSite.Target(Closure , CallSite , Object )
+   在 System.Dynamic.UpdateDelegates.UpdateAndExecute1[T0,TRet](CallSite site, T0 arg0)
+   在 ASP._Page_Areas_Admin_Views_Organization_DepartmentManage_cshtml.Execute() 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\DepartmentManage.cshtml:行号 44
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.Html.PartialExtensions.Partial(HtmlHelper htmlHelper, String partialViewName, Object model, ViewDataDictionary viewData)
+   在 ASP._Page_Areas_Admin_Views_Organization_Index_cshtml.Execute() 位置 f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\Index.cshtml:行号 12
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy()
+   在 System.Web.Mvc.WebViewPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.StartPage.ExecutePageHierarchy()
+   在 System.Web.WebPages.WebPageBase.ExecutePageHierarchy(WebPageContext pageContext, TextWriter writer, WebPageRenderingBase startPage)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 14:59:01,307 [23] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/OrganizationManage <BR>
+ <HR Size=1>System.InvalidOperationException: 未找到视图“OrganizationManage”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Admin/Views/Organization/OrganizationManage.aspx
+~/Areas/Admin/Views/Organization/OrganizationManage.ascx
+~/Areas/Admin/Views/Shared/OrganizationManage.aspx
+~/Areas/Admin/Views/Shared/OrganizationManage.ascx
+~/Views/Organization/OrganizationManage.aspx
+~/Views/Organization/OrganizationManage.ascx
+~/Views/Shared/OrganizationManage.aspx
+~/Views/Shared/OrganizationManage.ascx
+~/Areas/Admin/Views/Organization/OrganizationManage.cshtml
+~/Areas/Admin/Views/Organization/OrganizationManage.vbhtml
+~/Areas/Admin/Views/Shared/OrganizationManage.cshtml
+~/Areas/Admin/Views/Shared/OrganizationManage.vbhtml
+~/Views/Organization/OrganizationManage.cshtml
+~/Views/Organization/OrganizationManage.vbhtml
+~/Views/Shared/OrganizationManage.cshtml
+~/Views/Shared/OrganizationManage.vbhtml
+   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 15:04:30,330 [22] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/OrganizationManage <BR>
+ <HR Size=1>System.InvalidOperationException: 未找到视图“OrganizationManage”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Admin/Views/Organization/OrganizationManage.aspx
+~/Areas/Admin/Views/Organization/OrganizationManage.ascx
+~/Areas/Admin/Views/Shared/OrganizationManage.aspx
+~/Areas/Admin/Views/Shared/OrganizationManage.ascx
+~/Views/Organization/OrganizationManage.aspx
+~/Views/Organization/OrganizationManage.ascx
+~/Views/Shared/OrganizationManage.aspx
+~/Views/Shared/OrganizationManage.ascx
+~/Areas/Admin/Views/Organization/OrganizationManage.cshtml
+~/Areas/Admin/Views/Organization/OrganizationManage.vbhtml
+~/Areas/Admin/Views/Shared/OrganizationManage.cshtml
+~/Areas/Admin/Views/Shared/OrganizationManage.vbhtml
+~/Views/Organization/OrganizationManage.cshtml
+~/Views/Organization/OrganizationManage.vbhtml
+~/Views/Shared/OrganizationManage.cshtml
+~/Views/Shared/OrganizationManage.vbhtml
+   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 15:04:33,775 [23] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/OrganizationManage <BR>
+ <HR Size=1>System.InvalidOperationException: 未找到视图“OrganizationManage”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Admin/Views/Organization/OrganizationManage.aspx
+~/Areas/Admin/Views/Organization/OrganizationManage.ascx
+~/Areas/Admin/Views/Shared/OrganizationManage.aspx
+~/Areas/Admin/Views/Shared/OrganizationManage.ascx
+~/Views/Organization/OrganizationManage.aspx
+~/Views/Organization/OrganizationManage.ascx
+~/Views/Shared/OrganizationManage.aspx
+~/Views/Shared/OrganizationManage.ascx
+~/Areas/Admin/Views/Organization/OrganizationManage.cshtml
+~/Areas/Admin/Views/Organization/OrganizationManage.vbhtml
+~/Areas/Admin/Views/Shared/OrganizationManage.cshtml
+~/Areas/Admin/Views/Shared/OrganizationManage.vbhtml
+~/Views/Organization/OrganizationManage.cshtml
+~/Views/Organization/OrganizationManage.vbhtml
+~/Views/Shared/OrganizationManage.cshtml
+~/Views/Shared/OrganizationManage.vbhtml
+   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 15:04:34,487 [9] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/OrganizationManage <BR>
+ <HR Size=1>System.InvalidOperationException: 未找到视图“OrganizationManage”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Admin/Views/Organization/OrganizationManage.aspx
+~/Areas/Admin/Views/Organization/OrganizationManage.ascx
+~/Areas/Admin/Views/Shared/OrganizationManage.aspx
+~/Areas/Admin/Views/Shared/OrganizationManage.ascx
+~/Views/Organization/OrganizationManage.aspx
+~/Views/Organization/OrganizationManage.ascx
+~/Views/Shared/OrganizationManage.aspx
+~/Views/Shared/OrganizationManage.ascx
+~/Areas/Admin/Views/Organization/OrganizationManage.cshtml
+~/Areas/Admin/Views/Organization/OrganizationManage.vbhtml
+~/Areas/Admin/Views/Shared/OrganizationManage.cshtml
+~/Areas/Admin/Views/Shared/OrganizationManage.vbhtml
+~/Views/Organization/OrganizationManage.cshtml
+~/Views/Organization/OrganizationManage.vbhtml
+~/Views/Shared/OrganizationManage.cshtml
+~/Views/Shared/OrganizationManage.vbhtml
+   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 15:04:34,979 [23] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/OrganizationManage <BR>
+ <HR Size=1>System.InvalidOperationException: 未找到视图“OrganizationManage”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Admin/Views/Organization/OrganizationManage.aspx
+~/Areas/Admin/Views/Organization/OrganizationManage.ascx
+~/Areas/Admin/Views/Shared/OrganizationManage.aspx
+~/Areas/Admin/Views/Shared/OrganizationManage.ascx
+~/Views/Organization/OrganizationManage.aspx
+~/Views/Organization/OrganizationManage.ascx
+~/Views/Shared/OrganizationManage.aspx
+~/Views/Shared/OrganizationManage.ascx
+~/Areas/Admin/Views/Organization/OrganizationManage.cshtml
+~/Areas/Admin/Views/Organization/OrganizationManage.vbhtml
+~/Areas/Admin/Views/Shared/OrganizationManage.cshtml
+~/Areas/Admin/Views/Shared/OrganizationManage.vbhtml
+~/Views/Organization/OrganizationManage.cshtml
+~/Views/Organization/OrganizationManage.vbhtml
+~/Views/Shared/OrganizationManage.cshtml
+~/Views/Shared/OrganizationManage.vbhtml
+   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 15:04:35,221 [9] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/OrganizationManage <BR>
+ <HR Size=1>System.InvalidOperationException: 未找到视图“OrganizationManage”或其母版视图，或没有视图引擎支持搜索的位置。搜索了以下位置: 
+~/Areas/Admin/Views/Organization/OrganizationManage.aspx
+~/Areas/Admin/Views/Organization/OrganizationManage.ascx
+~/Areas/Admin/Views/Shared/OrganizationManage.aspx
+~/Areas/Admin/Views/Shared/OrganizationManage.ascx
+~/Views/Organization/OrganizationManage.aspx
+~/Views/Organization/OrganizationManage.ascx
+~/Views/Shared/OrganizationManage.aspx
+~/Views/Shared/OrganizationManage.ascx
+~/Areas/Admin/Views/Organization/OrganizationManage.cshtml
+~/Areas/Admin/Views/Organization/OrganizationManage.vbhtml
+~/Areas/Admin/Views/Shared/OrganizationManage.cshtml
+~/Areas/Admin/Views/Shared/OrganizationManage.vbhtml
+~/Views/Organization/OrganizationManage.cshtml
+~/Views/Organization/OrganizationManage.vbhtml
+~/Views/Shared/OrganizationManage.cshtml
+~/Views/Shared/OrganizationManage.vbhtml
+   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)
+<HR COLOR=red>
+异常时间：2015-04-03 16:15:55,206 [7] <BR>
+异常级别：ERROR     <BR>
+异 常 类：logerror [(null)] <BR>
+/Admin/Organization/OrganizationManage <BR>
+ <HR Size=1>System.Web.HttpCompileException (0x80004005): f:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Web\Areas\Admin\Views\Organization\OrganizationManage.cshtml(19): error CS0163: 控制不能从一个 case 标签(“case "organization":”)贯穿到另一个 case 标签
+   在 System.Web.Compilation.AssemblyBuilder.Compile()
+   在 System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   在 System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)
+   在 System.Web.Compilation.BuildManager.GetObjectFactory(String virtualPath, Boolean throwIfNotFound)
+   在 System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.FileExists(String virtualPath)
+   在 System.Web.Mvc.VirtualPathProviderViewEngine.GetPathFromGeneralName(ControllerContext controllerContext, List`1 locations, String name, String controllerName, String areaName, String cacheKey, String[]& searchedLocations)
+   在 System.Web.Mvc.VirtualPathProviderViewEngine.GetPath(ControllerContext controllerContext, String[] locations, String[] areaLocations, String locationsPropertyName, String name, String controllerName, String cacheKeyPrefix, Boolean useCache, String[]& searchedLocations)
+   在 System.Web.Mvc.VirtualPathProviderViewEngine.FindView(ControllerContext controllerContext, String viewName, String masterName, Boolean useCache)
+   在 System.Web.Mvc.ViewEngineCollection.<>c__DisplayClassc.<FindView>b__b(IViewEngine e)
+   在 System.Web.Mvc.ViewEngineCollection.Find(Func`2 lookup, Boolean trackSearchedPaths)
+   在 System.Web.Mvc.ViewResult.FindView(ControllerContext context)
+   在 System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)
+   在 System.Web.Mvc.ControllerActionInvoker.<>c__DisplayClass1c.<InvokeActionResultWithFilters>b__19()
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilter(IResultFilter filter, ResultExecutingContext preContext, Func`1 continuation)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)
+   在 System.Web.Mvc.ControllerActionInvoker.InvokeAction(ControllerContext controllerContext, String actionName)

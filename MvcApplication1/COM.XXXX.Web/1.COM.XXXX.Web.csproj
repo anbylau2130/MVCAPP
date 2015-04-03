@@ -132,13 +132,22 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="AspNetControl\UCChoose.ascx.cs">
+      <DependentUpon>UCChoose.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AspNetControl\UCChoose.ascx.designer.cs">
+      <DependentUpon>UCChoose.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Views\Organization\_ChooseBox.cshtml" />
     <None Include="Areas\Admin\Views\Organization\Index_backup.cshtml" />
+    <Content Include="AspNetControl\UCChoose.ascx" />
     <Content Include="Content\Table.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -8355,7 +8364,10 @@
     <Content Include="Areas\Admin\Views\Menu\_ModuleManage.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\_MenuManage.cshtml" />
     <Content Include="Areas\Admin\Views\Dictionary\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Organization\OrganizationForm.cshtml" />
+    <Content Include="Areas\Admin\Views\Organization\OrganizationManage.cshtml" />
+    <Content Include="Areas\Admin\Views\Organization\UserManage.cshtml" />
+    <Content Include="Areas\Admin\Views\Organization\RightManage.cshtml" />
+    <Content Include="Areas\Admin\Views\Organization\OrganizationAdd.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\EasyUI\demo\accordion\datagrid_data1.json" />
     <Content Include="Scripts\EasyUI\demo\combobox\combobox_data1.json" />
@@ -8420,10 +8432,6 @@
     <ProjectReference Include="..\COM.XXXX.WebApi\3.COM.XXXX.WebApi.csproj">
       <Project>{6637d3d5-04a5-4418-8319-1f17217d83b0}</Project>
       <Name>3.COM.XXXX.WebApi</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EasyUI.Mvc\EasyUI.Mvc.csproj">
-      <Project>{a0f989bf-b6a8-438f-8ac0-0ab5cb00907c}</Project>
-      <Name>EasyUI.Mvc</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

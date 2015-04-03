@@ -1,6 +1,4 @@
-﻿@{
-    ViewBag.Title = "OrganizationForm";
-}
+﻿
 <style>
     .button1 {
         background: #f2f6f8  repeat-x;
@@ -12,7 +10,6 @@
 </style>
 
 <div id="dd2" style="padding: 5px; width:600px; height: 400px;">
-    
     <form id="ff">
         <div style="height: 200px">
             <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;height:100%" bgcolor="b5d6e6">
@@ -36,13 +33,13 @@
                         <input type="radio" value="1" name="Status">停用
                     </td>
                 </tr>
-                <tr style="background-color: White; height: 32px;">
+                <tr id="trleader1" style="background-color: White; height: 32px;">
                     <td style="padding: 5px; text-align: right">分管领导：</td>
                     <td style="padding: 5px;">
                         <input type="text" id="Leader1" name="Leader1" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /><input type="button"  class="button1" style="border-left: none; margin: 0;" onclick="chooseLeader1()" value="选择">
                     </td>
                 </tr>
-                <tr style="background-color: White; height: 32px;">
+                <tr  id="trleader2" style="background-color: White; height: 32px;">
                     <td style="padding: 5px; text-align: right">部门/岗位领导：</td>
                     <td style="padding: 5px;">
                         <input type="text"id="Leader2" name="Leader2" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /><input type="button"  class="button1" style="border-left: none; margin: 0;" onclick="chooseLeader2()" value="选择">
@@ -54,23 +51,30 @@
                         <textarea rows="3" name="Remark" style="width: 280px; border: 1px solid #8DB2E3;"></textarea>
                     </td>
                 </tr>
-                
+                 <tr id="trmove" style="background-color: White; height: 50px;">
+                    <td style="padding: 5px; text-align: right">移动：</td>
+                    <td style="padding: 5px">
+                       <input type="text" id="moveTo" name="moveTo" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />
+                        <input type="button"  class="button1" style="border-left: none; margin: 0;" onclick="chooseObject()" value="选择">
+                        <input type="button"  class="button1" style=" margin-left: 5px;" onclick="chooseLeader1()" value="确定移动">
+                    </td>
+                </tr>
             </table>
         </div>
     </form>
-     <input id="btnTypeid" type="hidden" />
 </div>
 
-<div style="padding: 5px; width: 400px; height: 250px;text-align:right">
-    <span><input type="button"  class="button1" style=" margin: 5px;"  value="增加单位/部门/岗位"></span>
-    <span><input type="button"  class="button1" style=" margin: 5px;"  value="增加人员"></span>
-    <span><input type="button"  class="button1" style=" margin: 5px;"  value="移动"></span>
-    <span><input type="button"  class="button1" style=" margin: 5px;"  value="保存"></span>
-    <span><input type="button"  class="button1" style=" margin: 5px;"  value="删除"></span>
+<div style="padding: 5px; width: 100%; height: 250px;text-align:right">
+    <span><input type="button"  class="button1" style=" margin: 5px;"  onclick="addOrganization()"  value="增加单位/部门/岗位"></span>
+    <span><input type="button"  class="button1" style=" margin: 5px;"  onclick="addUser()" value="增加人员"></span>
+    <span><input type="button"  class="button1" style=" margin: 5px;"  onclick="objectRemove()" value="移动"></span>
+    <span><input type="button"  class="button1" style=" margin: 5px;"  onclick="objectSave()" value="保存"></span>
+    <span><input type="button"  class="button1" style=" margin: 5px;"  onclick="objectDelete()" value="删除"></span>
 </div>
                     
 
 <div id="win">
+    <input id="btnTypeid" type="hidden" />
     <table style="border: 0; height: 300px; width: 500px;margin-top:20px" align="center" cellpadding="0" cellspacing="0">
         <tr>
             <td width="45%" valign="top">
@@ -106,8 +110,10 @@
         tree1Init();
         tree2Init();
         winInit();
+        $("#trmove").hide();
     })
 
+    //#region 初始化控件
     function tree1Init() {
         $("#tree1").tree({
             url: '/Api/Organization/GetOrganizationsAndUser?id=null',
@@ -117,13 +123,7 @@
             onDblClick: function (node) {
                 var canbeSelect = type == node.attributes.Type ? true : false;
                 if (node && !IsExsits(node) && canbeSelect) {
-                    if (type != "user") {
-                        var datas = $("#tree2").tree("getRoots");
-                        if (datas.length > 0) {
-                            $.messager.alert('警告', '(✿◡‿◡)~,用户组或组织机构只能存在一个！');
-                            return;
-                        }
-                    }
+                    if (filterCondition()) return;
                     $("#tree2").tree("append", {
                         data: [{
                             id: node.id,
@@ -165,19 +165,38 @@
             modal: true
         });
     }
-    
+    //#endregion 
 
-
-    function winadd() {
-        var node = $("#tree1").tree("getSelected");
-        var canbeSelect = type == node.attributes.Type ? true : false;
-        if (type != "user") {
+    //#region 辅助方法
+    /*条件过滤：判断是否为用户选择控件，如果不是，使其值能选择单个选项*/
+    function filterCondition() {
+        if (type !== "user") {
             var datas = $("#tree2").tree("getRoots");
             if (datas.length > 0) {
                 $.messager.alert('警告', '(✿◡‿◡)~,用户组或组织机构只能存在一个！');
-                return;
+                return false;
             }
         }
+        return true;
+    }
+
+    /*确保tree中只能存在一个唯一的node*/
+    function IsExsits(node) {
+        var datas = $("#tree2").tree("getRoots");
+        for (var i = 0; i < datas.length; i++) {
+            if (datas[i].id == node.id) {
+                return true;
+            }
+        }
+        return false;
+    }
+    //#endregion
+
+    //#region  Window中按钮事件 
+    function winadd() {
+        var node = $("#tree1").tree("getSelected");
+        var canbeSelect = type === node.attributes.Type ? true : false;
+        if (filterCondition()) return;
         if (node && !IsExsits(node) && canbeSelect)
                 $("#tree2").tree("append", {
                     data: [{
@@ -191,24 +210,20 @@
                     }]
                 });
     }
-       
     function windelete() {
         var node = $("#tree2").tree("getSelected");
-        if (node)
-        {
+        if (node) {
             $("#tree2").tree("remove", node.target);
         }
     }
-
     function winconfirm() {
         //读取按钮id
         var btntype = $("#btnTypeid").val();
 
         var data = $("#tree2").tree("getRoots");
 
-        if (data)
-        {
-            var names='', ids='';
+        if (data) {
+            var names = '', ids = '';
             for (var i = 0; i < data.length; i++) {
                 names += data[i].text + ",";
                 ids += data[i].id + ",";
@@ -220,35 +235,40 @@
 
         $('#win').window("close");
     }
-
     function winclose() {
         $('#win').window("close");
     }
 
-
+    //#endregion
+       
+   
     function chooseLeader1() {
-        type = "organization";
+        tree1Init();
+        tree2Init();
+        winInit();
+        //设置打开窗口的类型
+        type = "user";
         $("#btnTypeid").val("Leader1");
         $('#win').window("open");
     }
 
-
     function chooseLeader2() {
-        type = "usergroup";
+        tree1Init();
+        tree2Init();
+        winInit();
+        //设置打开窗口的类型
+        type = "user";
         $("#btnTypeid").val("Leader2");
         $('#win').window("open");
     }
-  
-    function IsExsits(node) {
-        var datas = $("#tree2").tree("getRoots");
-        for (var i = 0; i < datas.length; i++) {
-            if (datas[i].id == node.id)
-            {
-                return true;
-            }
-        }
-        return false;
+
+
+    function addOrganization() {
+        $("#ff").form("reset")
+        $("#trleader1").hide();
+        $("#trleader2").hide();
     }
+
 
 
 </script>

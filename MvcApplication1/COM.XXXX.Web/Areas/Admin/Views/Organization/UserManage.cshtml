@@ -1,0 +1,162 @@
+﻿
+<div id="dd2" icon="icon-save" style="padding: 5px; width: 400px; height: 250px; overflow: hidden">
+    <form id="ff">
+        <div id="divU" style="height: 200px">
+            <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;" bgcolor="b5d6e6">
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px">真实姓名：</td>
+                    <td style="padding: 5px">
+                        <input class="easyui-validatebox textbox" name="RealName" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px">用户名：</td>
+                    <td style="padding: 5px">
+                        <input class="easyui-validatebox textbox" name="UserName" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px">入职时间：</td>
+                    <td style="padding: 5px">
+                        <input class="Wdate" type="text" name="OfferTime" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />
+                    </td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px">学历：</td>
+                    <td style="padding: 5px">
+                        <input class="easyui-combobox" id="Education" name="Education" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />
+                    </td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px">婚否：</td>
+                    <td style="padding: 5px">
+                        <input class="easyui-combobox" id="IsMarry" name="IsMarry" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />
+                    </td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px">专业：</td>
+                    <td style="padding: 5px">
+                        <input class="easyui-validatebox textbox" name="Professional" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 80px; padding-left: 5px">启用：</td>
+                    <td style="padding: 5px">
+                        <input class="easyui-combobox" id="InUse" name="InUse" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />
+                    </td>
+                </tr>
+                <tr style="background-color: White; height: 50px;">
+                    <td style="padding: 5px">生日</td>
+                    <td style="padding: 5px">
+                        <input class="Wdate" type="text" name="BirthDay" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />
+                    </td>
+                </tr>
+                <tr style="background-color: White; height: 50px;">
+                    <td style="padding: 5px">备注</td>
+                    <td style="padding: 5px">
+                        <textarea id="txtRemark" rows="3" name="Remark" style="width: 280px; border: 1px solid #8DB2E3;"></textarea></td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    var ID = '@Request["id"]';
+    function initCombotree() {
+        $("#Education").combobox({
+            separator:true,            
+            valueField: 'id',
+            panelHeight:'150',
+            textField: 'text',
+            data:
+                [
+                    { id: '001', text: '小学' },
+                    { id: '002', text: '高中' },
+                    { id: '003', text: '中专' },
+                    { id: '004', text: '大专' },
+                    { id: '005', text: '本科' },
+                    { id: '006', text: '硕士' },
+                    { id: '007', text: '博士' }
+                ]
+        });
+        $("#IsMarry").combobox({
+            separator: true,
+            panelHeight: '50',
+            valueField: 'id',
+            textField: 'text',
+            data: [
+                { id: 'true', text: '已婚' },
+                { id: 'false', text: '未婚' }
+            ]
+        });
+        $("#InUse").combobox({
+            separator: true,
+            panelHeight: '50',
+            valueField: 'id',
+            textField: 'text',
+            data: [
+                { id: 'true', text: '启用' },
+                { id: 'false', text: '停用' }
+            ]
+        })
+
+    }
+  
+    function remove() {
+        $.ajax({
+            url: '/Api/User/' +ID,
+            type: 'DELETE',
+            success: function (data) {
+                $.messager.alert('提示', data.message);
+            }
+        });
+
+    }
+
+    $(function () {
+       
+    });
+
+    function edit() {
+      
+        $('#ff').form("reset");
+        initCombotree();
+        //加载form数据
+        $.ajax({
+            url: '/Api/User/' + ID,
+            type: 'Get',
+            success: function (data) {
+                $('#ff').form('load', data);
+            }
+        });
+        if ($("#ff").form('enableValidation').form('validate')) {
+            //加载form数据
+            $.ajax({
+                url: '/Api/User/' + ID,
+                type: 'PUT',
+                data: $('#ff').serialize(),
+                success: function (data) {
+                    $.messager.alert('提示', data.message);
+                }
+            });
+        }
+    }
+    
+    function add() {
+        $('#ff').form("reset");
+        initCombotree();
+        if ($("#ff").form('enableValidation').form('validate')) {
+            //加载form数据
+            $.ajax({
+                url: '/Api/User/',
+                type: 'POST',
+                data: $('#ff').serialize(),
+                success: function (data) {
+
+                    if (data.success) {
+                        $('#dg').datagrid('reload');
+                    }
+                    $.messager.alert('提示', data.message);
+                }
+            });
+        }
+    }
+</script>

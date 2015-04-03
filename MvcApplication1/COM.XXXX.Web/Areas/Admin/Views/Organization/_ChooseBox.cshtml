@@ -1,0 +1,186 @@
+﻿
+<style>
+    .button1 {
+        background: #f2f6f8  repeat-x;
+        border: 1px solid #b3daf4;
+        line-height: 25px;
+        vertical-align: middle;
+        height: 25px;
+    }
+</style>
+<input type="text" id="@Model.ID" name="@Model.Name" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />
+<input type="button"  class="button1" style="border-left: none; margin: 0;" onclick="@(Model.ID)Choose()" value="选择">
+<div id="@(Model.ID)win">
+    <table style="border: 0; height: 300px; width: 500px;margin-top:20px" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="45%" valign="top">
+                <div style="width: 100%; height: 400px; border: 1px solid #b3daf4;">
+                    <ul id="@(Model.ID)tree1" style="margin:10px"></ul>
+                </div>
+            </td>
+            <td align="center">
+                <input type="button" id="add"  class="button1" onclick="@(Model.ID)winadd()" style="margin: 1px;" value="增加"><br />
+                <br />
+                <input type="button" id="delete" class="button1" onclick="@(Model.ID)windelete()" style="margin: 1px;" value="删除"><br />
+                <br />
+                <input type="button" id="confirm" class="button1"  onclick="@(Model.ID)winconfirm()" style="margin: 1px;" value="确定"><br />
+                <br />
+                <input type="button" id="cancel" class="button1" onclick="@(Model.ID)winclose()" style="margin: 1px;" value="取消"><br />
+                <br />
+            </td>
+            <td width="45%" valign="top">
+                <div style="width: 100%; height: 400px; border: 1px solid #b3daf4;">
+                    <ul id="@(Model.ID)tree2" style="margin:10px"></ul>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
+<script type="text/javascript">
+    var @(Model.ID)type = '@Model.Type';
+    
+    $(function () {
+        @(Model.ID)tree1Init();
+        @(Model.ID)tree2Init();
+        @(Model.ID)winInit();
+    })
+
+    //#region 初始化控件
+    function @(Model.ID)tree1Init() {
+        $("#@(Model.ID)tree1").tree({
+            url: '/Api/Organization/GetOrganizationsAndUser?id=null',
+            onLoadSuccess: function () {
+                $("#@(Model.ID)tree1").tree("collapseAll");
+            },
+            onDblClick: function (node) {
+                var canbeSelect = @(Model.ID)type == node.attributes.Type ? true : false;
+                if (node && !@(Model.ID)IsExsits(node) && canbeSelect) {
+                    if (!@(Model.ID)filterCondition()) return;
+                    $("#@(Model.ID)tree2").tree("append", {
+                        data: [{
+                            id: node.id,
+                            text: node.text,
+                            iconCls: node.iconCls,
+                            Checked: node.Checked,
+                            state: node.state,
+                            attributes: node.attributes,
+                            //children: node.children
+                        }]
+
+                    });
+                }
+               
+            }
+        });
+    }
+
+    function @(Model.ID)tree2Init() {
+        $("#@(Model.ID)tree2").tree({
+            data:[],
+            onDblClick: function (node) {
+                if (node)
+                {
+                    $("#@(Model.ID)tree2").tree("remove", node.target);
+                }
+            }
+        });
+    }
+
+    function @(Model.ID)winInit() {
+        $('#@(Model.ID)win').window({
+            title: '选择组织机构成员',
+            width: 600,
+            height: 500,
+            resizable: true,
+            closed: true,
+            closable: true,
+            modal: true
+        });
+    }
+    //#endregion 
+
+    //#region 辅助方法
+    /*条件过滤：判断是否为用户选择控件，如果不是，使其值能选择单个选项*/
+    function @(Model.ID)filterCondition() {
+        if (@(Model.ID)type !== "user") {
+            var datas = $("#@(Model.ID)tree2").tree("getRoots");
+            if (datas.length > 0) {
+                $.messager.alert('警告', '(✿◡‿◡)~,用户组或组织机构只能存在一个！');
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /*确保tree中只能存在一个唯一的node*/
+    function @(Model.ID)IsExsits(node) {
+        var datas = $("#@(Model.ID)tree2").tree("getRoots");
+        for (var i = 0; i < datas.length; i++) {
+            if (datas[i].id == node.id) {
+                return true;
+            }
+        }
+        return false;
+    }
+    //#endregion
+
+    //#region  Window中按钮事件 
+    function @(Model.ID)winadd() {
+        var node = $("#@(Model.ID)tree1").tree("getSelected");
+        var canbeSelect = @(Model.ID)type === node.attributes.Type ? true : false;
+        if (!@(Model.ID)filterCondition()) return;
+        if (node && !@(Model.ID)IsExsits(node) && canbeSelect)
+            $("#@(Model.ID)tree2").tree("append", {
+                    data: [{
+                        id: node.id,
+                        text: node.text,
+                        iconCls: node.iconCls,
+                        Checked: node.Checked,
+                        state: node.state,
+                        attributes: node.attributes,
+                        //children:node.children
+                    }]
+                });
+    }
+    function @(Model.ID)windelete() {
+        var node = $("#@(Model.ID)tree2").tree("getSelected");
+        if (node) {
+            $("#@(Model.ID)tree2").tree("remove", node.target);
+        }
+    }
+    function @(Model.ID)winconfirm() {
+
+        var data = $("#@(Model.ID)tree2").tree("getRoots");
+
+        if (data) {
+            var names = '', ids = '';
+            for (var i = 0; i < data.length; i++) {
+                names += data[i].text + ",";
+                ids += data[i].id + ",";
+                $("#@(Model.ID)").val(names);
+                $("#@(Model.ID)").attr("ids", ids);
+            }
+        }
+
+
+        $('#@(Model.ID)win').window("close");
+    }
+    function @(Model.ID)winclose() {
+        $('#@(Model.ID)win').window("close");
+    }
+
+    //#endregion
+       
+    function @(Model.ID)Choose() {
+        @(Model.ID)tree1Init();
+        @(Model.ID)tree2Init();
+        @(Model.ID)winInit();
+        $('#@(Model.ID)win').window("open");
+    }
+
+
+
+</script>

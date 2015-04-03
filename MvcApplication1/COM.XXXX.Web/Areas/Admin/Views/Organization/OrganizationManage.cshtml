@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "OrganizationForm";
+}
+<style>
+    .button1 {
+        background: #f2f6f8 repeat-x;
+        border: 1px solid #b3daf4;
+        line-height: 25px;
+        vertical-align: middle;
+        height: 25px;
+    }
+</style>
+
+<div id="dd2">
+    <form id="ff"  method="post">
+
+        <div style="height: 200px">
+            <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%; height: 100%" bgcolor="b5d6e6">
+                <tr style="background-color: White; height: 32px;">
+                    <td style="width: 130px; padding-left: 5px; text-align: right">名称：</td>
+                    <td style="padding: 5px;">
+                        <input type="text" name="Name" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px; text-align: right">类型：</td>
+                    <td style="padding: 5px">
+                        <input type="radio" value="1" id="orgtypes_1" name="Type">单位
+                        <input type="radio" value="2" id="orgtypes_2" name="Type">部门
+                        <input type="radio" value="3" id="orgtypes_3" name="Type" checked="checked">岗位
+                    </td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px; text-align: right">状态：</td>
+                    <td style="padding: 5px">
+                        <input type="radio" value="0" name="Status" checked="checked">启用
+                        <input type="radio" value="1" name="Status">停用
+                    </td>
+                </tr>
+                <tr style="background-color: White; height: 32px;">
+                    <td style="padding: 5px; text-align: right">分管领导：</td>
+                    <td style="padding: 5px;">
+                        <input type="text" id="Leader1" name="Leader1" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /><input type="button" class="button1" style="border-left: none; margin: 0;" onclick="chooseLeader1()" value="选择">
+                    </td>
+                </tr>
+                <tr  style="background-color: White; height: 32px;">
+                    <td style="padding: 5px; text-align: right">部门/岗位领导：</td>
+                    <td style="padding: 5px;">
+                        <input type="text" id="Leader2" name="Leader2" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /><input type="button" class="button1" style="border-left: none; margin: 0;" onclick="chooseLeader2()" value="选择">
+                    </td>
+                </tr>
+                <tr style="background-color: White; height: 50px;">
+                    <td style="padding: 5px; text-align: right">备注：</td>
+                    <td style="padding: 5px">
+                        <textarea rows="3" name="Remark" style="width: 280px; border: 1px solid #8DB2E3;"></textarea>
+                    </td>
+                </tr>
+                <tr id="deptmove_tr" style="background-color: White; height: 50px;">
+                    <td style="padding: 5px; text-align: right">移动：</td>
+                    <td style="padding: 5px">
+                        <input type="text" id="moveTo" name="moveTo" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />
+                        <input type="button" class="button1" style="border-left: none; margin: 0;" onclick="chooseObject()" value="选择">
+                        <input type="button" class="button1" style="margin-left: 5px;" onclick="chooseLeader1()" value="确定移动">
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+        <div style="padding: 5px; margin-top: 20px; width: 100%; height: 250px; text-align: right">
+            <span>
+                <input type="button" class="button1" style="margin: 5px;" onclick="window.location='BodyAdd'+'@Html.Raw(Request.Url.Query)    ';"  value="增加单位/部门/岗位"></span>
+            <span>
+                <input type="button" class="button1" style="margin: 5px;" onclick="window.location='UserAdd'+'@Html.Raw(Request.Url.Query)    ';" value="增加人员"></span>
+            <span>
+                <input type="button" class="button1" style="margin: 5px;" onclick="$('#deptmove_tr').toggle();" value="移动"></span>
+            <span>
+                <input type="button" class="button1" style="margin: 5px;" onclick="return $('#ff').form('validate');" value="保存"></span>
+            <span>
+                <input type="button" class="button1" style="margin: 5px;" onclick="objectDelete()" value="删除"></span>
+        </div>
+
+
+
+    </form>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+
+    function addOrganization() {
+        $("#ff").form("reset")
+        $("#trleader1").hide();
+        $("#trleader2").hide();
+    }
+
+
+
+</script>

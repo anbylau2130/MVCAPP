@@ -1,14 +1,15 @@
-﻿@using EasyUI.Mvc.UI
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
+
 <div id="cc" class="easyui-layout" data-options="fit:true">
     <div data-options="region:'west',title:'组织机构',split:true" style="width: 150px; overflow: hidden">
          <ul id="orgtree"></ul>
     </div>
     <div data-options="region:'center'"  style="overflow: hidden;">
-        <div id="p" style="overflow: hidden;">
-        </div>   
+         @*@Html.Partial("DepartmentManage", new { ID="userchoose",Name="UserChoose",Type="user"});*@
+        
+        <div id="p" style="overflow: hidden;"></div>   
     </div>
 </div>
 
@@ -20,17 +21,16 @@
             $("#orgtree").tree("collapseAll");
         },
         onClick: function (node) {
-            OpenPanel("/Admin/Organization/OrganizationForm?choosetype=" + node.attributes.Type);
+            OpenPanel("/Admin/Organization/OrganizationManage?id=" + node.id + "&type=" + node.attributes.Type);
         }
     });
     
     function OpenPanel(href) {
         $('#p').panel({
             fit: true,
-            content: '<iframe id="iframe_content" scrolling="no" frameborder="0"  src="' + href + '" style="width:100%;height:100%;overflow:hidden"></iframe>',
+            content: '<iframe id="orgiframe" scrolling="no" frameborder="0"  src="' + href + '" style="width:100%;height:100%;overflow:hidden"></iframe>',
         }); 
     }
-   
 
-    
+   
 </script>

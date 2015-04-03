@@ -13,7 +13,17 @@ namespace COM.XXXX.Controllers.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult OrganizationForm()
+        public ActionResult OrganizationManage()
+        {
+            return View();
+        }
+
+        public ActionResult UserManage()
+        {
+            return View();
+        }
+
+        public ActionResult DepartmentManage() 
         {
             return View();
         }
