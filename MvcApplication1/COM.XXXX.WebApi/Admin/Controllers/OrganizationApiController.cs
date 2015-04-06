@@ -22,6 +22,21 @@ namespace COM.XXXX.WebApi.Admin.Controllers
             base.SetRepository(); 
         }
 
+
+        public dynamic PutMoveDepartMent(Guid? id, Guid? orgid)
+        {
+            if (!string.IsNullOrEmpty(id.ToString()))
+            {
+
+                var org = base.Get(Guid.Parse(id.ToString()));
+
+                org.POrganizationID = orgid;
+
+                base.Put(Guid.Parse(id.ToString()), org);
+                return "(＾－＾)V移动成功！";
+            }
+            return "(。﹏。*)移动失败！";
+        }
         /// <summary>
         /// 获取组织机构TreeGrid
         /// </summary>
@@ -185,5 +200,8 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                     return "icon-man";
             }
         }
+
+
+     
     }
 }

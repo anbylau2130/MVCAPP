@@ -236,8 +236,24 @@ function form2Json(id) {
 
     var json = JSON.parse(jsonStr);
     return json;
-}
+};
+function RadioGroupCheck(name, value) {
+    var radios = document.getElementsByName(name);
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].value == value) {
+            radios[i].checked = true;
+        }
+    }
+};
 
+function GetRadioGroupChecked(name) {
+    var radios = document.getElementsByName(name);
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            return radios[i].value;
+        }
+    }
+};
 //}{
 //    iconCls: 'icon-add',
 //    plain: true,

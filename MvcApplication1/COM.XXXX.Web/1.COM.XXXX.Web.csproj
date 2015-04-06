@@ -8365,7 +8365,7 @@
     <Content Include="Areas\Admin\Views\Menu\_MenuManage.cshtml" />
     <Content Include="Areas\Admin\Views\Dictionary\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Organization\OrganizationManage.cshtml" />
-    <Content Include="Areas\Admin\Views\Organization\UserManage.cshtml" />
+    <Content Include="Areas\Admin\Views\Organization\UserAdd.cshtml" />
     <Content Include="Areas\Admin\Views\Organization\RightManage.cshtml" />
     <Content Include="Areas\Admin\Views\Organization\OrganizationAdd.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />

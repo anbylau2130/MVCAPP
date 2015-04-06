@@ -21,7 +21,10 @@
             $("#orgtree").tree("collapseAll");
         },
         onClick: function (node) {
-            OpenPanel("/Admin/Organization/OrganizationManage?id=" + node.id + "&type=" + node.attributes.Type);
+            if(node.attributes.Type=="user")
+                OpenPanel("/Admin/Organization/UserAdd?id=" + node.id + "&type=" + node.attributes.Type);
+            else 
+                OpenPanel("/Admin/Organization/OrganizationManage?id=" + node.id + "&type=" + node.attributes.Type);
         }
     });
     

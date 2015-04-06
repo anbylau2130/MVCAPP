@@ -18,12 +18,12 @@ namespace COM.XXXX.Controllers.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult UserManage()
+        public ActionResult UserAdd()
         {
             return View();
         }
 
-        public ActionResult DepartmentManage() 
+        public ActionResult OrganizationAdd() 
         {
             return View();
         }

@@ -60,7 +60,6 @@
     <Compile Include="Models\Admin\Menu.cs" />
     <Compile Include="Models\Admin\Module.cs" />
     <Compile Include="Models\Admin\Organization.cs" />
-    <Compile Include="Models\Admin\Page.cs" />
     <Compile Include="Models\Admin\Privilege.cs" />
     <Compile Include="Models\Admin\Role.cs" />
     <Compile Include="Models\Admin\RoleRight.cs" />

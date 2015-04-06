@@ -8,8 +8,7 @@
         height: 25px;
     }
 </style>
-<input type="text" id="@Model.ID" name="@Model.Name" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />
-<input type="button"  class="button1" style="border-left: none; margin: 0;" onclick="@(Model.ID)Choose()" value="选择">
+<input type="text" id="@Model.ID" name="@Model.Name" readonly style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /><input type="button"  class="button1" style="border-left: none; margin: 0;" onclick="@(Model.ID)Choose()" value="选择">
 <div id="@(Model.ID)win">
     <table style="border: 0; height: 300px; width: 500px;margin-top:20px" align="center" cellpadding="0" cellspacing="0">
         <tr>

@@ -36,7 +36,7 @@ namespace COM.XXXX.Models.Admin
         /// 入职时间
         /// </summary>
         [DataMember]
-        public DateTime? OfferTime { get; set; }
+        public string OfferTime { get; set; }
 
         /// <summary>
         /// 学历
@@ -60,7 +60,7 @@ namespace COM.XXXX.Models.Admin
         /// 生日
         /// </summary>
         [DataMember]
-        public DateTime BirthDay { get; set; }
+        public string BirthDay { get; set; }
 
         /// <summary>
         /// 是否启用

@@ -54,23 +54,42 @@ namespace COM.XXXX.Models.Admin
         }
 
         /// <summary>
-        /// 领导ID
+        /// 分管领导ID：以逗号分隔
         /// </summary>	
         [DataMember]
-        public Guid LeaderID
+        public string ChargeLeaderIDs
+        {
+            get;
+            set;
+        }
+        /// <summary>
+        /// 分管领导名称：以逗号分隔
+        /// </summary>	
+        [DataMember]
+        public string ChargeLeaderNames
+        {
+            get;
+            set; 
+        }
+        /// <summary>
+        /// 领导ID：以逗号分隔
+        /// </summary>	
+        [DataMember]
+        public string LeaderIDs
         {
             get; set;
         }
 
         /// <summary>
-        /// 领导
-        /// </summary>		
+        /// 领导ID
+        /// </summary>	
         [DataMember]
-        public User Leader
+        public string LeaderNames
         {
             get;
             set;
         }
+
         /// <summary>
         /// 备注
         /// </summary>		
@@ -81,10 +100,11 @@ namespace COM.XXXX.Models.Admin
             set;
         }
 
-        public virtual List<User> Users
-        {
-            get; set;
-        }
+        /// <summary>
+        /// 是否启用
+        /// </summary>
+        [DataMember]
+        public bool InUse { get; set; }
 
         /// <summary>
         /// easyui加载界面使用
