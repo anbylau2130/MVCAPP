@@ -11,10 +11,10 @@ namespace COM.XXXX.Models.Admin
     public class Dictionary:IModel
     {
         [DataMember]
-        public Guid? PID { get; set; }
+        public Guid? PDictionaryID { get; set; }
         [DataMember]
         public string Title { get; set; }
-        [DataMember]
+        [DataMember] 
         public string Code { get; set; }
         [DataMember]
         public string Value { get; set; }

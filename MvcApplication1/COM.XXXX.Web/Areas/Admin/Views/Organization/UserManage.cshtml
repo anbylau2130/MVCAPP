@@ -1,5 +1,5 @@
 ﻿
-<div id="dd2" icon="icon-save" style="padding: 5px; width: 400px; height: auto; overflow: hidden">
+<div id="dd2" icon="icon-save" style="padding: 5px;  height: auto; overflow: hidden">
     <form id="ff">
         <div id="divU" style="height: auto">
             <input type="hidden" id="OrganizationID" name ="OrganizationID"/> 
@@ -7,40 +7,40 @@
             <table cellpadding="0" cellspacing="1px" border="0" style="width: 100%;" bgcolor="b5d6e6">
                 
                 <tr style="background-color: White; height: 32px;">
-                    <td style="width: 80px; padding-left: 5px">真实姓名：</td>
+                    <td style="width: 130px; padding-left: 5px">真实姓名：</td>
                     <td style="padding: 5px">
                         <input class="easyui-validatebox textbox" id="RealName" name="RealName" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
-                    <td style="width: 80px; padding-left: 5px">用户名：</td>
+                    <td style="width: 130px; padding-left: 5px">用户名：</td>
                     <td style="padding: 5px">
                         <input class="easyui-validatebox textbox" id="UserName"  name="UserName" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
-                    <td style="width: 80px; padding-left: 5px">入职时间：</td>
+                    <td style="width: 130px; padding-left: 5px">入职时间：</td>
                     <td style="padding: 5px">
                         <input class="Wdate" type="text" id="OfferTime" name="OfferTime" onfocus="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />
                     </td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
-                    <td style="width: 80px; padding-left: 5px">学历：</td>
+                    <td style="width: 130px; padding-left: 5px">学历：</td>
                     <td style="padding: 5px">
                         <input class="easyui-combobox" id="Education" name="Education" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />
                     </td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
-                    <td style="width: 80px; padding-left: 5px">婚否：</td>
+                    <td style="width: 130px; padding-left: 5px">婚否：</td>
                     <td style="padding: 5px">
                         <input class="easyui-combobox" id="IsMarry" name="IsMarry" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />
                     </td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
-                    <td style="width: 80px; padding-left: 5px">专业：</td>
+                    <td style="width: 130px; padding-left: 5px">专业：</td>
                     <td style="padding: 5px">
                         <input class="easyui-validatebox textbox" id="Professional" name="Professional" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
-                    <td style="width: 80px; padding-left: 5px">启用：</td>
+                    <td style="width: 130px; padding-left: 5px">启用：</td>
                     <td style="padding: 5px">
                         <input class="easyui-combobox" id="InUse" name="InUse" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />
                     </td>
@@ -56,12 +56,22 @@
                     <td style="padding: 5px">
                         <textarea id="Remark" rows="3"   name="Remark" style="width: 280px; border: 1px solid #8DB2E3;"></textarea></td>
                 </tr>
+                <tr id="deptmove_tr" style="background-color: White; height: 50px;">
+                    <td style="padding: 5px; text-align: right">移动：</td>
+                    <td style="padding: 5px">
+                        @Html.Partial("_ChooseBox", new { ID="chooseDepartment",Name="chooseDepartment",Type="department"})
+                        <input type="button" class="button1" style="margin-left: 5px;" onclick="ConfirmMove()" value="确定移动">
+                    </td>
+                </tr>
                 <tr style="background-color: White; height: 50px;">
-                    <td style="padding: 5px; text-align: right" colspan="2" rowspan="2"> 
-                        <div style="text-align:center"> 
-                            <input type="button"  class="button1" style=" margin-left:5px;" onclick="Save()" value="保存">
-                            <input type="button"  class="button1" style=" margin-left:5px;" onclick="window.location='OrganizationManage'+'@Html.Raw(Request.Url.Query)    ';" value="返回">
-                        </div>
+                    <td style="padding: 5px; text-align: right" colspan="2">
+                      
+                        <input type="button" value="调动" class="button1" onclick="$('#deptmove_tr').toggle();;" />
+                        <input type="button" class="button1" onclick="SetInitPass();"  value="初始密码" />
+                        <input type="button" class="button1" value="设置应用" onclick="setUserApp();"/>
+                        <input type="button" class="button1" name="Save" onclick="UserSave();" value="保存" />
+                        <input type="button" class="button1" onclick="UserDelete();" name="DeleteBut" value="删除" />
+                        <input type="button"  class="button1" style=" margin-left:5px;" onclick="window.location='OrganizationManage'+'@Html.Raw(Request.Url.Query)    ';" value="返回">
                     </td>
                 </tr>
             </table>
@@ -88,7 +98,7 @@
                     { id: '005', text: '本科' },
                     { id: '006', text: '硕士' },
                     { id: '007', text: '博士' }
-                ]   
+                ]
         });
         $("#IsMarry").combobox({
             separator: true,
@@ -114,6 +124,7 @@
     }
 
     $(function () {
+        $("#deptmove_tr").hide();
         if (type == "user"){ 
             //编辑操作
             formEditInit();
@@ -128,7 +139,7 @@
     });
 
     function formEditInit() {
-        //$('#ff').form("reset");
+        $('#ff').form("reset");
         initCombotree();
         //加载form数据
         $.ajax({
@@ -136,23 +147,11 @@
             type: 'Get',
             success: function (data) {
                 $('#ff').form("load",data);
-                //console.log(data)
-                //$("#BirthDay").val(data.BirthDay);
-                //$("#Education").combobox("setValue", data.Education);
-                //$("#PassWord").val(data.PassWord);
-                //$("#InUse").combobox("setValue", data.InUse);
-                //$("#IsMarry").combobox("setValue", data.IsMarry);
-                //$("#OrganizationID").val(data.OrganizationID);
-                //$("#OfferTime").val(data.OfferTime);
-                //$("#Professional").val(data.Professional);
-                //$("#RealName").val(data.RealName);
-                //$("#Remark").val(data.Remark);
-                //$("#UserName").val(data.UserName);
             }
         });
     }
 
-    function Save() {
+    function UserSave() {
         if ($("#ff").form('enableValidation').form('validate')) {
             //加载form数据
             $.ajax({
@@ -163,10 +162,49 @@
                     $.messager.alert('提示', data.message,'info',function(){
                         parent.location.reload();
                     });
-                  
                 }
             });
         }
     }
- 
+
+    function ConfirmMove() {
+        var orgid = $("#chooseDepartment").attr("ids");
+        orgid = orgid.substring(0, orgid.indexOf(','));
+        $.ajax({
+            url: '/Api/User/PutMoveUser?id=' + ID + "&orgid=" + orgid,
+            type: 'PUT',
+            success: function (data) {
+                $.messager.alert('提示', data.message,'info',function(){
+                    parent.location.reload();
+                });
+            }
+        });
+    }
+
+    function UserDelete(){
+        $.messager.confirm('确认对话框', '您想要删除吗？', function(r){
+            if (r){
+                $.ajax({
+                    url: '/Api/User/' + ID,
+                    type: "DELETE",
+                    success: function (data) {
+                        $.messager.alert('提示', data.message,'info',function(){
+                            parent.location.reload();
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    function SetInitPass(){
+        $.ajax({
+            url: '/Api/User/PutInitPassword?id=' + ID,
+            type: "PUT",
+            success: function (data) {
+                $.messager.alert('提示', data.message);
+              
+            }
+        });
+    }
 </script>

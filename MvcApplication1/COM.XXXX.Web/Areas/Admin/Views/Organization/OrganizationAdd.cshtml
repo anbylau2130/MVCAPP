@@ -60,7 +60,9 @@
                     POrganizationID:$("#POrganizationID").val()
                 },
                 success: function (data) {
-                    $.messager.alert('提示', data.message);
+                    $.messager.alert('提示', data.message,'info',function(){
+                        parent.location.reload();
+                    });
                 }
             });
         }

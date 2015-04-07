@@ -18,6 +18,9 @@ namespace COM.XXXX.Web
             //自己定义的WebApi错误记录
             config.Filters.Add(new WebApiExceptionFilter());
 
+            //WebApi身份认证
+            //config.Filters.Add(new BasicAuthenticationFilter());
+
             //解决MVC的Controller和Web API的Controller类名不能相同的问题 
             //注意，这里WebApi命名时，必须以ApiController结尾
             var suffix = typeof(DefaultHttpControllerSelector).GetField("ControllerSuffix", BindingFlags.Static | BindingFlags.Public);

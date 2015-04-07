@@ -60,11 +60,11 @@
                 <tr id="deptmove_tr" style="background-color: White; height: 50px;">
                     <td style="padding: 5px; text-align: right">移动：</td>
                     <td style="padding: 5px">
-                        @Html.Partial("_ChooseBox", new { ID="chooseDepartment",Name="chooseDepartment",Type="department"})
+                        @Html.Partial("_ChooseBox", new { ID="chooseDepartment",Name="chooseDepartment",Type="department,organization"})
                         <input type="button" class="button1" style="margin-left: 5px;" onclick="ConfirmMove()" value="确定移动">
                     </td>
                 </tr>
-                <tr id="deptmove_tr" style="background-color: White; height: 50px;">
+                <tr  style="background-color: White; height: 50px;">
                     <td style="padding: 5px; text-align: right" colspan="2">
                       
                         <span>
@@ -140,9 +140,13 @@
                     POrganizationID:$("#POrganizationID").val()
                 },
                 success: function (data) {
-                    $.messager.alert('提示', data.message);
+                    $.messager.alert('提示', data.message,'info',function(){
+                        parent.location.reload();
+                    });
+                  
                 }
             });
+           
         }
     }
    
@@ -153,7 +157,9 @@
             url: '/Api/Organization/PutMoveDepartMent?id=' + ID+"&orgid="+orgid,
             type: 'PUT',
             success: function (data) {
-                $.messager.alert('提示', data);
+                $.messager.alert('提示', data.message,'info',function(){
+                    parent.location.reload();
+                });
             }
         });
     }

@@ -34,7 +34,6 @@ F:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Model\bin\Debug\EntityFra
 F:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Model\bin\Debug\EntityFramework.SqlServer.xml
 F:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
 F:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
-F:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Model\obj\Debug\4.COM.XXXX.Models.csprojResolveAssemblyReference.cache
 D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Models.dll.config
 D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Models.dll
 D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Model\bin\Debug\COM.XXXX.Models.pdb

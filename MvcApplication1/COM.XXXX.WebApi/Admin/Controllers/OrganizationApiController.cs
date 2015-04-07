@@ -19,7 +19,7 @@ namespace COM.XXXX.WebApi.Admin.Controllers
 
         public OrganizationApiController()
         {
-            base.SetRepository(); 
+            base.SetRepository();
         }
 
 
@@ -37,6 +37,8 @@ namespace COM.XXXX.WebApi.Admin.Controllers
             }
             return "(。﹏。*)移动失败！";
         }
+
+
         /// <summary>
         /// 获取组织机构TreeGrid
         /// </summary>
@@ -45,10 +47,10 @@ namespace COM.XXXX.WebApi.Admin.Controllers
         [HttpPost]
         public IEnumerable<Organization> GetOrganizationsTree(Guid? id)
         {
-            List<Organization> lst=new List<Organization>();
+            List<Organization> lst = new List<Organization>();
             if (string.IsNullOrEmpty(id.ToString()))
             {
-                lst.AddRange(Repository.Query(org => org.POrganizationID == null).OrderBy(org=>org.Sort).ToList());
+                lst.AddRange(Repository.Query(org => org.POrganizationID == null).OrderBy(org => org.Sort).ToList());
             }
             else
             {
@@ -58,14 +60,47 @@ namespace COM.XXXX.WebApi.Admin.Controllers
             for (int i = 0; i < lst.Count; i++)
             {
                 var children = GetOrganizationsTree(lst[i].ID);
-                if (children.Any() && children!=null)
+                if (children.Any() && children != null)
                 {
                     lst[i].children = new List<Organization>();
-                    lst[i].children .AddRange(children);
+                    lst[i].children.AddRange(children);
                 }
             }
 
             return lst;
+        }
+
+
+
+        public UITree GetTreeNodeById(Guid? id, string type)
+        {
+            if (!string.IsNullOrEmpty(id.ToString()))
+            {
+                Guid guid = Guid.Parse(id.ToString());
+                if (type.Contains("user"))
+                {
+                    User result = new UserApiController().Repository.Query(user => user.ID == guid).FirstOrDefault();
+                    var tree = new UITree()
+                    {
+                        id = result.ID.ToString(),
+                        text = result.RealName,
+                        iconCls = geticon("user"),
+                    };
+                    return tree;
+                }
+                else if (type.Contains("organization") || type.Contains("department"))
+                {
+                    Organization result = base.Get(guid);
+                    var tree = new UITree()
+                    {
+                        id = result.ID.ToString(),
+                        text = result.Name,
+                        iconCls = geticon(result.OrgType),
+                    };
+                    return tree;
+                }
+            }
+            return null;
         }
 
         /// <summary>
@@ -75,8 +110,8 @@ namespace COM.XXXX.WebApi.Admin.Controllers
         /// <returns></returns>
         [HttpPost]
         public IEnumerable<UITree> GetOrganizationsComboTree(Guid? id)
-        { 
-            List<UITree> treelst=new List<UITree>();
+        {
+            List<UITree> treelst = new List<UITree>();
             List<Organization> lst = new List<Organization>();
             if (string.IsNullOrEmpty(id.ToString()))
             {
@@ -88,12 +123,12 @@ namespace COM.XXXX.WebApi.Admin.Controllers
             }
             foreach (var organization in lst)
             {
-                  var tree = new UITree()
-                    {
-                        id = organization.ID.ToString(),
-                        text = organization.Name,
-                        iconCls = "",
-                    };
+                var tree = new UITree()
+                  {
+                      id = organization.ID.ToString(),
+                      text = organization.Name,
+                      iconCls = "",
+                  };
                 var orgchildren = Repository.Query(org => org.POrganizationID == organization.ID).OrderBy(org => org.Sort).ToList();
                 foreach (var child in orgchildren)
                 {
@@ -102,7 +137,7 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                         id = child.ID.ToString(),
                         text = child.Name,
                         iconCls = "",
-                        children= GetOrganizationsComboTree(child.ID).ToList(),
+                        children = GetOrganizationsComboTree(child.ID).ToList(),
                     });
                 }
                 treelst.Add(tree);
@@ -112,11 +147,11 @@ namespace COM.XXXX.WebApi.Admin.Controllers
         }
 
         [HttpPost]
-        public IEnumerable<UITree> GetOrganizationsAndUser(Guid? id) 
+        public IEnumerable<UITree> GetOrganizationsAndUser(Guid? id)
         {
             List<UITree> treelst = new List<UITree>();
             List<Organization> lst = new List<Organization>();
-           
+
             if (string.IsNullOrEmpty(id.ToString()))
             {
                 lst.AddRange(Repository.Query(org => org.POrganizationID == null).OrderBy(org => org.Sort).ToList());
@@ -133,10 +168,10 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                     text = organization.Name,
                     iconCls = geticon(organization.OrgType),
                     attributes = new { Type = organization.OrgType },
-                 
+
                 };
                 var orgchildren = Repository.Query(org => org.POrganizationID == organization.ID).OrderBy(org => org.Sort).ToList();
-                
+
                 foreach (var child in orgchildren)
                 {
                     var uitree = new UITree()
@@ -145,19 +180,19 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                         text = child.Name,
                         iconCls = geticon(child.OrgType),
                         attributes = new { Type = child.OrgType },
-                       
+
                     };
 
                     var userlst = GetSubUsersByOrganizationID(child.ID);
                     var orglst = GetOrganizationsAndUser(child.ID).ToList();
 
                     uitree.children.AddRange(userlst);
-                
+
                     uitree.children.AddRange(orglst);
-                  
+
                     tree.children.Add(uitree);
                 }
-              
+
                 treelst.Add(tree);
             }
 
@@ -169,7 +204,7 @@ namespace COM.XXXX.WebApi.Admin.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        private  List<UITree> GetSubUsersByOrganizationID(Guid id)
+        private List<UITree> GetSubUsersByOrganizationID(Guid id)
         {
             List<User> userlst = new UserApiController().Repository.Query(user => user.OrganizationID == id).ToList();
             List<UITree> usertreelst = new List<UITree>();
@@ -196,12 +231,12 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                     return "icon-usergroup";
                 case "usergroup":
                     return "icon2 r6_c9";
-                default :
+                default:
                     return "icon-man";
             }
         }
 
 
-     
+
     }
 }

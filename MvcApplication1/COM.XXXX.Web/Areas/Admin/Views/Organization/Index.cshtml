@@ -22,12 +22,14 @@
         },
         onClick: function (node) {
             if(node.attributes.Type=="user")
-                OpenPanel("/Admin/Organization/UserAdd?id=" + node.id + "&type=" + node.attributes.Type);
+                OpenPanel("/Admin/Organization/UserManage?id=" + node.id + "&type=" + node.attributes.Type);
             else 
                 OpenPanel("/Admin/Organization/OrganizationManage?id=" + node.id + "&type=" + node.attributes.Type);
         }
     });
-    
+
+    OpenPanel("/Admin/Organization/OrganizationAdd");
+
     function OpenPanel(href) {
         $('#p').panel({
             fit: true,

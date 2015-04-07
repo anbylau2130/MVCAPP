@@ -55,7 +55,7 @@
                 $("#@(Model.ID)tree1").tree("collapseAll");
             },
             onDblClick: function (node) {
-                var canbeSelect = @(Model.ID)type == node.attributes.Type ? true : false;
+                var canbeSelect = @(Model.ID)type.indexOf(node.attributes.Type)>=0? true : false;
                 if (node && !@(Model.ID)IsExsits(node) && canbeSelect) {
                     if (!@(Model.ID)filterCondition()) return;
                     $("#@(Model.ID)tree2").tree("append", {
@@ -129,7 +129,7 @@
     //#region  Window中按钮事件 
     function @(Model.ID)winadd() {
         var node = $("#@(Model.ID)tree1").tree("getSelected");
-        var canbeSelect = @(Model.ID)type === node.attributes.Type ? true : false;
+        var canbeSelect = @(Model.ID)type.indexOf(node.attributes.Type) >= 0 ? true : false;
         if (!@(Model.ID)filterCondition()) return;
         if (node && !@(Model.ID)IsExsits(node) && canbeSelect)
             $("#@(Model.ID)tree2").tree("append", {
@@ -178,6 +178,28 @@
         @(Model.ID)tree2Init();
         @(Model.ID)winInit();
         $('#@(Model.ID)win').window("open");
+        var ids = $("#@(Model.ID)").attr("ids")
+        var result = ids.substring(0, ids.length - 1).split(",");
+        for (var i = 0; i < result.length; i++) {
+            $.ajax({
+                url: '/Api/Organization/GetTreeNodeById',
+                type: 'Get',
+                data: {
+                    id: result[i],
+                    type:"@(Model.Type)"
+                    },
+                success: function (node) {
+                    console.log(node);
+                    $("#@(Model.ID)tree2").tree("append", {
+                           data: [{
+                            id: node.id,
+                            text: node.text,
+                            iconCls: node.iconCls,
+                        }]
+                    })
+                }
+            });
+        }
     }
 
 

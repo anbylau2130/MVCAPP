@@ -10,7 +10,7 @@ namespace COM.XXXX.Web
         {
             //自己定义的Mvc错误记录
             filters.Add(new MvcHandleErrorAttribute());
-
+            //filters.Add(new AuthorizeAttribute());
             filters.Add(new HandleErrorAttribute());
         }
     }

@@ -18,6 +18,11 @@ namespace COM.XXXX.Controllers.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult UserManage()
+        {
+            return View();
+        }
+
         public ActionResult UserAdd()
         {
             return View();
@@ -27,5 +32,6 @@ namespace COM.XXXX.Controllers.Areas.Admin.Controllers
         {
             return View();
         }
+
     }
 }

@@ -11,6 +11,7 @@ using Com.XXXX.Common;
 using COM.XXXX.Models.Admin;
 using Repository.DAL.Repository;
 using Repository.Domain;
+using System.Net;
 
 namespace COM.XXXX.Controllers
 {
@@ -87,6 +88,7 @@ namespace COM.XXXX.Controllers
         [HttpPost]
         public ActionResult Logout()
         {
+          
             new CookieManage().WriteCookie(ConstHelper.UserCookie, "", 0);
             return Content("OK");
         }
