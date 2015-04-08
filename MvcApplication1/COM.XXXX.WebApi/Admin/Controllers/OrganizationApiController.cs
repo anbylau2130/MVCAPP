@@ -168,9 +168,10 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                     text = organization.Name,
                     iconCls = geticon(organization.OrgType),
                     attributes = new { Type = organization.OrgType },
-
                 };
                 var orgchildren = Repository.Query(org => org.POrganizationID == organization.ID).OrderBy(org => org.Sort).ToList();
+                var userchildren = GetSubUsersByOrganizationID(organization.ID);
+                tree.children.AddRange(userchildren);
 
                 foreach (var child in orgchildren)
                 {

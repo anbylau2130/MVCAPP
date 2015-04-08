@@ -101,6 +101,48 @@ namespace ICONTools
             return sb;
         }
 
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+            try
+            {
+                if (string.IsNullOrEmpty(txtfilename.Text))
+                {
+                    MessageBox.Show("请输入文件名！");
+                }
+                if (string.IsNullOrEmpty(txtfilepath.Text))
+                {
+                    MessageBox.Show("请选择文件路径！");
+                }
+                DirectoryInfo dir = new DirectoryInfo(txtfilepath.Text);
+                DicPath = dir.FullName;
+
+                #region 如果新图标文件夹存在，则删除，否则自动创建
+                DirectoryInfo dirnewIcon = new DirectoryInfo(DicPath + @"/NewIcon/");
+                if (dirnewIcon.Exists == true)
+                {
+                    dirnewIcon.Delete(true);
+                }
+                else {
+                    dirnewIcon.Create();
+                }
+                #endregion
+
+                #region 文件重命名，只生成根目录下文件
+                FileInfo[] files= dir.GetFiles();
+                for (int i = 0; i < files.Length; i++)
+			    {
+                    files[i].CopyTo(Path.Combine(DicPath + @"/NewIcon/"+i+files[i].Extension));
+                }
+                #endregion
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
   
     }
 }

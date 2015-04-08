@@ -1,4 +1,13 @@
-﻿ <table id="tt3"></table>
+﻿
+<style>
+    .iconwidth {
+        width:16px;
+        height:16px;
+        margin:1px;
+    }
+</style>
+ <table id="tt3"></table>
+
 <div id="dd3" icon="icon-save" style="padding: 5px; width: 400px; height: 250px; overflow: hidden">
     <form id="ff3">
         <div id="divU" style="height: 200px">
@@ -34,7 +43,26 @@
                         <input id="Action" type="text" name="Action" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
                     <td style="width: 80px; padding-left: 5px">菜单图标</td>
                     <td style="padding: 5px">
-                        <input id="IconCls" type="text" name="IconCls" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                       <select id="IconCls" style="width:150px"></select> 
+                       <div id="sp">
+		                    <div style="padding:10px">
+		                         @{
+                                     string path = Server.MapPath(Com.XXXX.Class.ConstHelper.IconPath);
+                                     
+                                     DirectoryInfo icondir = new DirectoryInfo(path);
+
+                                     foreach (FileInfo item in icondir.GetFiles())
+                                     {
+                                         string iconclass = "icon-" + item.Name.Split('.')[0];
+                                         <span class="iconwidth @iconclass" onclick="$('#IconCls').val('@iconclass')">&nbsp;</span>
+                                     } 
+                                  }
+                                
+                                
+		                    </div>
+	                    </div>
+                        @*<input id="IconCls" type="text" name="IconCls" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />*@
+                    </td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
                   <td style="width: 80px; padding-left: 5px">父菜单</td>
@@ -85,7 +113,7 @@
             }
         ],
         collapsible: true,
-        url: '/api/Menu/GetMenuTree?id=null',
+        //url: '/api/Menu/GetMenuTree?id=null',
         rownumbers: true,
         singleSelect: true,
         pagination: true,
@@ -122,6 +150,20 @@
 
     $(function () {
         $('#tt3').treegrid().treegrid('clientPaging');
+        $('#IconCls').combo({
+            required: true,
+            editable: false,
+            width: 200,
+            height: 20,
+            panelWidth: 400,
+            panelHeight:400
+        });
+        $('#sp').appendTo($('#cc').combo('panel'));
+        $('#sp input').click(function () {
+            var v = $(this).val();
+            var s = $(this).next('span').text();
+            $('#cc').combo('setValue', v).combo('setText', s).combo('hidePanel');
+        });
     }); 
 
     function edit() {

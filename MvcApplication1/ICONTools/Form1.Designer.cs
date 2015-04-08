@@ -34,6 +34,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtfilename = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSearch
@@ -60,7 +61,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(389, 152);
+            this.button1.Location = new System.Drawing.Point(342, 152);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -84,11 +85,22 @@
             this.txtfilename.Size = new System.Drawing.Size(157, 21);
             this.txtfilename.TabIndex = 5;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(423, 152);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "图片重命名";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 220);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.txtfilename);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
@@ -109,6 +121,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtfilename;
+        private System.Windows.Forms.Button button2;
     }
 }
 

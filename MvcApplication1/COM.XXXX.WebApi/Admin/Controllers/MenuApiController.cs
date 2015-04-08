@@ -129,5 +129,37 @@ namespace COM.XXXX.WebApi.Admin.Controllers
 
             return lst;
         }
+
+        /// <summary>
+        /// 获取组织机构TreeGrid
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IEnumerable<Menu> GetMenuTreeByModule(Guid? id,Guid? moduleid)
+        {
+            List<Menu> lst = new List<Menu>();
+            Guid module=Guid.Parse(moduleid.ToString());
+            if (string.IsNullOrEmpty(id.ToString()) && string.IsNullOrEmpty(moduleid.ToString())) 
+            {
+                lst.AddRange(Repository.Query(menu => menu.PMenuID == null && menu.ModuleID == module).OrderBy(org => org.SortKey).ToList());
+            }
+            else
+            {
+                lst.AddRange(Repository.Query(menu => menu.PMenuID == id && menu.ModuleID == module).OrderBy(org => org.SortKey).ToList());
+            }
+
+            for (int i = 0; i < lst.Count; i++)
+            {
+                var children = GetMenuTreeByModule(lst[i].ID,moduleid);
+                if (children.Any() && children != null)
+                {
+                    lst[i].children = new List<Menu>();
+                    lst[i].children.AddRange(children);
+                }
+            }
+
+            return lst;
+        }
     }
 }

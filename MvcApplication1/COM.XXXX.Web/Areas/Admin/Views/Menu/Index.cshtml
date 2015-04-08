@@ -11,3 +11,17 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    $("#moduletree").tree({
+        onClick: function (node) {
+            //加载form数据
+            $.ajax({
+                url: '/Api/Menu/GetMenuTreeByModule?id=null&moduleid=' + node.id,
+                type: 'POST',
+                success: function (data) {
+                    $('#tt3').treegrid("loadData", data);
+                }
+            });
+        }
+    })
+</script>

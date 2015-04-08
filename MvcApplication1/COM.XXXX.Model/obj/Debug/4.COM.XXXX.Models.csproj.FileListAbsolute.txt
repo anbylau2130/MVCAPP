@@ -45,3 +45,4 @@ D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Model\bin\Debug\zh-Hans\EntityFramew
 D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Model\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
 D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Models.dll
 D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Model\obj\Debug\COM.XXXX.Models.pdb
+F:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Model\obj\Debug\4.COM.XXXX.Models.csprojResolveAssemblyReference.cache

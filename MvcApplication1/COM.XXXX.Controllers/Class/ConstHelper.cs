@@ -25,5 +25,6 @@ namespace Com.XXXX.Class
 
         public static string MenuXmlPath = "~/Menu.xml";
 
+        public static string IconPath = "~/Scripts/icons/";
     }
 }
