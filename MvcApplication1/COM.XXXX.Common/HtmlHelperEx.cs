@@ -22,5 +22,16 @@ namespace COM.XXXX.Common
             return AscxHelper.RenderControl<T>(path);
         }
 
+        /// <summary>
+        /// 加载服务器端控件
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="helper"></param>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static HtmlString RenderContrl<T>(this HtmlHelper helper, string path,Dictionary<string,object>  dictionary) where T : UserControl
+        {
+            return AscxHelper.RenderControl<T>(path,dictionary);
+        }
     }
 }

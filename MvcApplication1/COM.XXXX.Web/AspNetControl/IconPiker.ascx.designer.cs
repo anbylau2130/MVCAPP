@@ -10,6 +10,6 @@
 namespace COM.XXXX.Web.AspNetControl {
     
     
-    public partial class UCChoose {
+    public partial class IconPicker {
     }
 }

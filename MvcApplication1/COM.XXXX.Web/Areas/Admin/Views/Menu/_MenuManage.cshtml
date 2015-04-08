@@ -1,11 +1,4 @@
 ﻿
-<style>
-    .iconwidth {
-        width:16px;
-        height:16px;
-        margin:1px;
-    }
-</style>
  <table id="tt3"></table>
 
 <div id="dd3" icon="icon-save" style="padding: 5px; width: 400px; height: 250px; overflow: hidden">
@@ -43,25 +36,7 @@
                         <input id="Action" type="text" name="Action" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
                     <td style="width: 80px; padding-left: 5px">菜单图标</td>
                     <td style="padding: 5px">
-                       <select id="IconCls" style="width:150px"></select> 
-                       <div id="sp">
-		                    <div style="padding:10px">
-		                         @{
-                                     string path = Server.MapPath(Com.XXXX.Class.ConstHelper.IconPath);
-                                     
-                                     DirectoryInfo icondir = new DirectoryInfo(path);
-
-                                     foreach (FileInfo item in icondir.GetFiles())
-                                     {
-                                         string iconclass = "icon-" + item.Name.Split('.')[0];
-                                         <span class="iconwidth @iconclass" onclick="$('#IconCls').val('@iconclass')">&nbsp;</span>
-                                     } 
-                                  }
-                                
-                                
-		                    </div>
-	                    </div>
-                        @*<input id="IconCls" type="text" name="IconCls" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" />*@
+                         @Html.Partial("_IconPicker",new {ID="iconpick",Style="width:200px",NewGuid=Guid.NewGuid()})
                     </td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
@@ -87,10 +62,12 @@
 
 
 <script type="text/javascript">
+    
+   
     $('#tt3').treegrid({
         toolbar: [
             {
-                iconCls: 'icon-add',
+                iconCls: 'icon-10',
                 plain: true,
                 text: '增添',
                 onClick: function () {
@@ -150,20 +127,6 @@
 
     $(function () {
         $('#tt3').treegrid().treegrid('clientPaging');
-        $('#IconCls').combo({
-            required: true,
-            editable: false,
-            width: 200,
-            height: 20,
-            panelWidth: 400,
-            panelHeight:400
-        });
-        $('#sp').appendTo($('#cc').combo('panel'));
-        $('#sp input').click(function () {
-            var v = $(this).val();
-            var s = $(this).next('span').text();
-            $('#cc').combo('setValue', v).combo('setText', s).combo('hidePanel');
-        });
     }); 
 
     function edit() {
@@ -194,30 +157,30 @@
             resizable: true,
             closed: false,
             buttons: [{
-                text: '修改',
-                handler: function () {
-                    $("#dd3").dialog("close");
-                    if ($("#ff3").form('enableValidation').form('validate')) {
-                        //加载form数据
-                        $.ajax({
-                            url: '/Api/Menu/' + node.ID,
-                            type: 'PUT',
-                            data: $('#ff3').serialize(),
-                            success: function (data) {
-                                if (data.success) {
-                                    $('#tt3').treegrid('reload');
+                    text: '修改',
+                    handler: function () {
+                        $("#dd3").dialog("close");
+                        if ($("#ff3").form('enableValidation').form('validate')) {
+                            //加载form数据
+                            $.ajax({
+                                url: '/Api/Menu/' + node.ID,
+                                type: 'PUT',
+                                data: $('#ff3').serialize(),
+                                success: function (data) {
+                                    if (data.success) {
+                                        $('#tt3').treegrid('reload');
+                                    }
+                                    $.messager.alert('提示', data.message);
                                 }
-                                $.messager.alert('提示', data.message);
-                            }
-                        });
+                            });
+                        }
                     }
-                }
-            }, {
-                text: '关闭',
-                handler: function () {
-                    $("#dd3").dialog("close");
-                }
-            }]
+                }, {
+                    text: '关闭',
+                    handler: function () {
+                        $("#dd3").dialog("close");
+                    }
+                }]
         });
     }
 
@@ -250,30 +213,30 @@
             resizable: true,
             closed: false,
             buttons: [{
-                text: '添加',
-                handler: function () {
-                    $("#dd3").dialog("close");
-                    if ($("#ff3").form('enableValidation').form('validate')) {
-                        //加载form数据
-                        $.ajax({
-                            url: '/Api/Menu/',
-                            type: 'POST',
-                            data: $('#ff3').serialize(),
-                            success: function (data) {
-                                if (data.success) {
-                                    $('#tt3').treegrid('reload');
+                    text: '添加',
+                    handler: function () {
+                        $("#dd3").dialog("close");
+                        if ($("#ff3").form('enableValidation').form('validate')) {
+                            //加载form数据
+                            $.ajax({
+                                url: '/Api/Menu/',
+                                type: 'POST',
+                                data: $('#ff3').serialize(),
+                                success: function (data) {
+                                    if (data.success) {
+                                        $('#tt3').treegrid('reload');
+                                    }
+                                    $.messager.alert('提示', data.message);
                                 }
-                                $.messager.alert('提示', data.message);
-                            }
-                        });
+                            });
+                        }
                     }
-                }
-            }, {
-                text: '关闭',
-                handler: function () {
-                    $("#dd3").dialog("close");
-                }
-            }]
+                }, {
+                    text: '关闭',
+                    handler: function () {
+                        $("#dd3").dialog("close");
+                    }
+                }]
         });
     }
 </script>

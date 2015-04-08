@@ -1,0 +1,49 @@
+﻿<style>
+    .iconwidth {
+        width:16px;
+        height:16px;
+        margin:1px;
+        display: inline-block;
+    }
+</style>
+<input id="@Model.ID" name="@Model.ID" style="@Model.Style"> 
+<div id="@Model.NewGuid">
+    <div style="padding: 10px">
+        @{
+            string path = Server.MapPath(Com.XXXX.Class.ConstHelper.IconPath);
+
+            DirectoryInfo icondir = new DirectoryInfo(path);
+
+            foreach (FileInfo item in icondir.GetFiles())
+            {
+
+                string iconclass = "icon-" + item.Name.Split('.')[0];
+       
+                 <span class="iconwidth @iconclass" value="@iconclass" onclick="seticon(this)">&nbsp;&nbsp;</span>
+         
+            } 
+          }
+            
+       
+    </div>
+</div>
+
+<script type="text/javascript">
+    
+    $(function() {
+        $('#@Model.ID').combo({
+            width: 200,
+            height: 20,
+            panelWidth: 400,
+            panelHeight: 400
+        });
+        $('#@Model.NewGuid').appendTo($('#@Model.ID').combo('panel'));
+    })
+    function seticon(span) {
+        if (span) {
+            $('#@Model.ID').combo("setText", $(span).attr("value"));
+            $('#@Model.ID').combo("setValue", $(span).attr("value"));
+        }
+    }
+
+</script>
