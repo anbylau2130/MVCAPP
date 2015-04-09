@@ -147,6 +147,9 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Views\Organization\_ChooseBox.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\_IconPicker.cshtml" />
+    <Content Include="Areas\Admin\Views\Dictionary\DictionaryManage.cshtml" />
+    <Content Include="Areas\Admin\Views\Organization\DictionaryManage.cshtml" />
+    <Content Include="Areas\Admin\Views\Dictionary\DictionaryAdd.cshtml" />
     <None Include="Areas\Admin\Views\Organization\Index_backup.cshtml" />
     <Content Include="AspNetControl\IconPiker.ascx" />
     <Content Include="Content\Table.css" />
@@ -10143,7 +10146,7 @@
     <Content Include="Areas\Admin\Views\Dictionary\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Organization\OrganizationManage.cshtml" />
     <Content Include="Areas\Admin\Views\Organization\UserAdd.cshtml" />
-    <Content Include="Areas\Admin\Views\Organization\UserManage.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\UserManage.cshtml" />
     <Content Include="Areas\Admin\Views\Organization\OrganizationAdd.cshtml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\EasyUI\demo\accordion\datagrid_data1.json" />

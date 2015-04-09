@@ -36,4 +36,3 @@ D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Common\bin\Debug\log4net.dll
 D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Common\bin\Debug\log4net.xml
 D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Common\obj\Debug\COM.XXXX.Common.dll
 D:\Projects\MVCAPP\MvcApplication1\COM.XXXX.Common\obj\Debug\COM.XXXX.Common.pdb
-F:\PrimaryFile\project\MVCAPP\MvcApplication1\COM.XXXX.Common\obj\Debug\6.COM.XXXX.Common.csprojResolveAssemblyReference.cache

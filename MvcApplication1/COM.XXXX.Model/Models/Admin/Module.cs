@@ -44,7 +44,7 @@ namespace COM.XXXX.Models.Admin
         /// 图标
         /// </summary>
         [DataMember]
-        public string PicUrl { get; set; }
+        public string iconCls { get; set; }
 
         /// <summary>
         /// 排序

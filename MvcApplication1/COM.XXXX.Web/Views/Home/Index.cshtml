@@ -15,9 +15,9 @@
             //var url = "url:'/Api/Menu/GetSubMenusByPMenu?id=" + menu.ID + '&modulecode=' + menu.Module.Code+'"';
             $('#Mainguid').accordion('add', {
                 title: module.Name,
-                content: '<ul class="easyui-tree" id="tt' + i + '" data-options="url:' + "'" + '/Api/Menu/GetMenusByModule?id=null&modulecode=' + module.Code + "'" + ",method:'get',onClick:nodeClick" + '"></ul>',
+                content: '<ul class="easyui-tree" id="tt' + i + '" style="overflow: hidden" data-options="url:' + "'" + '/Api/Menu/GetMenusByModule?id=null&modulecode=' + module.Code + "'" + ",method:'get',onClick:nodeClick" + '"></ul>',
                 animate: true,
-                iconCls: module.PicUrl
+                iconCls: module.iconCls
             });
         }
 
@@ -50,7 +50,7 @@
         });
     </script>
 }
-<div class="easyui-layout" data-options="fit:true">
+<div class="easyui-layout" data-options="fit:true" style="overflow: hidden">
     @*标题*@
     <div data-options="region:'north'" style="height: 100px;">
     </div>
@@ -63,7 +63,7 @@
 
     @*内容*@
     <div data-options="region:'center',border:false" style="overflow: hidden">
-        <div id="content" class="easyui-tabs" data-options="fit:true" >
+        <div id="content" class="easyui-tabs" data-options="fit:true" style="overflow: hidden">
         </div>
     </div>
     

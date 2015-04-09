@@ -31,7 +31,7 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                    {
                        id=module.ID.ToString(),
                        text = module.Name,
-                       iconCls = module.PicUrl,
+                       iconCls = module.iconCls,
                    });
            }
            return treelst;

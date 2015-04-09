@@ -12,7 +12,7 @@ namespace Repository.Domain.Migrations
        
         public  static void Seed(TestDbContext context)
         {
-       var Eric=      new User()
+        var Eric=      new User()
             {
                 BirthDay = DateTime.Now.ToString("yyyy-MM-dd"),
                 Education = "硕士",
@@ -130,8 +130,18 @@ namespace Repository.Domain.Migrations
                 org1, org11, org111, org112, org12, org13, org14, org2, org21, org22, org23, org24, org15
                 );
 
+            Dictionary rootdic = new Dictionary() { Code = "System", Title = "数据字典", PDictionaryID = null, Sort = 0, Desc = "根节点" };
+            Dictionary OpenTypedic = new Dictionary() { Code = "OpenType", Title = "应用打开类型", PDictionary = rootdic, Desc = "应用程序打开类型" };
+            Dictionary OpenTypedic1 = new Dictionary() {  Title = "Tab打开", Value = "1", PDictionary = OpenTypedic, Desc = "应用程序打开类型-Tab打开" };
+            Dictionary OpenTypedic2 = new Dictionary() {  Title = "对话框打开", Value = "2", PDictionary = OpenTypedic, Desc = "应用程序打开类型-对话框打开" };
+            Dictionary OpenTypedic3 = new Dictionary() {  Title = "模态对话框打开", Value = "3", PDictionary = OpenTypedic, Desc = "应用程序打开类型-模态对话框打开" };
 
-          
+            Dictionary orgTypedic = new Dictionary() { Code = "OrgType", Title = "组织机构类型", PDictionary = rootdic, Desc = "组织机构类型" };
+            Dictionary orgTypedic1 = new Dictionary() {  Title = "集团",Value = "1",  PDictionary = orgTypedic, Desc = "组织机构类型" };
+            Dictionary orgTypedic2 = new Dictionary() {  Title = "部门",Value = "2",  PDictionary = orgTypedic, Desc = "组织机构类型" };
+            Dictionary orgTypedic3 = new Dictionary() { Title = "职务", Value = "3", PDictionary = orgTypedic, Desc = "组织机构类型" };
+
+            context.Dictionarys.AddOrUpdate(rootdic, OpenTypedic, OpenTypedic1, OpenTypedic2, OpenTypedic3, orgTypedic, orgTypedic1, orgTypedic2, orgTypedic3);
         }
     }
 }

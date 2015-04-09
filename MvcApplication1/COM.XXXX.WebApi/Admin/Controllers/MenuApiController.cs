@@ -34,7 +34,7 @@ namespace COM.XXXX.WebApi.Admin.Controllers
                 {
                     id = item.ID.ToString(), 
                     text = item.DisplayName,
-                    iconCls = item.IconCls,
+                    iconCls = item.iconCls,
                     attributes = new
                     {
                         URL = string.Format("/{0}/{1}/{2}", item.Module.Code, item.Controller, item.Action),
@@ -140,6 +140,10 @@ namespace COM.XXXX.WebApi.Admin.Controllers
         {
             List<Menu> lst = new List<Menu>();
             Guid module=Guid.Parse(moduleid.ToString());
+            if (string.IsNullOrEmpty(moduleid.ToString()))
+            {
+                return null;
+            }
             if (string.IsNullOrEmpty(id.ToString()) && string.IsNullOrEmpty(moduleid.ToString())) 
             {
                 lst.AddRange(Repository.Query(menu => menu.PMenuID == null && menu.ModuleID == module).OrderBy(org => org.SortKey).ToList());

@@ -11,11 +11,13 @@ function openWindow(id, title, width, height, href, icon,ismodal) {
         closed: false,
         border: false,
         cache: false,
+        fit: true,
+        style:{overflow:hidden},
         iconCls:icon,
-        content:'<iframe id="iframe_content" scrolling="no" frameborder="0"  src="' + href + '" style="width:100%;height:100%;overflow:hidden"></iframe>',
+        content:'<iframe id="iframe_content" scrolling="no" frameborder="0"  src="' + href + '" style="width:auto;height:auto;overflow:hidden"></iframe>',
         modal: ismodal,
         onResize: function(width, height) {
-            //win.window("doLayout");
+            win.window("doLayout");
         }
    });
    //window.setInterval("reinitIframe()", 200);

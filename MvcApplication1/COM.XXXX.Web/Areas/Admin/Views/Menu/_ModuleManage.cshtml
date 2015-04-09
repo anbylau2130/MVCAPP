@@ -24,9 +24,9 @@
                         <input id="ss" class="easyui-numberspinner" name="Sort" min="1" max="10" value="1" required="true" style="width: 80px;" /></td>
                 </tr>
                 <tr style="background-color: White; height: 50px;">
-                    <td style="padding: 5px">图片</td>
+                    <td style="padding: 5px">图标</td>
                     <td style="padding: 5px">
-                        <textarea id="PicUrl" rows="3" name="PicUrl" style="width: 280px; border: 1px solid #8DB2E3;"></textarea></td>
+                          @{Html.RenderPartial("_IconPicker", new { ID = "iconClsModule", Name = "iconCls", Style = "width:200px", NewGuid = Guid.NewGuid() });}
                 </tr>
                 <tr style="background-color: White; height: 50px;">
                     <td style="padding: 5px">模块描述</td>
@@ -99,7 +99,6 @@
         $('#dd2').dialog("center");
     }
     
-
     function moduleedit() {
       
         //获取node节点
@@ -117,6 +116,7 @@
             url: '/Api/Module/' + node.id,
             type: 'Get',
             success: function (data) {
+                iconClsModuleSetValue(data.iconCls);
                 $('#ff').form('load', data);
             }
         });

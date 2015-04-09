@@ -36,7 +36,7 @@
                         <input id="Action" type="text" name="Action" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
                     <td style="width: 80px; padding-left: 5px">菜单图标</td>
                     <td style="padding: 5px">
-                         @Html.Partial("_IconPicker",new {ID="iconpick",Style="width:200px",NewGuid=Guid.NewGuid()})
+                         @{Html.RenderPartial("_IconPicker", new { ID = "iconCls", Name = "iconCls", Style = "width:200px", NewGuid = Guid.NewGuid() });}
                     </td>
                 </tr>
                 <tr style="background-color: White; height: 32px;">
@@ -54,6 +54,9 @@
                     <td style="width: 80px; padding-left: 5px">菜单描述</td>
                     <td style="padding: 5px">
                         <input id="Desc" type="text"  name="Desc" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
+                    <td style="width: 80px; padding-left: 5px">排序</td>
+                    <td style="padding: 5px">
+                        <input id="SortKey" type="text"  name="SortKey" style="border: 1px solid #8DB2E3; width: 200px; height: 20px" /></td>
                 </tr>
             </table>
         </div>
@@ -90,7 +93,7 @@
             }
         ],
         collapsible: true,
-        //url: '/api/Menu/GetMenuTree?id=null',
+        //url: '/Api/Menu/GetMenuTreeByModule?id=null&moduleid=' +$("#moduleSeleted").val()+'',
         rownumbers: true,
         singleSelect: true,
         pagination: true,
@@ -109,7 +112,7 @@
                 { field: 'Module.Name', title: '导航模块', width: fixWidth(0.1) },
                 { field: 'Controller', title: '导航控制器', width: fixWidth(0.1) },
                 { field: 'Action', title: '导航Action', width: fixWidth(0.1) },
-                { field: 'IconCls', title: '图标', width: fixWidth(0.1) },
+                { field: 'iconCls', title: '图标', width: fixWidth(0.1) },
                 { field: 'IsLeaf', title: '叶子', width: fixWidth(0.05) },
                 { field: 'OpenModel', title: '打开方式', width: fixWidth(0.1) },
                 { field: 'Width', title: '宽度', width: fixWidth(0.05) },
@@ -118,13 +121,11 @@
                 { field: 'Desc', title: '描述', width: fixWidth(0.1) }
             ]
         ],
-        onLoadSuccess: function (row, data) {
-            $.each(data, function (i, val) { $('#tt3').treegrid('collapseAll', data[i].id) });
-            //delete $(this).treegrid('options').queryParams['id'];
-
-        }
+        //onLoadSuccess: function (row, data) {
+        //    $.each(data, function (i, val) { $('#tt3').treegrid('collapseAll', data[i].id) });
+        //}
     });
-
+  
     $(function () {
         $('#tt3').treegrid().treegrid('clientPaging');
     }); 
@@ -146,12 +147,13 @@
             url: '/Api/Menu/' + node.ID,
             type: 'Get',
             success: function (data) {
+                iconClsSetValue(data.iconCls)
                 $('#ff3').form('load', data);
             }
         });
 
         $('#dd3').dialog({
-            title: '编辑部门管理',
+            title: '编辑菜单',
             width: 800,
             height: 350,
             resizable: true,
@@ -168,9 +170,16 @@
                                 data: $('#ff3').serialize(),
                                 success: function (data) {
                                     if (data.success) {
-                                        $('#tt3').treegrid('reload');
+                                        $.ajax({
+                                            url: '/Api/Menu/GetMenuTreeByModule?id=null&moduleid=' + node.id,
+                                            type: 'POST',
+                                            success: function (data) {
+                                                reloadTreeGrid()
+                                            }
+                                        });
                                     }
                                     $.messager.alert('提示', data.message);
+                                  
                                 }
                             });
                         }
@@ -196,7 +205,7 @@
             type: 'DELETE',
             success: function (data) {
                 if (data.success) {
-                    $('#tt3').treegrid('reload');
+                    reloadTreeGrid()
                 }
                 $.messager.alert('提示', data.message);
             }
@@ -207,7 +216,7 @@
     function add() {
         $('#ff3').form("reset");
         $('#dd3').dialog({
-            title: '新增部门管理',
+            title: '新增菜单',
             width: 800,
             height: 350,
             resizable: true,
@@ -223,8 +232,9 @@
                                 type: 'POST',
                                 data: $('#ff3').serialize(),
                                 success: function (data) {
-                                    if (data.success) {
-                                        $('#tt3').treegrid('reload');
+                                    if (data.success)
+                                    {
+                                        reloadTreeGrid()
                                     }
                                     $.messager.alert('提示', data.message);
                                 }
@@ -237,6 +247,18 @@
                         $("#dd3").dialog("close");
                     }
                 }]
+        });
+    }
+
+    function reloadTreeGrid() {
+      var node=  $("#moduletree").tree("getSelected");
+        //加载form数据
+        $.ajax({
+            url: '/Api/Menu/GetMenuTreeByModule?id=null&moduleid=' + node.id,
+            type: 'POST',
+            success: function (data) {
+                $('#tt3').treegrid("loadData", data);
+            }
         });
     }
 </script>

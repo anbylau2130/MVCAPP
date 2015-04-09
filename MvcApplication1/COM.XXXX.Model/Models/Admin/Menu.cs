@@ -58,7 +58,7 @@ namespace COM.XXXX.Models.Admin
         /// 图标
         /// </summary>
         [DataMember]
-        public string IconCls { get; set; }
+        public string iconCls { get; set; }
         /// <summary>
         /// 叶子节点对应一个URL
         /// </summary>

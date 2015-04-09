@@ -12,5 +12,15 @@ namespace COM.XXXX.Controllers.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult DictionaryManage()
+        {
+            return View();
+        }
+
+        public ActionResult DictionaryAdd()
+        {
+            return View();
+        }
     }
 }
